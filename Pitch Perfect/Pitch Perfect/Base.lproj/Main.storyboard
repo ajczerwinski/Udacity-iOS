@@ -20,14 +20,41 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGf-En-6N0">
                                 <rect key="frame" x="251" y="250" width="100" height="100"/>
                                 <state key="normal" image="microphone"/>
+                                <connections>
+                                    <action selector="recordAudio:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YAV-yl-DL6"/>
+                                </connections>
+                            </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Recording" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fch-7a-mNx">
+                                <rect key="frame" x="269" y="358" width="64" height="20"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="14"/>
+                                <color key="textColor" red="0.14509803921568626" green="0.28235294117647058" blue="0.43137254901960786" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsT-KM-NUJ">
+                                <rect key="frame" x="276" y="530" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="G7N-Ja-4nE"/>
+                                    <constraint firstAttribute="height" constant="50" id="bq7-gf-l99"/>
+                                </constraints>
+                                <state key="normal" image="stop"/>
+                                <connections>
+                                    <action selector="stopButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jJ6-KW-Gwq"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Fch-7a-mNx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="D5O-Hu-JG6"/>
                             <constraint firstItem="tGf-En-6N0" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="JGq-ci-6Er"/>
+                            <constraint firstItem="zsT-KM-NUJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mut-Wm-LH4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zsT-KM-NUJ" secondAttribute="bottom" constant="20" id="X7c-oS-jR7"/>
                             <constraint firstItem="tGf-En-6N0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="eVz-KC-SjZ"/>
+                            <constraint firstItem="Fch-7a-mNx" firstAttribute="top" secondItem="tGf-En-6N0" secondAttribute="bottom" constant="8" id="r54-F4-dJS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordingInProgress" destination="Fch-7a-mNx" id="AHT-Gb-LtL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -36,5 +63,6 @@
     </scenes>
     <resources>
         <image name="microphone" width="100" height="100"/>
+        <image name="stop" width="50" height="50"/>
     </resources>
 </document>
