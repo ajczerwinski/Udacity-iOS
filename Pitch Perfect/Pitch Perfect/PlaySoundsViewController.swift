@@ -11,6 +11,7 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    var playSound: AVAudioPlayer!
     var slowSound: AVAudioPlayer!
     var fastSound: AVAudioPlayer!
     
@@ -20,14 +21,17 @@ class PlaySoundsViewController: UIViewController {
 
         do {
             
-            try slowSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
-            try fastSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
+            try playSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
+//            try slowSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
+//            try fastSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
             
-            slowSound.enableRate = true
-            fastSound.enableRate = true
+//            slowSound.enableRate = true
+//            fastSound.enableRate = true
+            playSound.enableRate = true
             
-            slowSound.prepareToPlay()
-            fastSound.prepareToPlay()
+            playSound.prepareToPlay()
+//            slowSound.prepareToPlay()
+//            fastSound.prepareToPlay()
             
         } catch let err as NSError {
             print(err.debugDescription)
@@ -40,25 +44,23 @@ class PlaySoundsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func slowPlayButtonPressed(sender: UIButton) {
+    @IBAction func playButton(sender: UIButton) {
         
-        slowSound.stop()
-        slowSound.rate = 0.5
-        slowSound.play()
+        playSound.stop()
         
-    }
-    
-    @IBAction func fastPlayButtonPressed(sender: UIButton) {
+        if sender.tag == 0 {
+            playSound.rate = 0.5
+        } else {
+            playSound.rate = 2.0
+        }
         
-        fastSound.stop()
-        fastSound.rate = 2.0
-        fastSound.play()
+        playSound.play()
+        
     }
     
     @IBAction func stopButtonPressed(sender: UIButton) {
         
-        slowSound.stop()
-        fastSound.stop()
+        playSound.stop()
         
     }
     

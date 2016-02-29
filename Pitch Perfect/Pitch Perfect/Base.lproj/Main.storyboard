@@ -85,10 +85,10 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="slow"/>
                                 <connections>
-                                    <action selector="slowPlayButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="RJk-7d-UnF"/>
+                                    <action selector="playButton:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="lhz-4W-LUu"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-rY-a1m">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-rY-a1m">
                                 <rect key="frame" x="487" y="103" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="8MG-2i-PQT"/>
@@ -96,7 +96,7 @@
                                 </constraints>
                                 <state key="normal" title="Button" image="fast"/>
                                 <connections>
-                                    <action selector="fastPlayButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="sWB-Ub-XHh"/>
+                                    <action selector="playButton:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="Hd5-lo-Lsl"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcc-S5-B6v">
