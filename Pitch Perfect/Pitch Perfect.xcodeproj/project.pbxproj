@@ -13,6 +13,7 @@
 		BFFC3DE51C81526D00A11209 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFFC3DE41C81526D00A11209 /* Assets.xcassets */; };
 		BFFC3DE81C81526D00A11209 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFFC3DE61C81526D00A11209 /* LaunchScreen.storyboard */; };
 		BFFC3DF01C83D74B00A11209 /* PlaySoundsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFFC3DEF1C83D74B00A11209 /* PlaySoundsViewController.swift */; };
+		BFFC3DF21C83DB9A00A11209 /* movie_quote.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BFFC3DF11C83DB9A00A11209 /* movie_quote.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BFFC3DE71C81526D00A11209 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFFC3DE91C81526D00A11209 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BFFC3DEF1C83D74B00A11209 /* PlaySoundsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaySoundsViewController.swift; sourceTree = "<group>"; };
+		BFFC3DF11C83DB9A00A11209 /* movie_quote.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = movie_quote.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				BFFC3DE11C81526D00A11209 /* Main.storyboard */,
 				BFFC3DE41C81526D00A11209 /* Assets.xcassets */,
 				BFFC3DE61C81526D00A11209 /* LaunchScreen.storyboard */,
+				BFFC3DF11C83DB9A00A11209 /* movie_quote.mp3 */,
 				BFFC3DE91C81526D00A11209 /* Info.plist */,
 				BFFC3DEF1C83D74B00A11209 /* PlaySoundsViewController.swift */,
 			);
@@ -127,6 +130,7 @@
 			files = (
 				BFFC3DE81C81526D00A11209 /* LaunchScreen.storyboard in Resources */,
 				BFFC3DE51C81526D00A11209 /* Assets.xcassets in Resources */,
+				BFFC3DF21C83DB9A00A11209 /* movie_quote.mp3 in Resources */,
 				BFFC3DE31C81526D00A11209 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
