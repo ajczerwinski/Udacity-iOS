@@ -88,9 +88,35 @@
                                     <action selector="slowPlayButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="RJk-7d-UnF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-rY-a1m">
+                                <rect key="frame" x="487" y="103" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="8MG-2i-PQT"/>
+                                    <constraint firstAttribute="height" constant="60" id="bW6-oD-HbM"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="fast"/>
+                                <connections>
+                                    <action selector="fastPlayButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="sWB-Ub-XHh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pcc-S5-B6v">
+                                <rect key="frame" x="275" y="468" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="3hM-q1-lKu"/>
+                                    <constraint firstAttribute="height" constant="50" id="LTF-pz-Loi"/>
+                                </constraints>
+                                <state key="normal" image="stop"/>
+                                <connections>
+                                    <action selector="stopButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="cK6-wL-MbY"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CzJ-oH-X4X" firstAttribute="top" secondItem="pcc-S5-B6v" secondAttribute="bottom" constant="50" id="7wQ-0U-70v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vOh-rY-a1m" secondAttribute="trailing" constant="30" id="AVa-6V-szc"/>
+                            <constraint firstItem="pcc-S5-B6v" firstAttribute="centerX" secondItem="VOi-vn-3pG" secondAttribute="centerX" id="GLD-dE-Ucg"/>
+                            <constraint firstItem="vOh-rY-a1m" firstAttribute="top" secondItem="miZ-3N-zPJ" secondAttribute="bottom" constant="50" id="N3G-Ue-bWn"/>
                             <constraint firstItem="oM7-3y-DdF" firstAttribute="top" secondItem="miZ-3N-zPJ" secondAttribute="bottom" constant="50" id="U2p-Ds-cV4"/>
                             <constraint firstItem="oM7-3y-DdF" firstAttribute="leading" secondItem="VOi-vn-3pG" secondAttribute="leadingMargin" constant="30" id="im1-f6-wvL"/>
                         </constraints>
@@ -120,6 +146,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>
         <image name="stop" width="50" height="50"/>

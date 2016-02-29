@@ -12,6 +12,7 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     var slowSound: AVAudioPlayer!
+    var fastSound: AVAudioPlayer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,13 @@ class PlaySoundsViewController: UIViewController {
         do {
             
             try slowSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
+            try fastSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
+            
             slowSound.enableRate = true
+            fastSound.enableRate = true
+            
             slowSound.prepareToPlay()
+            fastSound.prepareToPlay()
             
         } catch let err as NSError {
             print(err.debugDescription)
@@ -41,6 +47,21 @@ class PlaySoundsViewController: UIViewController {
         slowSound.play()
         
     }
+    
+    @IBAction func fastPlayButtonPressed(sender: UIButton) {
+        
+        fastSound.stop()
+        fastSound.rate = 2.0
+        fastSound.play()
+    }
+    
+    @IBAction func stopButtonPressed(sender: UIButton) {
+        
+        slowSound.stop()
+        fastSound.stop()
+        
+    }
+    
 
     /*
     // MARK: - Navigation
