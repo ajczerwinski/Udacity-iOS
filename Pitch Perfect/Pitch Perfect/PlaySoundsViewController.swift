@@ -12,15 +12,14 @@ import AVFoundation
 class PlaySoundsViewController: UIViewController {
 
     var playSound: AVAudioPlayer!
-    var slowSound: AVAudioPlayer!
-    var fastSound: AVAudioPlayer!
+    var audioURL: NSURL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         do {
-            
+//
             try playSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
 //            try slowSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
 //            try fastSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
@@ -32,11 +31,11 @@ class PlaySoundsViewController: UIViewController {
             playSound.prepareToPlay()
 //            slowSound.prepareToPlay()
 //            fastSound.prepareToPlay()
-            
+//            
         } catch let err as NSError {
             print(err.debugDescription)
         }
-        
+    
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +47,7 @@ class PlaySoundsViewController: UIViewController {
         
         playSound.stop()
         
+        
         if sender.tag == 0 {
             playSound.rate = 0.5
         } else {
@@ -55,6 +55,7 @@ class PlaySoundsViewController: UIViewController {
         }
         
         playSound.play()
+//        playSound.pause()
         
     }
     
