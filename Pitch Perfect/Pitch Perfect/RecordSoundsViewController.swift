@@ -152,9 +152,14 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
         // Initialize and prepare the recorder
         try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
+        audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
         audioRecorder.prepareToRecord()
         audioRecorder.record()
+        
+    }
+    
+    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         
     }
     
