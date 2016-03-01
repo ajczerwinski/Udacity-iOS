@@ -58,12 +58,12 @@
                         <outlet property="recordButton" destination="tGf-En-6N0" id="qOh-a8-Ov9"/>
                         <outlet property="recordingInProgress" destination="Fch-7a-mNx" id="AHT-Gb-LtL"/>
                         <outlet property="stopButton" destination="zsT-KM-NUJ" id="9gp-AS-mZm"/>
-                        <segue destination="Tsw-b3-5IK" kind="show" identifier="StopRecording" id="7RV-Ma-fcM"/>
+                        <segue destination="Tsw-b3-5IK" kind="show" identifier="stopRecording" id="yiC-cg-iKf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="928" y="287"/>
+            <point key="canvasLocation" x="988" y="287"/>
         </scene>
         <!--Play Sounds View Controller-->
         <scene sceneID="V0v-z9-wZi">
@@ -110,21 +110,40 @@
                                     <action selector="stopButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="cK6-wL-MbY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18s-DR-8Dx">
+                                <rect key="frame" x="37" y="344" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="JMn-MI-uNg"/>
+                                    <constraint firstAttribute="width" constant="60" id="wbo-81-tHJ"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="chipmunk"/>
+                                <connections>
+                                    <action selector="playChipmunkAudio:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="hzS-qc-o9d"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="CzJ-oH-X4X" firstAttribute="top" secondItem="pcc-S5-B6v" secondAttribute="bottom" constant="50" id="7wQ-0U-70v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vOh-rY-a1m" secondAttribute="trailing" constant="30" id="AVa-6V-szc"/>
                             <constraint firstItem="pcc-S5-B6v" firstAttribute="centerX" secondItem="VOi-vn-3pG" secondAttribute="centerX" id="GLD-dE-Ucg"/>
+                            <constraint firstItem="18s-DR-8Dx" firstAttribute="leading" secondItem="oM7-3y-DdF" secondAttribute="leading" id="MmY-lq-y9v"/>
                             <constraint firstItem="vOh-rY-a1m" firstAttribute="top" secondItem="miZ-3N-zPJ" secondAttribute="bottom" constant="50" id="N3G-Ue-bWn"/>
                             <constraint firstItem="oM7-3y-DdF" firstAttribute="top" secondItem="miZ-3N-zPJ" secondAttribute="bottom" constant="50" id="U2p-Ds-cV4"/>
+                            <constraint firstItem="18s-DR-8Dx" firstAttribute="leading" secondItem="VOi-vn-3pG" secondAttribute="leadingMargin" constant="17" id="Ux0-mx-t3N"/>
                             <constraint firstItem="oM7-3y-DdF" firstAttribute="leading" secondItem="VOi-vn-3pG" secondAttribute="leadingMargin" constant="30" id="im1-f6-wvL"/>
+                            <constraint firstItem="18s-DR-8Dx" firstAttribute="top" secondItem="oM7-3y-DdF" secondAttribute="bottom" constant="180" id="wLZ-VZ-Sxa"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ux0-mx-t3N"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WuI-ue-fQz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1610" y="287"/>
+            <point key="canvasLocation" x="1652" y="287"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0RK-sx-KlB">
@@ -146,6 +165,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chipmunk" width="100" height="100"/>
         <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>

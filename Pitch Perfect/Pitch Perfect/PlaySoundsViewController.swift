@@ -11,32 +11,20 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
-    var playSound: AVAudioPlayer!
+    var audioPlayer: AVAudioPlayer!
     var audioURL: NSURL?
+    var receivedAudio: RecordedAudio!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-
-        do {
-//
-            try playSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
-//            try slowSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
-//            try fastSound = AVAudioPlayer(contentsOfURL: NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("movie_quote", ofType: "mp3")!))
-            
-//            slowSound.enableRate = true
-//            fastSound.enableRate = true
-            playSound.enableRate = true
-            
-            playSound.prepareToPlay()
-//            slowSound.prepareToPlay()
-//            fastSound.prepareToPlay()
-//            
-        } catch let err as NSError {
-            print(err.debugDescription)
-        }
-    
+        
+        
+        audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
+        audioPlayer.enableRate = true
+        
+        audioPlayer.prepareToPlay()
     }
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -45,35 +33,31 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func playButton(sender: UIButton) {
         
-        playSound.stop()
+        audioPlayer.stop()
         
         
         if sender.tag == 0 {
-            playSound.rate = 0.5
+            audioPlayer.rate = 0.5
         } else {
-            playSound.rate = 2.0
+            audioPlayer.rate = 2.0
         }
         
-        playSound.play()
+        audioPlayer.play()
 //        playSound.pause()
         
     }
     
-    @IBAction func stopButtonPressed(sender: UIButton) {
+    @IBAction func playChipmunkAudio(sender: UIButton) {
         
-        playSound.stop()
+        
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func stopButtonPressed(sender: UIButton) {
+        
+        audioPlayer.stop()
+        
     }
-    */
 
 }
