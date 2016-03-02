@@ -37,7 +37,7 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.enabled = true
         recordingInProgress.hidden = true
     }
-
+    
     @IBAction func recordAudio(sender: UIButton) {
         
         stopButton.hidden = false
@@ -45,19 +45,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
         recordingInProgress.hidden = false
         recordButton.enabled = false
         
+        // Create file path for the audio to be recorded
         
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-
         let recordingName = "my_audio.wav"
         let pathArray = [dirPath, recordingName]
         let filePath = NSURL.fileURLWithPathComponents(pathArray)
-        print(filePath!)
         
-        // set up audio session
+        // Set up audio session
         
         let session = AVAudioSession.sharedInstance()
         try! session.setCategory(AVAudioSessionCategoryPlayAndRecord)
+        
         // Initialize and prepare the recorder
+        
         try! audioRecorder = AVAudioRecorder(URL: filePath!, settings: [:])
         audioRecorder.delegate = self
         audioRecorder.meteringEnabled = true
@@ -67,6 +68,10 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder, successfully flag: Bool) {
+        
+        // Check if audio recording was successful
+        // If successful, set recordedAudio properties and perform segue
+        // If not successful, print to console, re-enable recording button, and hide stop button
         
         if(flag) {
             let recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)

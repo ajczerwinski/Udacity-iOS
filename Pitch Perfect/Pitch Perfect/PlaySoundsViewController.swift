@@ -20,17 +20,16 @@ class PlaySoundsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Prepare audioFile to be played, and audioEngine to support variable pitch
         
         audioEngine = AVAudioEngine()
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
-            
-            
+        
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
         audioPlayer.enableRate = true
         
         audioPlayer.prepareToPlay()
     }
-
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -39,10 +38,7 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func playButton(sender: UIButton) {
         
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
-        
+        stopAndResetAudio()
         
         if sender.tag == 0 {
             audioPlayer.rate = 0.5
@@ -69,9 +65,9 @@ class PlaySoundsViewController: UIViewController {
     
     func playAudioWithVariablePitch(pitch: Float) {
         
-        audioPlayer.stop()
-        audioEngine.stop()
-        audioEngine.reset()
+        stopAndResetAudio()
+        
+        // Connect audioPlayerNode to the Pitch effect, and specify the audio output
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
@@ -92,6 +88,12 @@ class PlaySoundsViewController: UIViewController {
     
     
     @IBAction func stopButtonPressed(sender: UIButton) {
+        
+        stopAndResetAudio()
+        
+    }
+    
+    func stopAndResetAudio() {
         
         audioEngine.stop()
         audioEngine.reset()

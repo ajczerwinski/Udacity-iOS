@@ -44,7 +44,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tap to Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3K-M9-IP4">
                                 <rect key="frame" x="248" y="358" width="107" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="IowanOldStyle-Roman" family="Iowan Old Style" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -119,17 +119,6 @@
                                     <action selector="stopButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="cK6-wL-MbY"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-QS-ryD">
-                                <rect key="frame" x="487" y="366" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="YKJ-wt-QLB"/>
-                                    <constraint firstAttribute="width" constant="100" id="uB2-6G-vql"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="darthvader"/>
-                                <connections>
-                                    <action selector="playDarthvaderAudio:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="oF0-RP-0Ae"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18s-DR-8Dx">
                                 <rect key="frame" x="37" y="344" width="60" height="60"/>
                                 <constraints>
@@ -139,6 +128,17 @@
                                 <state key="normal" title="Button" image="chipmunk"/>
                                 <connections>
                                     <action selector="playChipmunkAudio:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="hzS-qc-o9d"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-QS-ryD">
+                                <rect key="frame" x="487" y="366" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="YKJ-wt-QLB"/>
+                                    <constraint firstAttribute="width" constant="100" id="uB2-6G-vql"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="darthvader"/>
+                                <connections>
+                                    <action selector="playDarthvaderAudio:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="oF0-RP-0Ae"/>
                                 </connections>
                             </button>
                         </subviews>
