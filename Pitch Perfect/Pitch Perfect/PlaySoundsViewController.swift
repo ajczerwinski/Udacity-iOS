@@ -34,12 +34,14 @@ class PlaySoundsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
     @IBAction func playButton(sender: UIButton) {
         
         audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
         
         
         if sender.tag == 0 {
@@ -49,7 +51,6 @@ class PlaySoundsViewController: UIViewController {
         }
         
         audioPlayer.play()
-//        playSound.pause()
         
     }
     
@@ -92,6 +93,8 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func stopButtonPressed(sender: UIButton) {
         
+        audioEngine.stop()
+        audioEngine.reset()
         audioPlayer.stop()
         
     }
