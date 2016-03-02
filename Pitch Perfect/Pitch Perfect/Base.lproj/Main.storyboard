@@ -80,8 +80,8 @@
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oM7-3y-DdF">
                                 <rect key="frame" x="37" y="103" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="l8h-ux-vWH"/>
-                                    <constraint firstAttribute="width" constant="60" id="lS6-yA-mXb"/>
+                                    <constraint firstAttribute="height" constant="120" id="l8h-ux-vWH"/>
+                                    <constraint firstAttribute="width" constant="100" id="lS6-yA-mXb"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="slow"/>
                                 <connections>
@@ -91,8 +91,8 @@
                             <button opaque="NO" tag="1" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vOh-rY-a1m">
                                 <rect key="frame" x="487" y="103" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="8MG-2i-PQT"/>
-                                    <constraint firstAttribute="height" constant="60" id="bW6-oD-HbM"/>
+                                    <constraint firstAttribute="width" constant="100" id="8MG-2i-PQT"/>
+                                    <constraint firstAttribute="height" constant="120" id="bW6-oD-HbM"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="fast"/>
                                 <connections>
@@ -110,11 +110,22 @@
                                     <action selector="stopButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="cK6-wL-MbY"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9YM-QS-ryD">
+                                <rect key="frame" x="487" y="366" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="YKJ-wt-QLB"/>
+                                    <constraint firstAttribute="width" constant="100" id="uB2-6G-vql"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="darthvader"/>
+                                <connections>
+                                    <action selector="playDarthvaderAudio:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="oF0-RP-0Ae"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="18s-DR-8Dx">
                                 <rect key="frame" x="37" y="344" width="60" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="JMn-MI-uNg"/>
-                                    <constraint firstAttribute="width" constant="60" id="wbo-81-tHJ"/>
+                                    <constraint firstAttribute="height" constant="120" id="JMn-MI-uNg"/>
+                                    <constraint firstAttribute="width" constant="100" id="wbo-81-tHJ"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="chipmunk"/>
                                 <connections>
@@ -126,13 +137,15 @@
                         <constraints>
                             <constraint firstItem="CzJ-oH-X4X" firstAttribute="top" secondItem="pcc-S5-B6v" secondAttribute="bottom" constant="50" id="7wQ-0U-70v"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vOh-rY-a1m" secondAttribute="trailing" constant="30" id="AVa-6V-szc"/>
+                            <constraint firstItem="9YM-QS-ryD" firstAttribute="bottom" secondItem="18s-DR-8Dx" secondAttribute="bottom" id="G97-0T-cp2"/>
                             <constraint firstItem="pcc-S5-B6v" firstAttribute="centerX" secondItem="VOi-vn-3pG" secondAttribute="centerX" id="GLD-dE-Ucg"/>
                             <constraint firstItem="18s-DR-8Dx" firstAttribute="leading" secondItem="oM7-3y-DdF" secondAttribute="leading" id="MmY-lq-y9v"/>
                             <constraint firstItem="vOh-rY-a1m" firstAttribute="top" secondItem="miZ-3N-zPJ" secondAttribute="bottom" constant="50" id="N3G-Ue-bWn"/>
                             <constraint firstItem="oM7-3y-DdF" firstAttribute="top" secondItem="miZ-3N-zPJ" secondAttribute="bottom" constant="50" id="U2p-Ds-cV4"/>
                             <constraint firstItem="18s-DR-8Dx" firstAttribute="leading" secondItem="VOi-vn-3pG" secondAttribute="leadingMargin" constant="17" id="Ux0-mx-t3N"/>
+                            <constraint firstItem="9YM-QS-ryD" firstAttribute="trailing" secondItem="vOh-rY-a1m" secondAttribute="trailing" id="VXB-Je-egZ"/>
                             <constraint firstItem="oM7-3y-DdF" firstAttribute="leading" secondItem="VOi-vn-3pG" secondAttribute="leadingMargin" constant="30" id="im1-f6-wvL"/>
-                            <constraint firstItem="18s-DR-8Dx" firstAttribute="top" secondItem="oM7-3y-DdF" secondAttribute="bottom" constant="180" id="wLZ-VZ-Sxa"/>
+                            <constraint firstItem="18s-DR-8Dx" firstAttribute="top" secondItem="oM7-3y-DdF" secondAttribute="bottom" constant="80" id="wLZ-VZ-Sxa"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -166,6 +179,7 @@
     </scenes>
     <resources>
         <image name="chipmunk" width="100" height="100"/>
+        <image name="darthvader" width="100" height="100"/>
         <image name="fast" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
         <image name="slow" width="100" height="100"/>

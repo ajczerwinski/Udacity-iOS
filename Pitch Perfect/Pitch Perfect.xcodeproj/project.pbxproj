@@ -41,6 +41,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF74B7B01C866529000D2C5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BFFC3E181C861FE000A11209 /* RecordedAudio.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		BF74B7B11C866544000D2C5C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFFC3DE11C81526D00A11209 /* Main.storyboard */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		BF74B7B21C86654C000D2C5C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BFFC3DDF1C81526D00A11209 /* RecordSoundsViewController.swift */,
+				BFFC3DEF1C83D74B00A11209 /* PlaySoundsViewController.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
 		BFFC3DD11C81526D00A11209 = {
 			isa = PBXGroup;
 			children = (
@@ -60,15 +85,14 @@
 		BFFC3DDC1C81526D00A11209 /* Pitch Perfect */ = {
 			isa = PBXGroup;
 			children = (
+				BF74B7B01C866529000D2C5C /* Model */,
+				BF74B7B11C866544000D2C5C /* View */,
+				BF74B7B21C86654C000D2C5C /* Controller */,
 				BFFC3DDD1C81526D00A11209 /* AppDelegate.swift */,
-				BFFC3DDF1C81526D00A11209 /* RecordSoundsViewController.swift */,
-				BFFC3DE11C81526D00A11209 /* Main.storyboard */,
 				BFFC3DE41C81526D00A11209 /* Assets.xcassets */,
 				BFFC3DE61C81526D00A11209 /* LaunchScreen.storyboard */,
 				BFFC3DF11C83DB9A00A11209 /* movie_quote.mp3 */,
 				BFFC3DE91C81526D00A11209 /* Info.plist */,
-				BFFC3DEF1C83D74B00A11209 /* PlaySoundsViewController.swift */,
-				BFFC3E181C861FE000A11209 /* RecordedAudio.swift */,
 			);
 			path = "Pitch Perfect";
 			sourceTree = "<group>";
@@ -298,6 +322,7 @@
 				BFFC3DEE1C81526E00A11209 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
