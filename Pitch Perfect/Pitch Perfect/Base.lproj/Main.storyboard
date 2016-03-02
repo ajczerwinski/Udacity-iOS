@@ -141,6 +141,27 @@
                                     <action selector="playDarthvaderAudio:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="oF0-RP-0Ae"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9b-h6-VJS">
+                                <rect key="frame" x="276" y="249" width="48" height="30"/>
+                                <state key="normal" title="Reverb"/>
+                                <connections>
+                                    <action selector="reverbButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="2SE-FH-Xa7"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9G-3g-MNe">
+                                <rect key="frame" x="266" y="312" width="68" height="30"/>
+                                <state key="normal" title="Distortion"/>
+                                <connections>
+                                    <action selector="distortionButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="npZ-qJ-20X"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Wh-zV-PDC">
+                                <rect key="frame" x="283" y="371" width="35" height="30"/>
+                                <state key="normal" title="Echo"/>
+                                <connections>
+                                    <action selector="echoButtonPressed:" destination="Tsw-b3-5IK" eventType="touchUpInside" id="3xd-4Y-r4o"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

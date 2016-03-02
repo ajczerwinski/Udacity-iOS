@@ -16,6 +16,7 @@ class PlaySoundsViewController: UIViewController {
     var receivedAudio: RecordedAudio!
     var audioEngine: AVAudioEngine!
     var audioFile: AVAudioFile!
+//    var audioBuffer: AVAudioPCMBuffer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,10 @@ class PlaySoundsViewController: UIViewController {
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
         
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
+//        
+//        audioBuffer = try! AVAudioPCMBuffer(PCMFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
+//        try! audioFile.readIntoBuffer(audioBuffer)
+        
         audioPlayer.enableRate = true
         
         audioPlayer.prepareToPlay()
@@ -52,18 +57,49 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func playChipmunkAudio(sender: UIButton) {
         
-        playAudioWithVariablePitch(1000)
+        let highPitchEffect = AVAudioUnitTimePitch()
+        highPitchEffect.pitch = 1000
+        playAudioWithVariableEffects(highPitchEffect)
         
     }
     
     @IBAction func playDarthvaderAudio(sender: UIButton) {
         
-        playAudioWithVariablePitch(-1000)
+        let lowPitchEffect = AVAudioUnitTimePitch()
+        lowPitchEffect.pitch = -1000
+        playAudioWithVariableEffects(lowPitchEffect)
         
     }
     
+    @IBAction func reverbButtonPressed(sender: UIButton) {
+        
+        let reverbEffect = AVAudioUnitReverb()
+        reverbEffect.loadFactoryPreset(.Cathedral)
+        reverbEffect.wetDryMix = 70
+        playAudioWithVariableEffects(reverbEffect)
+        
+    }
     
-    func playAudioWithVariablePitch(pitch: Float) {
+    @IBAction func distortionButtonPressed(sender: UIButton) {
+        
+        let distortionEffect = AVAudioUnitDistortion()
+        distortionEffect.loadFactoryPreset(.MultiBrokenSpeaker)
+        distortionEffect.wetDryMix = 30
+        playAudioWithVariableEffects(distortionEffect)
+        
+    }
+    
+    @IBAction func echoButtonPressed(sender: UIButton) {
+        
+        let delayEffect = AVAudioUnitDelay()
+        delayEffect.delayTime = 0.7
+        playAudioWithVariableEffects(delayEffect)
+    }
+    
+    
+    
+    
+    func playAudioWithVariableEffects(effect: NSObject) {
         
         stopAndResetAudio()
         
@@ -71,18 +107,56 @@ class PlaySoundsViewController: UIViewController {
         
         let audioPlayerNode = AVAudioPlayerNode()
         audioEngine.attachNode(audioPlayerNode)
+        audioEngine.attachNode(effect as! AVAudioNode)
         
-        let changePitchEffect = AVAudioUnitTimePitch()
-        changePitchEffect.pitch = pitch
-        audioEngine.attachNode(changePitchEffect)
+//        let audioPlayerNodeReverb = AVAudioPlayerNode()
+//        audioEngine.attachNode(audioPlayerNodeReverb)
         
-        audioEngine.connect(audioPlayerNode, to: changePitchEffect, format: nil)
-        audioEngine.connect(changePitchEffect, to: audioEngine.outputNode, format: nil)
+//        let audioPlayerNodeDistortion = AVAudioPlayerNode()
+//        audioEngine.attachNode(audioPlayerNodeDistortion)
+        
+//        let changePitchEffect = AVAudioUnitTimePitch()
+//        changePitchEffect.pitch = pitch
+        
+//        let changeReverbEffect = AVAudioUnitReverb()
+        
+        // NEED TO ADD BACK THE REVERB ARGUMENT
+//        changeReverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
+//        changeReverbEffect.wetDryMix = 50
+        
+//        let changeDistortionEffect = AVAudioUnitDistortion()
+//        changeDistortionEffect.loadFactoryPreset(AVAudioUnitDistortionPreset(rawValue: distortion)!)
+//        changeDistortionEffect.wetDryMix = 25
+
+        
+//        audioEngine.attachNode(changePitchEffect)
+        
+        audioEngine.connect(audioPlayerNode, to: effect as! AVAudioNode, format: nil)
+        audioEngine.connect(effect as! AVAudioNode, to: audioEngine.outputNode, format: nil)
+        
+        // Connect distortion effect
+        
+//        audioEngine.attachNode(changeDistortionEffect)
+//        audioEngine.connect(audioPlayerNodeDistortion, to: changeDistortionEffect, format: audioBuffer.format)
+//        audioEngine.connect(changeDistortionEffect, to: audioEngine.mainMixerNode, format: audioBuffer.format)
+        
+        // Connect reverb effect
+        
+//        audioEngine.attachNode(changeReverbEffect)
+//        audioEngine.connect(audioPlayerNode, to: changeReverbEffect, format: audioBuffer.format)
+//        audioEngine.connect(changeReverbEffect, to: audioEngine.mainMixerNode, format: audioBuffer.format)
+        
         
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+//        audioPlayerNodeDistortion.scheduleBuffer(audioBuffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
+//        audioPlayerNodeDistortion.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+//        audioPlayerNodeReverb.scheduleBuffer(audioBuffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
+//        audioPlayerNodeReverb.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
         try! audioEngine.start()
-        
+    
         audioPlayerNode.play()
+//        audioPlayerNodeDistortion.play()
+//        audioPlayerNodeReverb.play()
         
     }
     
