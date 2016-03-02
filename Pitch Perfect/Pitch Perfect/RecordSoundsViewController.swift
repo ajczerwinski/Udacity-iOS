@@ -15,6 +15,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBOutlet weak var stopButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var tapToRecordButton: UILabel!
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var pauseButton: UIButton!
+    
     
     var recordingButton: UIButton!
     var recordingSession: AVAudioSession!
@@ -32,15 +35,20 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        playButton.hidden = true
+        pauseButton.hidden = true
         stopButton.hidden = true
         tapToRecordButton.hidden = false
         recordButton.enabled = true
         recordingInProgress.hidden = true
+        
     }
     
     @IBAction func recordAudio(sender: UIButton) {
         
         stopButton.hidden = false
+        pauseButton.hidden = false
         tapToRecordButton.hidden = true
         recordingInProgress.hidden = false
         recordButton.enabled = false
@@ -94,6 +102,23 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
             playSoundsVC.receivedAudio = data
         }
     }
+    
+    @IBAction func pausePlayButtonPressed(sender: UIButton) {
+        
+        if sender.tag == 0 {
+            audioRecorder.pause()
+            playButton.hidden = false
+            pauseButton.hidden = true
+            
+        } else {
+            audioRecorder.record()
+            playButton.hidden = true
+            pauseButton.hidden = false
+            
+        }
+        
+    }
+    
     
     @IBAction func stopButtonPressed(sender: UIButton) {
         
