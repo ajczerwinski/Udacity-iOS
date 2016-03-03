@@ -11,12 +11,16 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    @IBOutlet weak var reverbImage: UIButton!
+    @IBOutlet weak var distortionImage: UIButton!
+    @IBOutlet weak var echoImage: UIButton!
+    
+    
     var audioPlayer: AVAudioPlayer!
     var audioURL: NSURL?
     var receivedAudio: RecordedAudio!
     var audioEngine: AVAudioEngine!
     var audioFile: AVAudioFile!
-//    var audioBuffer: AVAudioPCMBuffer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,12 +32,31 @@ class PlaySoundsViewController: UIViewController {
         
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
 //        
+        
 //        audioBuffer = try! AVAudioPCMBuffer(PCMFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
 //        try! audioFile.readIntoBuffer(audioBuffer)
         
         audioPlayer.enableRate = true
         
         audioPlayer.prepareToPlay()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        fixImages()
+        
+    }
+    
+    func fixImages() {
+        reverbImage.layer.cornerRadius = reverbImage.frame.size.width / 2
+        reverbImage.clipsToBounds = true
+        
+        distortionImage.layer.cornerRadius = distortionImage.frame.size.width / 2
+        distortionImage.clipsToBounds = true
+        
+//        echoImage.layer.cornerRadius = echoImage.frame.size.width / 2
+//        echoImage.clipsToBounds = true
+        
     }
 
     override func didReceiveMemoryWarning() {
