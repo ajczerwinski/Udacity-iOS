@@ -11,6 +11,9 @@ import AVFoundation
 
 class PlaySoundsViewController: UIViewController {
 
+    // CITATION: Images from websites www.popsci.com, 
+    // www.creativeapplications.net, and www.iconarchive.com
+    
     @IBOutlet weak var reverbImage: UIButton!
     @IBOutlet weak var distortionImage: UIButton!
     @IBOutlet weak var echoImage: UIButton!
@@ -31,10 +34,6 @@ class PlaySoundsViewController: UIViewController {
         audioFile = try! AVAudioFile(forReading: receivedAudio.filePathUrl)
         
         audioPlayer = try! AVAudioPlayer(contentsOfURL: receivedAudio.filePathUrl)
-//        
-        
-//        audioBuffer = try! AVAudioPCMBuffer(PCMFormat: audioFile.processingFormat, frameCapacity: AVAudioFrameCount(audioFile.length))
-//        try! audioFile.readIntoBuffer(audioBuffer)
         
         audioPlayer.enableRate = true
         
@@ -47,15 +46,14 @@ class PlaySoundsViewController: UIViewController {
         
     }
     
+    // Make images round
+    
     func fixImages() {
         reverbImage.layer.cornerRadius = reverbImage.frame.size.width / 2
         reverbImage.clipsToBounds = true
         
         distortionImage.layer.cornerRadius = distortionImage.frame.size.width / 2
         distortionImage.clipsToBounds = true
-        
-//        echoImage.layer.cornerRadius = echoImage.frame.size.width / 2
-//        echoImage.clipsToBounds = true
         
     }
 
@@ -93,6 +91,14 @@ class PlaySoundsViewController: UIViewController {
         playAudioWithVariableEffects(lowPitchEffect)
         
     }
+    
+    // CITATION: borrowed heavily from Udacity forum page:
+    // "https://discussions.udacity.com/t/adding-exceeds-
+    // specifications-echo-effect/12929" as well as Stack Overflow
+    // post: "http://stackoverflow.com/questions/25333140/using-
+    // sound-effects-with-audioengine"
+    
+    // Set reverb, distortion, and echo effects in separate buttons
     
     @IBAction func reverbButtonPressed(sender: UIButton) {
         
@@ -132,54 +138,14 @@ class PlaySoundsViewController: UIViewController {
         audioEngine.attachNode(audioPlayerNode)
         audioEngine.attachNode(effect as! AVAudioNode)
         
-//        let audioPlayerNodeReverb = AVAudioPlayerNode()
-//        audioEngine.attachNode(audioPlayerNodeReverb)
-        
-//        let audioPlayerNodeDistortion = AVAudioPlayerNode()
-//        audioEngine.attachNode(audioPlayerNodeDistortion)
-        
-//        let changePitchEffect = AVAudioUnitTimePitch()
-//        changePitchEffect.pitch = pitch
-        
-//        let changeReverbEffect = AVAudioUnitReverb()
-        
-        // NEED TO ADD BACK THE REVERB ARGUMENT
-//        changeReverbEffect.loadFactoryPreset(AVAudioUnitReverbPreset.Cathedral)
-//        changeReverbEffect.wetDryMix = 50
-        
-//        let changeDistortionEffect = AVAudioUnitDistortion()
-//        changeDistortionEffect.loadFactoryPreset(AVAudioUnitDistortionPreset(rawValue: distortion)!)
-//        changeDistortionEffect.wetDryMix = 25
-
-        
-//        audioEngine.attachNode(changePitchEffect)
-        
         audioEngine.connect(audioPlayerNode, to: effect as! AVAudioNode, format: nil)
         audioEngine.connect(effect as! AVAudioNode, to: audioEngine.outputNode, format: nil)
         
-        // Connect distortion effect
-        
-//        audioEngine.attachNode(changeDistortionEffect)
-//        audioEngine.connect(audioPlayerNodeDistortion, to: changeDistortionEffect, format: audioBuffer.format)
-//        audioEngine.connect(changeDistortionEffect, to: audioEngine.mainMixerNode, format: audioBuffer.format)
-        
-        // Connect reverb effect
-        
-//        audioEngine.attachNode(changeReverbEffect)
-//        audioEngine.connect(audioPlayerNode, to: changeReverbEffect, format: audioBuffer.format)
-//        audioEngine.connect(changeReverbEffect, to: audioEngine.mainMixerNode, format: audioBuffer.format)
-        
-        
         audioPlayerNode.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-//        audioPlayerNodeDistortion.scheduleBuffer(audioBuffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
-//        audioPlayerNodeDistortion.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
-//        audioPlayerNodeReverb.scheduleBuffer(audioBuffer, atTime: nil, options: AVAudioPlayerNodeBufferOptions.Loops, completionHandler: nil)
-//        audioPlayerNodeReverb.scheduleFile(audioFile, atTime: nil, completionHandler: nil)
+        
         try! audioEngine.start()
     
         audioPlayerNode.play()
-//        audioPlayerNodeDistortion.play()
-//        audioPlayerNodeReverb.play()
         
     }
     
