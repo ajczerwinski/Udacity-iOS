@@ -10,5 +10,16 @@ import Foundation
 import UIKit
 
 class ResultsViewController: UIViewController {
+   
+    
+    
+    
+    
+    
+    
+    
+    @IBAction func playAgain() {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
 }
