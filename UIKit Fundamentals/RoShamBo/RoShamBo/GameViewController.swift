@@ -25,10 +25,22 @@ class GameViewController: UIViewController {
         
         self.presentViewController(controller, animated: true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "playGamePaper" {
+            let controller = segue.destinationViewController as! ResultsViewController
+            controller.playerRoShamBoChoice = "Paper"
+            controller.opponentRoShamBoChoice = self.randomOpponentRoShamBo()
+        } else {
+            let controller = segue.destinationViewController as! ResultsViewController
+            controller.playerRoShamBoChoice = "Scissors"
+            controller.opponentRoShamBoChoice = self.randomOpponentRoShamBo()
+        }
+    }
 
     @IBAction func gameButtonPressedPaper() {
         
-        performSegueWithIdentifier("playGamePaper", sender: self)
+        self.performSegueWithIdentifier("playGamePaper", sender: self)
         
     }
     
