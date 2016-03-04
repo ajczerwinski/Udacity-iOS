@@ -9,12 +9,40 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    @IBOutlet weak var colorView: UIView!
+    
+    @IBOutlet weak var redSlider: UISlider!
+    
+    @IBOutlet weak var greenSlider: UISlider!
+    
+    @IBOutlet weak var blueSlider: UISlider!
+    
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.blackColor()
+        colorView.layer.borderWidth = 4
+        colorView.layer.borderColor = UIColor.whiteColor().CGColor
+    
     }
+    
+    @IBAction func sliderAction(sender: UISlider) {
+        
+        if self.redSlider == nil {
+            return
+        }
+        
+        let r: CGFloat = CGFloat(self.redSlider.value)
+        let g: CGFloat = CGFloat(self.greenSlider.value)
+        let b: CGFloat = CGFloat(self.blueSlider.value)
+        
+        colorView.backgroundColor = UIColor(red: r, green: g, blue: b, alpha: 1)
+    }
+    
 
 
 }
