@@ -18,29 +18,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pT-pw-T4f">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3pT-pw-T4f">
                                 <rect key="frame" x="270" y="101" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="LwP-zH-ubV"/>
+                                    <constraint firstAttribute="width" constant="60" id="QfM-xb-Hnj"/>
+                                </constraints>
                                 <state key="normal" image="paper"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CN-pn-ycg">
-                                <rect key="frame" x="135" y="235" width="60" height="60"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CN-pn-ycg">
+                                <rect key="frame" x="70" y="200" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ORQ-NG-4Rd"/>
+                                    <constraint firstAttribute="width" constant="60" id="lMm-gB-6LG"/>
+                                </constraints>
                                 <state key="normal" image="rock"/>
                                 <connections>
                                     <action selector="gameButtonPressedRock" destination="BYZ-38-t0r" eventType="touchUpInside" id="QJj-me-9aN"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Let's play!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKn-xo-PNd">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Let's play!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKn-xo-PNd">
                                 <rect key="frame" x="261" y="397" width="78" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSC-dD-Sac">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eSC-dD-Sac">
                                 <rect key="frame" x="400" y="235" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="5HO-fZ-EFh"/>
+                                    <constraint firstAttribute="height" constant="60" id="61x-xm-Iaw"/>
+                                </constraints>
                                 <state key="normal" image="scissors"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="sKn-xo-PNd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4go-qi-bBp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eSC-dD-Sac" secondAttribute="trailing" constant="50" id="6PZ-z9-WuX"/>
+                            <constraint firstItem="2CN-pn-ycg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="50" id="Qtb-nb-LUy"/>
+                            <constraint firstItem="eSC-dD-Sac" firstAttribute="centerY" secondItem="2CN-pn-ycg" secondAttribute="centerY" id="RZF-lN-8wz"/>
+                            <constraint firstItem="3pT-pw-T4f" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="W4x-ZX-Izb"/>
+                            <constraint firstItem="3pT-pw-T4f" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="50" id="YCh-a6-cWt"/>
+                            <constraint firstItem="2CN-pn-ycg" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="180" id="b0F-SI-Bxh"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sKn-xo-PNd" secondAttribute="bottom" constant="150" id="lOa-wZ-DML"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
