@@ -25,6 +25,9 @@
                                     <constraint firstAttribute="width" constant="60" id="QfM-xb-Hnj"/>
                                 </constraints>
                                 <state key="normal" image="paper"/>
+                                <connections>
+                                    <action selector="gameButtonPressedPaper" destination="BYZ-38-t0r" eventType="touchUpInside" id="TsP-if-lto"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CN-pn-ycg">
                                 <rect key="frame" x="70" y="200" width="60" height="60"/>
@@ -34,7 +37,7 @@
                                 </constraints>
                                 <state key="normal" image="rock"/>
                                 <connections>
-                                    <action selector="gameButtonPressedRock" destination="BYZ-38-t0r" eventType="touchUpInside" id="QJj-me-9aN"/>
+                                    <action selector="gameButtonPressedRock" destination="BYZ-38-t0r" eventType="touchUpInside" id="vtz-7Z-4j3"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Let's play!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sKn-xo-PNd">
@@ -50,6 +53,9 @@
                                     <constraint firstAttribute="height" constant="60" id="61x-xm-Iaw"/>
                                 </constraints>
                                 <state key="normal" image="scissors"/>
+                                <connections>
+                                    <segue destination="SFi-rv-QVF" kind="presentation" identifier="playGameScissors" id="cU8-aM-cwa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -64,6 +70,9 @@
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="sKn-xo-PNd" secondAttribute="bottom" constant="150" id="lOa-wZ-DML"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="SFi-rv-QVF" kind="presentation" identifier="playGamePaper" id="ymM-eK-HMT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -119,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ejh-cR-0SD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947" y="429"/>
+            <point key="canvasLocation" x="773" y="429"/>
         </scene>
     </scenes>
     <resources>
@@ -128,4 +137,7 @@
         <image name="rock" width="75" height="65"/>
         <image name="scissors" width="75" height="65"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cU8-aM-cwa"/>
+    </inferredMetricsTieBreakers>
 </document>

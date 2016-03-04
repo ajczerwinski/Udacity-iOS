@@ -23,6 +23,11 @@ class ViewController: UIViewController {
         self.presentViewController(controller, animated: true, completion: nil)
     }
 
+    @IBAction func gameButtonPressedPaper() {
+        
+        performSegueWithIdentifier("playGamePaper", sender: self)
+        
+    }
     
 
 
