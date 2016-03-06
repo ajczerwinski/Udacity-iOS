@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="height" constant="30" id="WFL-4k-hK9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="U1J-B3-ljU">
                                 <rect key="frame" x="20" y="66" width="560" height="30"/>
@@ -64,6 +64,12 @@
                             <constraint firstItem="U1J-B3-ljU" firstAttribute="top" secondItem="VjA-cT-x9S" secondAttribute="bottom" constant="8" id="zB0-0D-mKM"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="editingSwitch" destination="dO3-Vs-yv3" id="x4S-ZH-YTU"/>
+                        <outlet property="textField1" destination="VjA-cT-x9S" id="aw5-ve-Swt"/>
+                        <outlet property="textField2" destination="U1J-B3-ljU" id="CvE-UU-Sk3"/>
+                        <outlet property="textField3" destination="D4S-HD-DrY" id="F8h-mb-JbQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

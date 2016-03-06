@@ -14,7 +14,6 @@
 		BF74B8821C8A415F000D2C5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF74B8801C8A415F000D2C5C /* LaunchScreen.storyboard */; };
 		BF74B88B1C8BAA70000D2C5C /* ZipCodeFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74B88A1C8BAA70000D2C5C /* ZipCodeFieldDelegate.swift */; };
 		BF74B88D1C8BAA91000D2C5C /* CashTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74B88C1C8BAA91000D2C5C /* CashTextFieldDelegate.swift */; };
-		BF74B88F1C8BAAA2000D2C5C /* LockableTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF74B88E1C8BAAA2000D2C5C /* LockableTextFieldDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +26,6 @@
 		BF74B8831C8A415F000D2C5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BF74B88A1C8BAA70000D2C5C /* ZipCodeFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZipCodeFieldDelegate.swift; sourceTree = "<group>"; };
 		BF74B88C1C8BAA91000D2C5C /* CashTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CashTextFieldDelegate.swift; sourceTree = "<group>"; };
-		BF74B88E1C8BAAA2000D2C5C /* LockableTextFieldDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LockableTextFieldDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +74,6 @@
 			children = (
 				BF74B88A1C8BAA70000D2C5C /* ZipCodeFieldDelegate.swift */,
 				BF74B88C1C8BAA91000D2C5C /* CashTextFieldDelegate.swift */,
-				BF74B88E1C8BAAA2000D2C5C /* LockableTextFieldDelegate.swift */,
 			);
 			name = "Text Field Delegates";
 			sourceTree = "<group>";
@@ -156,7 +153,6 @@
 				BF74B88D1C8BAA91000D2C5C /* CashTextFieldDelegate.swift in Sources */,
 				BF74B87A1C8A415F000D2C5C /* ViewController.swift in Sources */,
 				BF74B8781C8A415F000D2C5C /* AppDelegate.swift in Sources */,
-				BF74B88F1C8BAAA2000D2C5C /* LockableTextFieldDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
