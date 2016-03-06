@@ -22,7 +22,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.textField1.delegate = self.zipCodeFieldDelegate
+        self.textField2.delegate = self.cashTextFieldDelegate
+        
+        
+        
+        
     }
+    
+    
 
 
 }
