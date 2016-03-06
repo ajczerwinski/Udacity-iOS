@@ -47,6 +47,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="31" id="pyV-Ln-XM4"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="toggleTextEditor:" destination="BYZ-38-t0r" eventType="valueChanged" id="gy2-nd-g5y"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

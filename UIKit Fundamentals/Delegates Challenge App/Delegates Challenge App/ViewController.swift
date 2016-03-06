@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var textField1: UITextField!
     @IBOutlet weak var textField2: UITextField!
@@ -24,12 +24,29 @@ class ViewController: UIViewController {
         
         self.textField1.delegate = self.zipCodeFieldDelegate
         self.textField2.delegate = self.cashTextFieldDelegate
+        self.textField3.delegate = self
         
-        
-        
+        self.editingSwitch.setOn(false, animated: false)
         
     }
     
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        return self.editingSwitch.on
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @IBAction func toggleTextEditor(sender: UISwitch) {
+        
+        if !(sender).on {
+            self.textField3.resignFirstResponder()
+        }
+        
+    }
     
 
 
