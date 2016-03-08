@@ -12,29 +12,40 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
-    @IBOutlet weak var cameraButton: UIButton!
+    @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     @IBOutlet weak var topTextField: UITextField!
 
     @IBOutlet weak var bottomTextField: UITextField!
+    
+    let memeTextAttributes = [
+        NSStrokeColorAttributeName: UIColor.blackColor(),
+        NSForegroundColorAttributeName: UIColor.whiteColor(),
+        NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSStrokeWidthAttributeName: NSNumber(double: 3.0)
+    
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         topTextField.delegate = self
         bottomTextField.delegate = self
-        
+//        
+//        topTextField.font = UIFont(named: "
+//        
         
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+        
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
-        
-        topTextField.textAlignment = .Center
-        bottomTextField.textAlignment = .Center
         
         if imagePickerView.image == nil {
             topTextField.hidden = true
@@ -43,6 +54,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             topTextField.hidden = false
             bottomTextField.hidden = false
         }
+        
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
         
     }
 
@@ -91,7 +115,38 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return true
     }
     
+    func subscribeToKeyboardNotifications() {
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
     
-
+    func unsubscribeFromKeyboardNotifications() {
+        
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        view.frame.origin.y -= getKeyboardHeight(notification)
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        
+        view.frame.origin.y += getKeyboardHeight(notification)
+    }
+    
+    func getKeyboardHeight(notification: NSNotification) -> CGFloat {
+        
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.CGRectValue().height
+        
+    }
+    
 }
 
