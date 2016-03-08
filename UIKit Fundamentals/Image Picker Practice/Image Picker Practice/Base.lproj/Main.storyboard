@@ -24,10 +24,20 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLS-FM-Krw">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <items>
-                                    <barButtonItem title="Pick" id="gaU-Jg-MuE">
+                                    <barButtonItem title="Album" id="gaU-Jg-MuE">
                                         <connections>
-                                            <action selector="pickAnImage:" destination="BYZ-38-t0r" id="JIj-AW-kcC"/>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="hpR-k7-8AA"/>
                                         </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" id="fyx-Vo-fpe">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VOB-7X-sXR">
+                                            <rect key="frame" x="79" y="7" width="54" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Camera"/>
+                                            <connections>
+                                                <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="l2u-bx-3Yg"/>
+                                            </connections>
+                                        </button>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
@@ -44,6 +54,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="cameraButton" destination="VOB-7X-sXR" id="XGJ-Xb-FzF"/>
                         <outlet property="imagePickerView" destination="gh1-PG-9E9" id="ESC-MQ-kDN"/>
                     </connections>
                 </viewController>

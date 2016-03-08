@@ -12,17 +12,34 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
-    let pickerController = UIImagePickerController()
+    @IBOutlet weak var cameraButton: UIButton!
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        pickerController.delegate = self
+        
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+    }
 
-    @IBAction func pickAnImage(sender: AnyObject) {
+    @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        presentViewController(pickerController, animated: true, completion: nil)
+        
+    }
+    
+    @IBAction func pickAnImageFromCamera(sender: AnyObject) {
+        
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        
+        pickerController.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(pickerController, animated: true, completion: nil)
         
     }
@@ -30,6 +47,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
+            imagePickerView.contentMode = UIViewContentMode.Center
             imagePickerView.contentMode = UIViewContentMode.ScaleAspectFill
             imagePickerView.layer.cornerRadius = 5.0
             imagePickerView.clipsToBounds = true
@@ -41,6 +59,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     {
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     
 
