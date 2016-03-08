@@ -30,6 +30,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
+            imagePickerView.contentMode = UIViewContentMode.ScaleAspectFill
+            imagePickerView.layer.cornerRadius = 5.0
+            imagePickerView.clipsToBounds = true
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }
