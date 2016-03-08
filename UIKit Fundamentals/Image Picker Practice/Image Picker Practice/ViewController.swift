@@ -8,21 +8,42 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
     @IBOutlet weak var cameraButton: UIButton!
     
+    @IBOutlet weak var topTextField: UITextField!
 
+    @IBOutlet weak var bottomTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        topTextField.delegate = self
+        bottomTextField.delegate = self
         
         
     }
     
     override func viewWillAppear(animated: Bool) {
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+        
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        
+        topTextField.textAlignment = .Center
+        bottomTextField.textAlignment = .Center
+        
+        if imagePickerView.image == nil {
+            topTextField.hidden = true
+            bottomTextField.hidden = true
+        } else {
+            topTextField.hidden = false
+            bottomTextField.hidden = false
+        }
+        
     }
 
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
@@ -60,6 +81,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         picker.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        textField.text = ""
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
     
     
 
