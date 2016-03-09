@@ -18,6 +18,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var bottomTextField: UITextField!
     
+    struct Meme {
+        
+        var topText: String
+        var bottomText: String
+        var image: UIImage
+        var memedImage: UIImage
+        
+    }
+    
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
@@ -31,9 +40,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         topTextField.delegate = self
         bottomTextField.delegate = self
-//        
-//        topTextField.font = UIFont(named: "
-//        
         
     }
     
@@ -69,6 +75,31 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
         
     }
+    
+    @IBAction func save(sender: AnyObject) {
+        
+        // Create the meme
+        
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMemedImage())
+        
+//        imagePickerView.image = meme.memedImage
+        
+        
+    }
+    
+    func generateMemedImage() -> UIImage {
+        
+        // Render view to an image
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
+        let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return memedImage
+        
+    }
+    
 
     @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
         

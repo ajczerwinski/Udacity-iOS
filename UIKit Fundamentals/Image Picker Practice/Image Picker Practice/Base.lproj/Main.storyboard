@@ -71,6 +71,11 @@
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="vKc-NF-wkP"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem systemItem="save" id="DTy-d0-r2X">
+                                        <connections>
+                                            <action selector="save:" destination="BYZ-38-t0r" id="aTR-4g-CI8"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                                 <variation key="default">
                                     <mask key="constraints">
