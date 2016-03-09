@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cH9-Bf-QWl">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MemeMe_1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXM-ib-N2L">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="zDk-75-OtY"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="TDZ-S6-C4X"/>
+                                    <barButtonItem systemItem="camera" id="bEX-aR-gAh"/>
+                                    <barButtonItem title="Album" width="84" id="ia3-l1-hMs"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="vUX-m0-zFO"/>
+                                </items>
+                            </toolbar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WWD-Aw-YGc">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gXM-ib-N2L" secondAttribute="bottom" id="a4J-PZ-Fcg"/>
+                            <constraint firstItem="WWD-Aw-YGc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fD1-XQ-F5w"/>
+                            <constraint firstItem="gXM-ib-N2L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="iET-1m-OhP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gXM-ib-N2L" secondAttribute="trailing" constant="-20" id="jsR-eY-SEv"/>
+                            <constraint firstItem="WWD-Aw-YGc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="laG-f6-yA9"/>
+                            <constraint firstItem="gXM-ib-N2L" firstAttribute="top" secondItem="WWD-Aw-YGc" secondAttribute="bottom" id="qvb-4a-6ZR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WWD-Aw-YGc" secondAttribute="trailing" constant="-20" id="sUk-AF-2UN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="1Mh-UX-FSY">
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="kfR-WB-qU2"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="OEz-HB-uCI"/>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1119" y="1089"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xbl-bd-1np">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cH9-Bf-QWl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f88-eY-tLi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="oQY-oz-EcK"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dp3-NM-uoT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340" y="1089"/>
+        </scene>
+    </scenes>
+</document>
