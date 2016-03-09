@@ -26,8 +26,16 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TDZ-S6-C4X"/>
-                                    <barButtonItem systemItem="camera" id="bEX-aR-gAh"/>
-                                    <barButtonItem title="Album" width="84" id="ia3-l1-hMs"/>
+                                    <barButtonItem systemItem="camera" id="bEX-aR-gAh">
+                                        <connections>
+                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="8cv-re-gTj"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Album" width="84" id="ia3-l1-hMs">
+                                        <connections>
+                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="kA7-vl-1pD"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vUX-m0-zFO"/>
                                 </items>
                             </toolbar>
@@ -35,12 +43,12 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-tU-4nw">
-                                <rect key="frame" x="252" y="88" width="97" height="30"/>
+                                <rect key="frame" x="285" y="88" width="32" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-j1-zhd">
-                                <rect key="frame" x="252" y="505" width="97" height="30"/>
+                                <rect key="frame" x="269" y="505" width="63" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>

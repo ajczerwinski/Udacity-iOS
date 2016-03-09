@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Post {
+class Meme {
     
     private var _topText: String
     private var _bottomText: String
