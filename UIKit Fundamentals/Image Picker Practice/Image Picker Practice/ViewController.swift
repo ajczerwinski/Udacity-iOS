@@ -18,6 +18,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     @IBOutlet weak var bottomTextField: UITextField!
     
+    @IBOutlet weak var toolbarUI: UIToolbar!
+    
     struct Meme {
         
         var topText: String
@@ -82,12 +84,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, image: imagePickerView.image!, memedImage: generateMemedImage())
         
-//        imagePickerView.image = meme.memedImage
+        imagePickerView.image = meme.memedImage
         
         
     }
     
     func generateMemedImage() -> UIImage {
+        
+        self.navigationController?.navigationBar.hidden = true
+        toolbarUI.hidden = true
+//        self.navigationController?.toolbar.hidden = true
         
         // Render view to an image
         
@@ -95,6 +101,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         view.drawViewHierarchyInRect(self.view.frame, afterScreenUpdates: true)
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        
+        self.navigationController?.navigationBar.hidden = false
+        toolbarUI.hidden = false
+//        self.navigationController?.toolbar.hidden = false
         
         return memedImage
         

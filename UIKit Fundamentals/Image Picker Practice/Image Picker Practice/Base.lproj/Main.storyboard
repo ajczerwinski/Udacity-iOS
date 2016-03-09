@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lV4-ER-0uh">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
@@ -87,7 +87,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jWT-8g-jhV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="180" id="2C2-Gj-oBJ"/>
-                            <constraint firstItem="gh1-PG-9E9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-20" id="3dv-Oa-dZb"/>
+                            <constraint firstItem="gh1-PG-9E9" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="3dv-Oa-dZb"/>
                             <constraint firstItem="cWW-vf-o2o" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="180" id="3ox-co-PSh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="cWW-vf-o2o" secondAttribute="trailing" constant="180" id="6uh-Su-Gdv"/>
                             <constraint firstItem="uLS-FM-Krw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="G2L-a4-iga"/>
@@ -111,7 +111,7 @@
                             <constraint firstItem="uLS-FM-Krw" firstAttribute="top" secondItem="gh1-PG-9E9" secondAttribute="bottom" constant="150" id="yT9-DK-fuV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gh1-PG-9E9" secondAttribute="trailing" id="yZh-g5-DOa"/>
                             <constraint firstItem="jWT-8g-jhV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="z11-kt-Q8k"/>
-                            <constraint firstItem="jWT-8g-jhV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="zJs-nV-CMs"/>
+                            <constraint firstItem="jWT-8g-jhV" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="40" id="zJs-nV-CMs"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -133,14 +133,34 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" id="ySd-hE-vXF"/>
                     <connections>
                         <outlet property="bottomTextField" destination="cWW-vf-o2o" id="v7q-nS-Jl9"/>
                         <outlet property="cameraButton" destination="fyx-Vo-fpe" id="Z3Q-2W-Sc2"/>
                         <outlet property="imagePickerView" destination="gh1-PG-9E9" id="ESC-MQ-kDN"/>
+                        <outlet property="toolbarUI" destination="uLS-FM-Krw" id="ReS-5I-lmT"/>
                         <outlet property="topTextField" destination="jWT-8g-jhV" id="c42-88-HGB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1092" y="302"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="kKY-0g-6cD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lV4-ER-0uh" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PgR-g0-WeN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ZZg-cj-aFn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fAR-SH-8Bo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="280" y="302"/>
         </scene>
