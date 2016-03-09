@@ -14,6 +14,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
+    @IBOutlet weak var shareButtonUI: UIButton!
+    
     @IBOutlet weak var topTextField: UITextField!
 
     @IBOutlet weak var bottomTextField: UITextField!
@@ -58,9 +60,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if imagePickerView.image == nil {
             topTextField.hidden = true
             bottomTextField.hidden = true
+            shareButtonUI.enabled = false
         } else {
             topTextField.hidden = false
             bottomTextField.hidden = false
+            shareButtonUI.enabled = true
         }
         
         topTextField.defaultTextAttributes = memeTextAttributes
@@ -128,6 +132,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         pickerController.sourceType = UIImagePickerControllerSourceType.Camera
         presentViewController(pickerController, animated: true, completion: nil)
         
+    }
+    
+    @IBAction func shareButtonPressed(sender: AnyObject) {
+        
+        let image = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+//        presentViewController(controller, animated: true, completion: nil)
+        
+        controller.completionWithItemsHandler = {(type: String?, completed: Bool, returnedItems: [AnyObject]?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue()) {
+                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+            }
+//        controller.completionWithItemsHandler = {
+//            (activity, success, items, error) in
+//            if success {
+//                self.save()
+//            
+//                let storyboard = UIStoryboard(name: "main", bundle: nil)
+//            let vc = storyboard.instantiate }
+////            self.save()
+//            self.dismissViewControllerAnimated(true, completion: nil)
+        }
+        
+        self.presentViewController(controller, animated: true, completion: nil)
+//        controller.completionWithItemsHandler =
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {

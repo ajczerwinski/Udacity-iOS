@@ -133,11 +133,24 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="ySd-hE-vXF"/>
+                    <navigationItem key="navigationItem" id="ySd-hE-vXF">
+                        <barButtonItem key="leftBarButtonItem" title="Share" style="plain" id="q9u-fK-IwH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="NPq-xq-LKm">
+                                <rect key="frame" x="20" y="7" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
+                                <state key="normal" title="Share"/>
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cdt-4n-p5K"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="cWW-vf-o2o" id="v7q-nS-Jl9"/>
                         <outlet property="cameraButton" destination="fyx-Vo-fpe" id="Z3Q-2W-Sc2"/>
                         <outlet property="imagePickerView" destination="gh1-PG-9E9" id="ESC-MQ-kDN"/>
+                        <outlet property="shareButtonUI" destination="NPq-xq-LKm" id="b5s-HE-4MK"/>
                         <outlet property="toolbarUI" destination="uLS-FM-Krw" id="ReS-5I-lmT"/>
                         <outlet property="topTextField" destination="jWT-8g-jhV" id="c42-88-HGB"/>
                     </connections>
