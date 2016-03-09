@@ -64,6 +64,14 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="kfR-WB-qU2"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="OEz-HB-uCI"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="bottomTextField" destination="kMF-j1-zhd" id="QFG-UX-VB6"/>
+                        <outlet property="cameraButtonUI" destination="bEX-aR-gAh" id="Ywi-a9-Yve"/>
+                        <outlet property="imagePickerView" destination="WWD-Aw-YGc" id="cel-JC-EQ0"/>
+                        <outlet property="shareButtonUI" destination="kfR-WB-qU2" id="xdt-EH-Zm3"/>
+                        <outlet property="toolbarUI" destination="gXM-ib-N2L" id="bj3-Na-1ge"/>
+                        <outlet property="topTextField" destination="TaE-tU-4nw" id="alX-ae-nbP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

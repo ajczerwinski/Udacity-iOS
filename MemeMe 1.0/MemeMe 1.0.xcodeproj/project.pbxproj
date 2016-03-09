@@ -58,9 +58,9 @@
 			children = (
 				BF03DBAB1C90D3060073A203 /* Model */,
 				BF03DBAA1C90D3000073A203 /* View */,
+				BF03DB9B1C90AC960073A203 /* Main.storyboard */,
 				BF03DBA91C90D2F80073A203 /* Controller */,
 				BF03DB971C90AC960073A203 /* AppDelegate.swift */,
-				BF03DB9B1C90AC960073A203 /* Main.storyboard */,
 				BF03DB9E1C90AC970073A203 /* Assets.xcassets */,
 				BF03DBA01C90AC970073A203 /* LaunchScreen.storyboard */,
 				BF03DBA31C90AC970073A203 /* Info.plist */,
