@@ -20,6 +20,7 @@
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXM-ib-N2L">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <color key="backgroundColor" red="0.74509803921568629" green="0.74509803921568629" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="zDk-75-OtY"/>
                                 </constraints>
@@ -33,14 +34,28 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WWD-Aw-YGc">
                                 <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-tU-4nw">
+                                <rect key="frame" x="252" y="88" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-j1-zhd">
+                                <rect key="frame" x="252" y="505" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TaE-tU-4nw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="DpS-ql-BaK"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gXM-ib-N2L" secondAttribute="bottom" id="a4J-PZ-Fcg"/>
+                            <constraint firstItem="gXM-ib-N2L" firstAttribute="top" secondItem="kMF-j1-zhd" secondAttribute="bottom" constant="20" id="eOW-Gb-L1n"/>
                             <constraint firstItem="WWD-Aw-YGc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="fD1-XQ-F5w"/>
                             <constraint firstItem="gXM-ib-N2L" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="iET-1m-OhP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gXM-ib-N2L" secondAttribute="trailing" constant="-20" id="jsR-eY-SEv"/>
                             <constraint firstItem="WWD-Aw-YGc" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="laG-f6-yA9"/>
+                            <constraint firstItem="kMF-j1-zhd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lfl-ob-h8x"/>
+                            <constraint firstItem="TaE-tU-4nw" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pyV-SB-gIm"/>
                             <constraint firstItem="gXM-ib-N2L" firstAttribute="top" secondItem="WWD-Aw-YGc" secondAttribute="bottom" id="qvb-4a-6ZR"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WWD-Aw-YGc" secondAttribute="trailing" constant="-20" id="sUk-AF-2UN"/>
                         </constraints>
@@ -62,6 +77,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f88-eY-tLi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

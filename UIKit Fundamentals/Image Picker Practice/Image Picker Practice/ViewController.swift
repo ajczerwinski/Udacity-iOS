@@ -70,6 +70,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         
+        topTextField.backgroundColor = UIColor.clearColor()
+        bottomTextField.backgroundColor = UIColor.clearColor()
+        
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
         
