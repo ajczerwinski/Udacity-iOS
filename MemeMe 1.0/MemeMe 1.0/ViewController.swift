@@ -23,7 +23,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var toolbarUI: UIToolbar!
     
     // Specify the text attributes to approximate the Impact font
-    // CITATION: Found 
+    // CITATION: Found
     
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
@@ -60,9 +60,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
-        
-//        topTextField.backgroundColor = UIColor.clearColor()
-//        bottomTextField.backgroundColor = UIColor.clearColor()
         
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
@@ -149,13 +146,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     }
     
-    // TextField Delegate methods
+    
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         
         picker.dismissViewControllerAnimated(true, completion: nil)
         
     }
+    
+    // TextField Delegate methods
     
     func textFieldDidBeginEditing(textField: UITextField) {
         
@@ -174,35 +173,37 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func subscribeToKeyboardNotifications() {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+
     }
 
     func unsubscribeFromKeyboardNotifications() {
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-//        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
     func keyboardWillShow(notification: NSNotification) {
         
-//        if bottomTextField.isFirstResponder() {
-        view.frame.origin.y -= getKeyboardHeight(notification)
-//        }
-        
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+    
     }
     
-//    func keyboardWillHide(notification: NSNotification) {
-//        
-//        self.view.frame.origin.y -= getKeyboardHeight(notification)
-//        
-//    }
+    func keyboardWillHide(notification: NSNotification) {
+        
+        if bottomTextField.isFirstResponder() {
+            self.view.frame.origin.y += getKeyboardHeight(notification)
+        }
+
+    }
     
     func getKeyboardHeight(notification: NSNotification) -> CGFloat {
         
         let userInfo = notification.userInfo
-        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue
+        let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.CGRectValue().height
         
     }
