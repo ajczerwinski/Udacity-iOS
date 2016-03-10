@@ -45,12 +45,12 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TaE-tU-4nw">
                                 <rect key="frame" x="285" y="88" width="32" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kMF-j1-zhd">
                                 <rect key="frame" x="269" y="505" width="63" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,7 +69,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1Mh-UX-FSY">
-                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="kfR-WB-qU2"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="kfR-WB-qU2">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="HTk-1n-eTg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="OEz-HB-uCI"/>
                     </navigationItem>
                     <connections>
