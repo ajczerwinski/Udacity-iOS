@@ -74,7 +74,11 @@
                                 <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="HTk-1n-eTg"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="OEz-HB-uCI"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="OEz-HB-uCI">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="BYZ-38-t0r" id="BEU-bl-3MG"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="kMF-j1-zhd" id="QFG-UX-VB6"/>

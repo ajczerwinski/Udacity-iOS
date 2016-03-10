@@ -48,6 +48,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
         
+        setTheScreenToDefault()
+        
+//        self.navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
+//        
+//        cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+//        
+//        if imagePickerView.image == nil {
+//            shareButtonUI.enabled = false
+//        } else {
+//            shareButtonUI.enabled = true
+//        }
+//        
+//        topTextField.defaultTextAttributes = memeTextAttributes
+//        bottomTextField.defaultTextAttributes = memeTextAttributes
+//        
+//        topTextField.textAlignment = .Center
+//        bottomTextField.textAlignment = .Center
+        
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+        
+    }
+    
+    func setTheScreenToDefault() {
+        
         self.navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
         
         cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
@@ -63,13 +92,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         topTextField.textAlignment = .Center
         bottomTextField.textAlignment = .Center
-        
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
         
     }
     
@@ -132,6 +154,33 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         self.presentViewController(controller, animated: true, completion: nil)
         
     }
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        imagePickerView.image = nil
+
+        setTheScreenToDefault()
+        
+//        self.navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
+//        
+//        cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
+//        
+//        if imagePickerView.image == nil {
+//            shareButtonUI.enabled = false
+//        } else {
+//            shareButtonUI.enabled = true
+//        }
+//        
+//        topTextField.defaultTextAttributes = memeTextAttributes
+//        bottomTextField.defaultTextAttributes = memeTextAttributes
+//        
+//        topTextField.textAlignment = .Center
+//        bottomTextField.textAlignment = .Center
+        
+    }
+    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
