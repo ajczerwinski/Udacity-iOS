@@ -168,6 +168,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    // Specify details for how the image gets displayed in imagePickerView
+    // Opted to use Aspect Fill since it seemed to fit the best.
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
