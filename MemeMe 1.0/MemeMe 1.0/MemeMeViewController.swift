@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     @IBOutlet weak var imagePickerView: UIImageView!
     
@@ -176,7 +176,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePickerView.image = image
             imagePickerView.contentMode = UIViewContentMode.Center
-            imagePickerView.contentMode = UIViewContentMode.ScaleAspectFill
+            imagePickerView.contentMode = UIViewContentMode.ScaleAspectFit
             imagePickerView.clipsToBounds = true
             
             self.dismissViewControllerAnimated(true, completion: nil)
