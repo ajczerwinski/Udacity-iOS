@@ -23,15 +23,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var toolbarUI: UIToolbar!
     
     // Specify the text attributes to approximate the Impact font
-    // CITATION: Found
+    // CITATION: Found solution to issue I was having where the text color was transparent in Udacity Forums: https://discussions.udacity.com/t/mememe-
+    // transparent-text-in-textfield-no-white-background/21336/2
     
     let memeTextAttributes = [
         NSStrokeColorAttributeName: UIColor.blackColor(),
         NSForegroundColorAttributeName: UIColor.whiteColor(),
-//        NSBackgroundColorAttributeName: UIColor.clearColor(),
         NSFontAttributeName: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
         NSStrokeWidthAttributeName: NSNumber(double: -3.0)
     ]
+    
+    // Background Color CGFloat constant for setting navigation bar background
 
     let navBackgroundColor: CGFloat = 235.0 / 255.0
     
@@ -50,22 +52,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         setTheScreenToDefault()
         
-//        self.navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
-//        
-//        cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-//        
-//        if imagePickerView.image == nil {
-//            shareButtonUI.enabled = false
-//        } else {
-//            shareButtonUI.enabled = true
-//        }
-//        
-//        topTextField.defaultTextAttributes = memeTextAttributes
-//        bottomTextField.defaultTextAttributes = memeTextAttributes
-//        
-//        topTextField.textAlignment = .Center
-//        bottomTextField.textAlignment = .Center
-        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -74,6 +60,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
         
     }
+    
+    // Helper function to set screen to default
     
     func setTheScreenToDefault() {
         
@@ -106,6 +94,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func generateMemedImage() -> UIImage {
         
         self.navigationController?.navigationBar.hidden = true
+        
+        // Hide toolbar so it doesn't show in the memed image
+        
         toolbarUI.hidden = true
         
         // Render view to an image
@@ -116,6 +107,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         self.navigationController?.navigationBar.hidden = false
+        
+        // Un-hide toolbar now that memed image is captured
+        
         toolbarUI.hidden = false
         
         return memedImage
@@ -140,16 +134,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    // CITATION: Got significant help from Udacity Discussion forum post: 
+    // https://discussions.udacity.com/t/spoiler-mememe-completionwithitemshandler
+    // -and-saving-the-meme-struct/13203
+    
     @IBAction func shareButtonPressed(sender: AnyObject) {
         
-//        saveImage()
         let image = generateMemedImage()
         let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
         
-        controller.completionWithItemsHandler = {(type: String?, completed: Bool, returnedItems: [AnyObject]?, error: NSError?) -> Void in
-            dispatch_async(dispatch_get_main_queue()) {
-                self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        controller.completionWithItemsHandler = {
+            activity, completed, returned, error in
+            if completed {
+            
+                self.saveImage()
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
             }
+            
         }
         
         self.presentViewController(controller, animated: true, completion: nil)
@@ -164,24 +166,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
         setTheScreenToDefault()
         
-//        self.navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
-//        
-//        cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
-//        
-//        if imagePickerView.image == nil {
-//            shareButtonUI.enabled = false
-//        } else {
-//            shareButtonUI.enabled = true
-//        }
-//        
-//        topTextField.defaultTextAttributes = memeTextAttributes
-//        bottomTextField.defaultTextAttributes = memeTextAttributes
-//        
-//        topTextField.textAlignment = .Center
-//        bottomTextField.textAlignment = .Center
-        
     }
-    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
@@ -220,6 +205,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     }
     
+    // Turn on observers to listen for keyboard show and hide functions
+    
     func subscribeToKeyboardNotifications() {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
@@ -227,12 +214,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     }
 
+    // Turn off observers
+    
     func unsubscribeFromKeyboardNotifications() {
         
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
         
     }
+    
+    // If the bottom text field is selected, push the view up by the height
+    // of the keyboard
     
     func keyboardWillShow(notification: NSNotification) {
         
@@ -241,6 +233,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
     
     }
+    
+    // Return view to its original position
     
     func keyboardWillHide(notification: NSNotification) {
         

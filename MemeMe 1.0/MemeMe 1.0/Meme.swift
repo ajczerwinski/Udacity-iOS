@@ -11,6 +11,9 @@ import UIKit
 
 class Meme {
     
+    // Encapsulate Meme object data - not strictly necessary for
+    // assignment but want to get in habit of doing it
+    
     private var _topText: String
     private var _bottomText: String
     private var _image: UIImage
@@ -39,6 +42,8 @@ class Meme {
         return _memedImage
         
     }
+    
+    // Initialize Meme object
     
     init(topText: String, bottomText: String, image: UIImage, memedImage: UIImage) {
         
