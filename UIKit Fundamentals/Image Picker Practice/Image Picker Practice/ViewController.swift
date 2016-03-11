@@ -22,6 +22,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBOutlet weak var toolbarUI: UIToolbar!
     
+    // Data model for the Meme object
+    
     struct Meme {
         
         var topText: String

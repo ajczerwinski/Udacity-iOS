@@ -22,6 +22,18 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var toolbarUI: UIToolbar!
     
+    // Create Meme object to allow creating/saving/changing 
+    // meme images
+    
+    struct Meme {
+        
+        var topText: String
+        var bottomText: String
+        var image: UIImage
+        var memedImage: UIImage
+        
+    }
+    
     // Specify the text attributes to approximate the Impact font
     // CITATION: Found solution to issue I was having where the text color was transparent in Udacity Forums: https://discussions.udacity.com/t/mememe-
     // transparent-text-in-textfield-no-white-background/21336/2
@@ -169,7 +181,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     }
     
     // Specify details for how the image gets displayed in imagePickerView
-    // Opted to use Aspect Fill since it seemed to fit the best.
+    // Set content mode to aspect fit
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: AnyObject]) {
         
