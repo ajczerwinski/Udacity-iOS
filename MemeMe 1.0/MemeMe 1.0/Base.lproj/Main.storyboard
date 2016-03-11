@@ -26,14 +26,14 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TDZ-S6-C4X"/>
-                                    <barButtonItem systemItem="camera" id="bEX-aR-gAh">
+                                    <barButtonItem tag="1" systemItem="camera" id="bEX-aR-gAh">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="8cv-re-gTj"/>
+                                            <action selector="pickAnImageButtonPressed:" destination="BYZ-38-t0r" id="ymR-wB-Dwb"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Album" width="84" id="ia3-l1-hMs">
                                         <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="kA7-vl-1pD"/>
+                                            <action selector="pickAnImageButtonPressed:" destination="BYZ-38-t0r" id="0sc-Ek-bZF"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="vUX-m0-zFO"/>

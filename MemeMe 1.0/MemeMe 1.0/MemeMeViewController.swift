@@ -65,7 +65,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func setTheScreenToDefault() {
         
-        self.navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
+        navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
         
         cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
@@ -93,7 +93,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     func generateMemedImage() -> UIImage {
         
-        self.navigationController?.navigationBar.hidden = true
+        navigationController?.navigationBar.hidden = true
         
         // Hide toolbar so it doesn't show in the memed image
         
@@ -106,7 +106,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        self.navigationController?.navigationBar.hidden = false
+        navigationController?.navigationBar.hidden = false
         
         // Un-hide toolbar now that memed image is captured
         
@@ -116,20 +116,20 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
     }
     
-    @IBAction func pickAnImageFromAlbum(sender: AnyObject) {
+    @IBAction func pickAnImageButtonPressed(sender: AnyObject) {
         
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
-        presentViewController(pickerController, animated: true, completion: nil)
         
-    }
-    
-    @IBAction func pickAnImageFromCamera(sender: AnyObject) {
+        // Album button (sender.tag == 0) present photo library
+        // Otherwise present camera
         
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        if sender.tag == 0 {
+            pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        } else {
+            pickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        }
+        
         presentViewController(pickerController, animated: true, completion: nil)
         
     }
@@ -154,7 +154,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
             
         }
         
-        self.presentViewController(controller, animated: true, completion: nil)
+        presentViewController(controller, animated: true, completion: nil)
         
     }
     
@@ -232,7 +232,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     func keyboardWillShow(notification: NSNotification) {
         
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y -= getKeyboardHeight(notification)
+            view.frame.origin.y -= getKeyboardHeight(notification)
         }
     
     }
@@ -242,7 +242,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     func keyboardWillHide(notification: NSNotification) {
         
         if bottomTextField.isFirstResponder() {
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
         }
 
     }
