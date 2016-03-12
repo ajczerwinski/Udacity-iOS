@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="height" constant="30" id="RoT-BN-kSw"/>
                                     <constraint firstAttribute="width" constant="46" id="WPS-sr-nTC"/>
                                 </constraints>
-                                <state key="normal" title="Button 1"/>
+                                <state key="normal" title="Leap through the door and roar!"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="RoT-BN-kSw"/>
@@ -57,7 +57,7 @@
                                     <constraint firstAttribute="width" constant="46" id="24i-vF-agL"/>
                                     <constraint firstAttribute="height" constant="30" id="o9O-Bn-ZJB"/>
                                 </constraints>
-                                <state key="normal" title="Button 2"/>
+                                <state key="normal" title="Stalk to the door, peek down the hallway."/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="24i-vF-agL"/>
@@ -74,7 +74,11 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="Coa-pZ-cn9"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <string key="text">An immense tiger wakes in an empty room...
+
+A door opens into a hallway...
+
+What should she do?</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -118,7 +122,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="oQq-O3-sPp"/>
                                 </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <string key="text">An old man is startled out of his chair. But he recovers, and aims his rifle right at the tiger with a smile.   What should she do? </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -128,13 +132,16 @@
                                     <constraint firstAttribute="width" constant="46" id="8dz-yU-aTe"/>
                                     <constraint firstAttribute="height" constant="30" id="gmh-Zd-2YF"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Wait to see what happens next."/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="gmh-Zd-2YF"/>
                                         <exclude reference="8dz-yU-aTe"/>
+                                        <exclude reference="gmh-Zd-2YF"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="lsO-3i-UOx" kind="show" id="L71-JG-Weg"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yny-D5-D3s">
                                 <rect key="frame" x="20" y="350" width="560" height="30"/>
@@ -142,13 +149,16 @@
                                     <constraint firstAttribute="height" constant="30" id="b8s-vm-zbq"/>
                                     <constraint firstAttribute="width" constant="46" id="rda-8w-15F"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Attack the old man!"/>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="rda-8w-15F"/>
                                         <exclude reference="b8s-vm-zbq"/>
+                                        <exclude reference="rda-8w-15F"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="XQS-Gl-41Q" kind="show" id="Hdc-MC-Q9L"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -198,38 +208,43 @@
                                     <constraint firstAttribute="height" constant="30" id="Dgz-a7-rc2"/>
                                     <constraint firstAttribute="width" constant="46" id="Tmm-f4-fQI"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Attack the old man!"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="Dgz-a7-rc2"/>
                                         <exclude reference="Tmm-f4-fQI"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="WyE-QI-jiN" kind="show" id="m3m-l1-ESs"/>
+                                </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="An old man sleeps on a chair in the hallway. He has a rifle. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e4Z-OL-c0P">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="j9A-Sd-Tez"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZgC-6T-pQf">
                                 <rect key="frame" x="20" y="350" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="46" id="eNa-Yw-RNI"/>
                                     <constraint firstAttribute="height" constant="30" id="opF-Yd-UUm"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Pad quitely down the hallway"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="eNa-Yw-RNI"/>
                                         <exclude reference="opF-Yd-UUm"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="4QC-2z-GTe" kind="show" id="ZXs-I8-WSk"/>
+                                </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="e4Z-OL-c0P">
-                                <rect key="frame" x="20" y="90" width="560" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="140" id="j9A-Sd-Tez"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -258,7 +273,309 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x1f-Gs-IOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1390" y="674"/>
+            <point key="canvasLocation" x="1384" y="1432"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="xoZ-ls-JRQ">
+            <objects>
+                <viewController id="lsO-3i-UOx" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Eum-sh-kd1"/>
+                        <viewControllerLayoutGuide type="bottom" id="pfB-Ue-KEz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qxc-JS-MXx">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="The old man offers a delicious raw steak, which the tiger eats.   She wakes in a room, without an open door.  " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="d43-HH-Tgw">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="gj0-Q2-c97"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="d43-HH-Tgw" firstAttribute="leading" secondItem="qxc-JS-MXx" secondAttribute="leadingMargin" constant="100" id="3vy-RR-nCv"/>
+                            <constraint firstItem="d43-HH-Tgw" firstAttribute="trailing" secondItem="qxc-JS-MXx" secondAttribute="trailingMargin" id="9nr-3R-hMH"/>
+                            <constraint firstItem="d43-HH-Tgw" firstAttribute="leading" secondItem="qxc-JS-MXx" secondAttribute="leadingMargin" id="Dv5-DB-Gpq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d43-HH-Tgw" secondAttribute="trailing" constant="100" id="JIM-J0-Sxa"/>
+                            <constraint firstItem="d43-HH-Tgw" firstAttribute="top" secondItem="Eum-sh-kd1" secondAttribute="bottom" constant="30" id="zAz-bH-7hh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="3vy-RR-nCv"/>
+                                <exclude reference="JIM-J0-Sxa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="DNg-8S-sUT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tVU-dO-Rtz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2121" y="-618"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="1cT-65-SNQ">
+            <objects>
+                <viewController id="XQS-Gl-41Q" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZSH-Ar-ndk"/>
+                        <viewControllerLayoutGuide type="bottom" id="Nu0-La-WL9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F1B-9f-EZq">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="Unblinking, the man fires his rifle, and a dart stings the Tiger.   She wakes in the room, but the door is now closed. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="a7v-rT-2Jw">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="pFI-xU-UwL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="a7v-rT-2Jw" secondAttribute="trailing" constant="100" id="CKd-0r-iyc"/>
+                            <constraint firstItem="a7v-rT-2Jw" firstAttribute="top" secondItem="ZSH-Ar-ndk" secondAttribute="bottom" constant="30" id="JzX-vU-hji"/>
+                            <constraint firstItem="a7v-rT-2Jw" firstAttribute="leading" secondItem="F1B-9f-EZq" secondAttribute="leadingMargin" constant="100" id="aJS-5V-zDO"/>
+                            <constraint firstItem="a7v-rT-2Jw" firstAttribute="trailing" secondItem="F1B-9f-EZq" secondAttribute="trailingMargin" id="vFg-6w-JQW"/>
+                            <constraint firstItem="a7v-rT-2Jw" firstAttribute="leading" secondItem="F1B-9f-EZq" secondAttribute="leadingMargin" id="zZ4-9N-4iE"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="aJS-5V-zDO"/>
+                                <exclude reference="CKd-0r-iyc"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="43O-zP-YRU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="RJG-BT-INp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2128" y="184"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="uaN-60-WQH">
+            <objects>
+                <viewController id="WyE-QI-jiN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wbx-sO-vWH"/>
+                        <viewControllerLayoutGuide type="bottom" id="KrW-pp-V5M"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mJZ-Cn-VYT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="rWu-tt-mUd">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="KZ9-Oq-OOL"/>
+                                </constraints>
+                                <string key="text">There is mayhem. And cries, and eventually a hail of darts.   When it is over, the tiger wakes again in a room, without an open door. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="rWu-tt-mUd" firstAttribute="leading" secondItem="mJZ-Cn-VYT" secondAttribute="leadingMargin" id="FZV-QV-i7N"/>
+                            <constraint firstItem="rWu-tt-mUd" firstAttribute="top" secondItem="Wbx-sO-vWH" secondAttribute="bottom" constant="30" id="T66-Tf-NHl"/>
+                            <constraint firstItem="rWu-tt-mUd" firstAttribute="leading" secondItem="mJZ-Cn-VYT" secondAttribute="leadingMargin" constant="100" id="kSw-6s-tlK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rWu-tt-mUd" secondAttribute="trailing" constant="100" id="ltS-YI-Dm5"/>
+                            <constraint firstItem="rWu-tt-mUd" firstAttribute="trailing" secondItem="mJZ-Cn-VYT" secondAttribute="trailingMargin" id="s30-Sx-j1s"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="kSw-6s-tlK"/>
+                                <exclude reference="ltS-YI-Dm5"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="3i0-nH-iKC"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xSN-8V-GeW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2128" y="1028"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aZe-jg-7PN">
+            <objects>
+                <viewController id="4QC-2z-GTe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AkK-AG-LXY"/>
+                        <viewControllerLayoutGuide type="bottom" id="zNZ-f4-U5s"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lQP-HY-74r">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UZ-W0-jGJ">
+                                <rect key="frame" x="20" y="350" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="SLu-nO-30P"/>
+                                    <constraint firstAttribute="width" constant="46" id="VWx-H5-znA"/>
+                                </constraints>
+                                <state key="normal" title="Try for the forest"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="VWx-H5-znA"/>
+                                        <exclude reference="SLu-nO-30P"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="fAf-Lv-cbN" kind="show" id="X0F-ek-rpt"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="At the end of the hallway there are two doors.   One smells like a kitchen, the other smells like the tiger's native forest. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3O4-r3-ox0">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="lCr-XV-I8t"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5r-hw-ejK">
+                                <rect key="frame" x="20" y="273" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OiM-2A-4sN"/>
+                                    <constraint firstAttribute="width" constant="46" id="xHE-I8-68w"/>
+                                </constraints>
+                                <state key="normal" title="Check out the kitchen"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="OiM-2A-4sN"/>
+                                        <exclude reference="xHE-I8-68w"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <segue destination="t45-pI-zcq" kind="show" id="nQe-rL-GJL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="T5r-hw-ejK" firstAttribute="trailing" secondItem="lQP-HY-74r" secondAttribute="trailingMargin" id="4j2-xN-bgc"/>
+                            <constraint firstItem="3O4-r3-ox0" firstAttribute="top" secondItem="AkK-AG-LXY" secondAttribute="bottom" constant="30" id="5Ca-qg-CNS"/>
+                            <constraint firstItem="1UZ-W0-jGJ" firstAttribute="leading" secondItem="lQP-HY-74r" secondAttribute="leadingMargin" id="Alt-sZ-Fj4"/>
+                            <constraint firstItem="3O4-r3-ox0" firstAttribute="trailing" secondItem="lQP-HY-74r" secondAttribute="trailingMargin" id="CDx-ST-nKp"/>
+                            <constraint firstItem="T5r-hw-ejK" firstAttribute="centerX" secondItem="lQP-HY-74r" secondAttribute="centerX" id="CPN-wA-SqT"/>
+                            <constraint firstItem="T5r-hw-ejK" firstAttribute="top" secondItem="3O4-r3-ox0" secondAttribute="bottom" constant="55" id="TGe-mc-Ldz"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="3O4-r3-ox0" secondAttribute="trailing" constant="100" id="Zwn-3f-EGn"/>
+                            <constraint firstItem="1UZ-W0-jGJ" firstAttribute="trailing" secondItem="lQP-HY-74r" secondAttribute="trailingMargin" id="bFo-dH-fBA"/>
+                            <constraint firstItem="T5r-hw-ejK" firstAttribute="leading" secondItem="lQP-HY-74r" secondAttribute="leadingMargin" id="hPB-zY-OUH"/>
+                            <constraint firstItem="1UZ-W0-jGJ" firstAttribute="centerX" secondItem="lQP-HY-74r" secondAttribute="centerX" id="ipW-1K-KFn"/>
+                            <constraint firstItem="1UZ-W0-jGJ" firstAttribute="top" secondItem="T5r-hw-ejK" secondAttribute="bottom" constant="55" id="kDh-4f-Zkz"/>
+                            <constraint firstItem="3O4-r3-ox0" firstAttribute="leading" secondItem="lQP-HY-74r" secondAttribute="leadingMargin" id="uCs-CR-XHK"/>
+                            <constraint firstItem="3O4-r3-ox0" firstAttribute="leading" secondItem="lQP-HY-74r" secondAttribute="leadingMargin" constant="100" id="uvG-Mi-Ynw"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="uvG-Mi-Ynw"/>
+                                <exclude reference="Zwn-3f-EGn"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZNg-JI-DxQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yG7-Yo-1em" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2128" y="1855"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Z0x-Zb-AKf">
+            <objects>
+                <viewController id="t45-pI-zcq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="aT3-vo-BPG"/>
+                        <viewControllerLayoutGuide type="bottom" id="Mcd-om-7Ud"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wMM-Cc-XJ1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Q3g-TS-oR0">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="dz1-VQ-I9z"/>
+                                </constraints>
+                                <string key="text">It is a kitchen, and there is a bowl with a delicious raw steak.   She eats the steak, and wake later in a room, without an open door. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Q3g-TS-oR0" firstAttribute="top" secondItem="aT3-vo-BPG" secondAttribute="bottom" constant="30" id="AZs-wb-CwQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q3g-TS-oR0" secondAttribute="trailing" constant="100" id="gEc-Xi-poH"/>
+                            <constraint firstItem="Q3g-TS-oR0" firstAttribute="trailing" secondItem="wMM-Cc-XJ1" secondAttribute="trailingMargin" id="hgF-Xb-FB7"/>
+                            <constraint firstItem="Q3g-TS-oR0" firstAttribute="leading" secondItem="wMM-Cc-XJ1" secondAttribute="leadingMargin" id="q3E-fp-5kz"/>
+                            <constraint firstItem="Q3g-TS-oR0" firstAttribute="leading" secondItem="wMM-Cc-XJ1" secondAttribute="leadingMargin" constant="100" id="u3e-Tz-Jlg"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="u3e-Tz-Jlg"/>
+                                <exclude reference="gEc-Xi-poH"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="bqB-lQ-0JJ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2yU-hq-v5t" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2891" y="1579"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="aCw-Sn-g8l">
+            <objects>
+                <viewController id="fAf-Lv-cbN" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GTE-3N-leH"/>
+                        <viewControllerLayoutGuide type="bottom" id="PRf-rc-ph4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z1e-kB-Gf5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" text="The door opens to a dense forest.   The tiger pads in. She knows no humans can follow. " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aVV-Lz-oTH">
+                                <rect key="frame" x="20" y="90" width="560" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="Q1S-Nz-ZdQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="aVV-Lz-oTH" firstAttribute="leading" secondItem="Z1e-kB-Gf5" secondAttribute="leadingMargin" id="OPf-Iq-PDb"/>
+                            <constraint firstItem="aVV-Lz-oTH" firstAttribute="leading" secondItem="Z1e-kB-Gf5" secondAttribute="leadingMargin" constant="100" id="Ysh-OJ-yfH"/>
+                            <constraint firstItem="aVV-Lz-oTH" firstAttribute="trailing" secondItem="Z1e-kB-Gf5" secondAttribute="trailingMargin" id="a11-9j-noi"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aVV-Lz-oTH" secondAttribute="trailing" constant="100" id="iA5-Jc-0JC"/>
+                            <constraint firstItem="aVV-Lz-oTH" firstAttribute="top" secondItem="GTE-3N-leH" secondAttribute="bottom" constant="30" id="vrS-Q9-NyL"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ysh-OJ-yfH"/>
+                                <exclude reference="iA5-Jc-0JC"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZJ1-uA-NkE"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="99i-mT-F1U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2891" y="2304"/>
         </scene>
     </scenes>
 </document>
