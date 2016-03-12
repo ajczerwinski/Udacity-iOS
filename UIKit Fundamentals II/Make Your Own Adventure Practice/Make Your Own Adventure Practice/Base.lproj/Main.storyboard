@@ -25,7 +25,7 @@
         <!--View Controller-->
         <scene sceneID="bXm-vn-X69">
             <objects>
-                <viewController id="Z0S-pY-zmR" sceneMemberID="viewController">
+                <viewController id="Z0S-pY-zmR" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AOD-8s-QSz"/>
                         <viewControllerLayoutGuide type="bottom" id="GWZ-q2-UqF"/>
@@ -107,7 +107,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="8ji-KR-9xd">
             <objects>
-                <viewController id="uUk-8e-zgM" sceneMemberID="viewController">
+                <viewController id="uUk-8e-zgM" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wca-c6-DpA"/>
                         <viewControllerLayoutGuide type="bottom" id="tBY-OP-IWT"/>
@@ -193,7 +193,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="gfY-Oh-k5u">
             <objects>
-                <viewController id="Zs6-eE-ixm" sceneMemberID="viewController">
+                <viewController id="Zs6-eE-ixm" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GFR-gb-9gp"/>
                         <viewControllerLayoutGuide type="bottom" id="z78-VN-cFI"/>
@@ -278,7 +278,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="xoZ-ls-JRQ">
             <objects>
-                <viewController id="lsO-3i-UOx" sceneMemberID="viewController">
+                <viewController id="lsO-3i-UOx" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Eum-sh-kd1"/>
                         <viewControllerLayoutGuide type="bottom" id="pfB-Ue-KEz"/>
@@ -321,7 +321,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="1cT-65-SNQ">
             <objects>
-                <viewController id="XQS-Gl-41Q" sceneMemberID="viewController">
+                <viewController id="XQS-Gl-41Q" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ZSH-Ar-ndk"/>
                         <viewControllerLayoutGuide type="bottom" id="Nu0-La-WL9"/>
@@ -364,7 +364,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="uaN-60-WQH">
             <objects>
-                <viewController id="WyE-QI-jiN" sceneMemberID="viewController">
+                <viewController id="WyE-QI-jiN" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wbx-sO-vWH"/>
                         <viewControllerLayoutGuide type="bottom" id="KrW-pp-V5M"/>
@@ -408,7 +408,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="aZe-jg-7PN">
             <objects>
-                <viewController id="4QC-2z-GTe" sceneMemberID="viewController">
+                <viewController id="4QC-2z-GTe" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="AkK-AG-LXY"/>
                         <viewControllerLayoutGuide type="bottom" id="zNZ-f4-U5s"/>
@@ -493,7 +493,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="Z0x-Zb-AKf">
             <objects>
-                <viewController id="t45-pI-zcq" sceneMemberID="viewController">
+                <viewController id="t45-pI-zcq" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aT3-vo-BPG"/>
                         <viewControllerLayoutGuide type="bottom" id="Mcd-om-7Ud"/>
@@ -537,7 +537,7 @@ What should she do?</string>
         <!--View Controller-->
         <scene sceneID="aCw-Sn-g8l">
             <objects>
-                <viewController id="fAf-Lv-cbN" sceneMemberID="viewController">
+                <viewController id="fAf-Lv-cbN" customClass="MYOAViewController" customModule="Make_Your_Own_Adventure_Practice" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="GTE-3N-leH"/>
                         <viewControllerLayoutGuide type="bottom" id="PRf-rc-ph4"/>

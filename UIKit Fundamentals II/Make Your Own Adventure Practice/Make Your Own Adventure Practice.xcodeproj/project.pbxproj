@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BF0601121C94A3DB007143D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0601111C94A3DB007143D6 /* AppDelegate.swift */; };
-		BF0601141C94A3DB007143D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0601131C94A3DB007143D6 /* ViewController.swift */; };
+		BF0601141C94A3DB007143D6 /* MYOAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0601131C94A3DB007143D6 /* MYOAViewController.swift */; };
 		BF0601171C94A3DB007143D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF0601151C94A3DB007143D6 /* Main.storyboard */; };
 		BF0601191C94A3DB007143D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF0601181C94A3DB007143D6 /* Assets.xcassets */; };
 		BF06011C1C94A3DB007143D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF06011A1C94A3DB007143D6 /* LaunchScreen.storyboard */; };
@@ -17,7 +17,7 @@
 /* Begin PBXFileReference section */
 		BF06010E1C94A3DB007143D6 /* Make Your Own Adventure Practice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Make Your Own Adventure Practice.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF0601111C94A3DB007143D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF0601131C94A3DB007143D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BF0601131C94A3DB007143D6 /* MYOAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MYOAViewController.swift; sourceTree = "<group>"; };
 		BF0601161C94A3DB007143D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF0601181C94A3DB007143D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF06011B1C94A3DB007143D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,7 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				BF0601111C94A3DB007143D6 /* AppDelegate.swift */,
-				BF0601131C94A3DB007143D6 /* ViewController.swift */,
+				BF0601131C94A3DB007143D6 /* MYOAViewController.swift */,
 				BF0601151C94A3DB007143D6 /* Main.storyboard */,
 				BF0601181C94A3DB007143D6 /* Assets.xcassets */,
 				BF06011A1C94A3DB007143D6 /* LaunchScreen.storyboard */,
@@ -135,7 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF0601141C94A3DB007143D6 /* ViewController.swift in Sources */,
+				BF0601141C94A3DB007143D6 /* MYOAViewController.swift in Sources */,
 				BF0601121C94A3DB007143D6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +286,7 @@
 				BF0601221C94A3DB007143D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
