@@ -15,8 +15,16 @@ class MYOAViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Start Over", style: .Plain, target: self, action: "startOver")
         
     }
-
-
-
+    
+    func startOver() {
+        
+        if let navigationController = self.navigationController {
+            
+            navigationController.popToRootViewControllerAnimated(true)
+            
+        }
+        
+    }
+    
 }
 
