@@ -6,6 +6,54 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Root View Controller-->
+        <scene sceneID="DoQ-jT-dfX">
+            <objects>
+                <tableViewController id="dnL-Fr-X2S" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="kx6-HW-Cuc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="UrL-ch-qp6">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UrL-ch-qp6" id="Aw5-YT-WXX">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="dnL-Fr-X2S" id="NwK-qn-Uo4"/>
+                            <outlet property="delegate" destination="dnL-Fr-X2S" id="H0M-uj-dXQ"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="FRn-nV-vIh"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="show" id="o9c-Wf-gR7"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gqI-Cf-ph5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-598" y="-3"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vSn-Be-A8g">
+            <objects>
+                <navigationController id="YxP-JC-qUV" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GXc-J6-UOy">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="dnL-Fr-X2S" kind="relationship" relationship="rootViewController" id="VC2-uA-fX0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eU9-Kx-3z3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1306" y="3"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -26,10 +74,11 @@
                                 </constraints>
                                 <state key="normal" image="paper"/>
                                 <connections>
-                                    <action selector="gameButtonPressedPaper" destination="BYZ-38-t0r" eventType="touchUpInside" id="TsP-if-lto"/>
+                                    <action selector="gameButtonPressedPaper" destination="BYZ-38-t0r" eventType="touchUpInside" id="5vp-8U-iu7"/>
+                                    <segue destination="SFi-rv-QVF" kind="presentation" id="GEu-SQ-158"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CN-pn-ycg">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2CN-pn-ycg">
                                 <rect key="frame" x="70" y="200" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ORQ-NG-4Rd"/>
@@ -54,7 +103,7 @@
                                 </constraints>
                                 <state key="normal" image="scissors"/>
                                 <connections>
-                                    <segue destination="SFi-rv-QVF" kind="presentation" identifier="playGameScissors" id="cU8-aM-cwa"/>
+                                    <segue destination="SFi-rv-QVF" kind="show" identifier="playGamePaper" id="HIg-O8-Xpk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,6 +125,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="144" y="17"/>
         </scene>
         <!--Results View Controller-->
         <scene sceneID="0Wo-FK-XEH">
@@ -142,6 +192,6 @@
         <image name="scissors" width="75" height="65"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cU8-aM-cwa"/>
+        <segue reference="HIg-O8-Xpk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -26,5 +26,9 @@ class MYOAViewController: UIViewController {
         
     }
     
+    deinit {
+        print("View got popped off")
+    }
+    
 }
 
