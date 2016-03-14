@@ -74,7 +74,6 @@
                                 </constraints>
                                 <state key="normal" image="paper"/>
                                 <connections>
-                                    <action selector="gameButtonPressedPaper" destination="BYZ-38-t0r" eventType="touchUpInside" id="5vp-8U-iu7"/>
                                     <segue destination="SFi-rv-QVF" kind="presentation" id="GEu-SQ-158"/>
                                 </connections>
                             </button>
@@ -103,7 +102,7 @@
                                 </constraints>
                                 <state key="normal" image="scissors"/>
                                 <connections>
-                                    <segue destination="SFi-rv-QVF" kind="show" identifier="playGamePaper" id="HIg-O8-Xpk"/>
+                                    <segue destination="SFi-rv-QVF" kind="show" id="HIg-O8-Xpk"/>
                                 </connections>
                             </button>
                         </subviews>
