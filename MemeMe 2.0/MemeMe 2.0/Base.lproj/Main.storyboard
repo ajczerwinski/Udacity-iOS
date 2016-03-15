@@ -132,22 +132,88 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAG-Hd-RNQ">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="AeJ-Tk-2hf"/>
+                                </constraints>
                                 <items>
                                     <navigationItem id="l7d-CF-jDT">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="dy5-at-Yn6"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Arc-BV-8mU"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Arc-BV-8mU">
+                                            <connections>
+                                                <action selector="cancelButtonPressed:" destination="Nn9-Vo-kfI" id="Kwz-Ou-WcU"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="TWJ-bK-Qyk">
+                                <rect key="frame" x="0.0" y="60" width="600" height="496"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9l-qn-YOk">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Hml-k7-T8C"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="ndB-yu-yNh"/>
+                                    <barButtonItem systemItem="camera" id="LbC-On-Bi9"/>
+                                    <barButtonItem title="Album" id="znq-Gg-Bg1"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="cGE-kP-9mF"/>
+                                </items>
+                                <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="efW-Op-vLU">
+                                <rect key="frame" x="252" y="72" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="2Is-g6-pOS"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Hlt-5n-v39"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UYO-x6-cgO">
+                                <rect key="frame" x="252" y="496" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="GLP-IB-wGe"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="tob-L3-OSV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="fma-Q4-TbW" firstAttribute="top" secondItem="TWJ-bK-Qyk" secondAttribute="bottom" id="0Mw-BY-gRb"/>
+                            <constraint firstItem="fma-Q4-TbW" firstAttribute="top" secondItem="UYO-x6-cgO" secondAttribute="bottom" constant="64" id="1hq-DV-ozE"/>
+                            <constraint firstItem="fma-Q4-TbW" firstAttribute="top" secondItem="TWJ-bK-Qyk" secondAttribute="bottom" id="2Jp-2R-goI"/>
+                            <constraint firstItem="efW-Op-vLU" firstAttribute="centerX" secondItem="F35-2u-hEo" secondAttribute="centerX" id="3tO-Ck-LzU"/>
+                            <constraint firstItem="fma-Q4-TbW" firstAttribute="top" secondItem="TWJ-bK-Qyk" secondAttribute="bottom" id="9Va-Nm-mXB"/>
+                            <constraint firstItem="fma-Q4-TbW" firstAttribute="top" secondItem="TWJ-bK-Qyk" secondAttribute="bottom" id="EkZ-Xl-elN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="L9l-qn-YOk" secondAttribute="trailing" constant="-20" id="Jll-P6-LSc"/>
+                            <constraint firstItem="TWJ-bK-Qyk" firstAttribute="leading" secondItem="F35-2u-hEo" secondAttribute="leadingMargin" constant="-20" id="JuC-fJ-9Vv"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BAG-Hd-RNQ" secondAttribute="trailing" constant="-20" id="KB3-mz-ad0"/>
+                            <constraint firstItem="efW-Op-vLU" firstAttribute="top" secondItem="BAG-Hd-RNQ" secondAttribute="bottom" constant="20" id="PzS-Cx-pZr"/>
                             <constraint firstItem="BAG-Hd-RNQ" firstAttribute="top" secondItem="F35-2u-hEo" secondAttribute="topMargin" id="UxQ-D4-gSs"/>
+                            <constraint firstItem="UYO-x6-cgO" firstAttribute="centerX" secondItem="F35-2u-hEo" secondAttribute="centerX" id="d2z-TV-1jq"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TWJ-bK-Qyk" secondAttribute="trailing" constant="-20" id="dEU-tG-p21"/>
+                            <constraint firstItem="L9l-qn-YOk" firstAttribute="bottom" secondItem="F35-2u-hEo" secondAttribute="bottomMargin" id="hNm-Cs-VCm"/>
+                            <constraint firstItem="fma-Q4-TbW" firstAttribute="top" secondItem="TWJ-bK-Qyk" secondAttribute="bottom" constant="100" id="hrB-Yy-b6K"/>
+                            <constraint firstItem="L9l-qn-YOk" firstAttribute="leading" secondItem="F35-2u-hEo" secondAttribute="leadingMargin" constant="-20" id="iov-8a-Qdq"/>
                             <constraint firstItem="BAG-Hd-RNQ" firstAttribute="leading" secondItem="F35-2u-hEo" secondAttribute="leadingMargin" constant="-20" id="oIY-Ia-gVR"/>
+                            <constraint firstItem="TWJ-bK-Qyk" firstAttribute="top" secondItem="BAG-Hd-RNQ" secondAttribute="bottom" id="xG7-ja-eRh"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0Mw-BY-gRb"/>
+                                <exclude reference="2Jp-2R-goI"/>
+                                <exclude reference="EkZ-Xl-elN"/>
+                                <exclude reference="hrB-Yy-b6K"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ep-a6-ZW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -174,6 +240,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="LaunchImage" width="1536" height="2048"/>
         <image name="collection_30x30" width="30" height="30"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>

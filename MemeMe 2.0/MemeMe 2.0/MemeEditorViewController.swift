@@ -15,6 +15,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     
     
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     
 }
