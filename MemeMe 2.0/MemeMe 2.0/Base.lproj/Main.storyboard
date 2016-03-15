@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Meme Collection View Controller-->
@@ -19,7 +20,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCell" id="5Zx-e3-RpX">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MemeCell" id="5Zx-e3-RpX" customClass="MemeCell" customModule="MemeMe_2_0" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="64" width="110" height="110"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -34,11 +35,17 @@
                             <outlet property="delegate" destination="Ssa-gg-4cY" id="GZ1-y2-qLn"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="1R2-l8-Jj7"/>
+                    <navigationItem key="navigationItem" id="1R2-l8-Jj7">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="3pY-Jw-9dS">
+                            <connections>
+                                <segue destination="Nn9-Vo-kfI" kind="presentation" id="sdF-V0-h7A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPq-ip-PvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="-321"/>
+            <point key="canvasLocation" x="1010" y="-413"/>
         </scene>
         <!--Meme Table View Controller Controller-->
         <scene sceneID="lI7-0a-UAh">
@@ -63,11 +70,17 @@
                             <outlet property="delegate" destination="7MC-pV-wTD" id="Xez-9A-LSE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iAU-Vb-lgW"/>
+                    <navigationItem key="navigationItem" id="iAU-Vb-lgW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="NSS-pY-smg">
+                            <connections>
+                                <segue destination="Nn9-Vo-kfI" kind="presentation" id="ujg-Zn-AJ6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P3c-OL-WZN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1010" y="385"/>
+            <point key="canvasLocation" x="1010" y="503"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="pdG-KG-U15">
@@ -86,7 +99,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyN-K6-N16" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="385"/>
+            <point key="canvasLocation" x="226" y="503"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="bZ0-TE-1S2">
@@ -106,6 +119,40 @@
             </objects>
             <point key="canvasLocation" x="-488" y="26"/>
         </scene>
+        <!--Meme Editor View Controller-->
+        <scene sceneID="Ecr-3j-SI5">
+            <objects>
+                <viewController id="Nn9-Vo-kfI" customClass="MemeEditorViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qnu-eQ-17m"/>
+                        <viewControllerLayoutGuide type="bottom" id="fma-Q4-TbW"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="F35-2u-hEo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BAG-Hd-RNQ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="l7d-CF-jDT">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="dy5-at-Yn6"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Arc-BV-8mU"/>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="BAG-Hd-RNQ" secondAttribute="trailing" constant="-20" id="KB3-mz-ad0"/>
+                            <constraint firstItem="BAG-Hd-RNQ" firstAttribute="top" secondItem="F35-2u-hEo" secondAttribute="topMargin" id="UxQ-D4-gSs"/>
+                            <constraint firstItem="BAG-Hd-RNQ" firstAttribute="leading" secondItem="F35-2u-hEo" secondAttribute="leadingMargin" constant="-20" id="oIY-Ia-gVR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2ep-a6-ZW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1756" y="26"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="aYl-l2-km6">
             <objects>
@@ -123,11 +170,14 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tAt-T4-pS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="198" y="-321"/>
+            <point key="canvasLocation" x="226" y="-413"/>
         </scene>
     </scenes>
     <resources>
         <image name="collection_30x30" width="30" height="30"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="sdF-V0-h7A"/>
+    </inferredMetricsTieBreakers>
 </document>
