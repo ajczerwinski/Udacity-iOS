@@ -26,7 +26,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
     
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        
         memes = applicationDelegate.memes
         
     }

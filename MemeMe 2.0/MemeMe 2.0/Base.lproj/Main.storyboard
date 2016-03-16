@@ -128,8 +128,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="rrf-9O-9jq" kind="relationship" relationship="viewControllers" id="uqT-9o-fkH"/>
-                        <segue destination="M6K-kq-8EK" kind="relationship" relationship="viewControllers" id="oYz-ke-YcF"/>
+                        <segue destination="M6K-kq-8EK" kind="relationship" relationship="viewControllers" id="YLt-FJ-vVn"/>
+                        <segue destination="rrf-9O-9jq" kind="relationship" relationship="viewControllers" id="ur8-Qg-OEI"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qEc-hC-4tg" userLabel="First Responder" sceneMemberID="firstResponder"/>
