@@ -66,7 +66,6 @@
 			children = (
 				BF0601471C97A75E007143D6 /* Model */,
 				BF0601461C97A759007143D6 /* View */,
-				BF0601351C97A35B007143D6 /* Main.storyboard */,
 				BF0601451C97A64D007143D6 /* Controller */,
 				BF0601311C97A35B007143D6 /* AppDelegate.swift */,
 				BF0601381C97A35B007143D6 /* Assets.xcassets */,
@@ -90,6 +89,7 @@
 		BF0601461C97A759007143D6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BF0601351C97A35B007143D6 /* Main.storyboard */,
 				BF0601501C989415007143D6 /* MemeCell.swift */,
 			);
 			name = View;

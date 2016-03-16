@@ -13,7 +13,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    let memes = [Meme]()
+    var memes = [Meme]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,10 @@ class SentMemesCollectionViewController: UICollectionViewController {
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
     
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        
+        memes = applicationDelegate.memes
+        
     }
     
     

@@ -57,7 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="flowLayout" destination="rfe-jr-7VE" id="q0n-MQ-aaD"/>
+                        <outlet property="flowLayout" destination="rfe-jr-7VE" id="xP7-Gf-JQl"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPq-ip-PvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
