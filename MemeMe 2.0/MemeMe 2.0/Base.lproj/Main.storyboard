@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Meme Collection View Controller-->
+        <!--Sent Memes Collection View Controller-->
         <scene sceneID="neA-BV-pvX">
             <objects>
-                <collectionViewController id="Ssa-gg-4cY" customClass="MemeCollectionViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController id="Ssa-gg-4cY" customClass="SentMemesCollectionViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="HEk-j5-4pM">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,8 +26,22 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lfG-Mu-kvG">
+                                            <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
+                                        </imageView>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailingMargin" secondItem="lfG-Mu-kvG" secondAttribute="trailing" constant="-8" id="KD3-Em-0Hq"/>
+                                    <constraint firstItem="lfG-Mu-kvG" firstAttribute="top" secondItem="5Zx-e3-RpX" secondAttribute="topMargin" constant="-8" id="Y50-ec-i6y"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="lfG-Mu-kvG" secondAttribute="bottom" constant="-8" id="nWF-2h-mBb"/>
+                                    <constraint firstItem="lfG-Mu-kvG" firstAttribute="leading" secondItem="5Zx-e3-RpX" secondAttribute="leadingMargin" constant="-8" id="pXe-qU-Kdj"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="memeImageView" destination="lfG-Mu-kvG" id="ISn-Cn-P0y"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <connections>
@@ -42,6 +56,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="flowLayout" destination="rfe-jr-7VE" id="q0n-MQ-aaD"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WPq-ip-PvT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

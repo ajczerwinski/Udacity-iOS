@@ -6,9 +6,11 @@
 //  Copyright © 2016 Allen Czerwinski. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class MemeCell: UICollectionViewCell {
+    
+    @IBOutlet weak var memeImageView: UIImageView!
+    
     
 }
