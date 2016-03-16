@@ -138,7 +138,11 @@
                                 </constraints>
                                 <items>
                                     <navigationItem id="l7d-CF-jDT">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="dy5-at-Yn6"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="dy5-at-Yn6">
+                                            <connections>
+                                                <action selector="shareButtonPressed:" destination="Nn9-Vo-kfI" id="o3a-wr-atQ"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Arc-BV-8mU">
                                             <connections>
                                                 <action selector="cancelButtonPressed:" destination="Nn9-Vo-kfI" id="Kwz-Ou-WcU"/>
@@ -157,8 +161,16 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ndB-yu-yNh"/>
-                                    <barButtonItem systemItem="camera" id="LbC-On-Bi9"/>
-                                    <barButtonItem title="Album" id="znq-Gg-Bg1"/>
+                                    <barButtonItem tag="1" systemItem="camera" id="LbC-On-Bi9">
+                                        <connections>
+                                            <action selector="pickAnImageButtonPressed:" destination="Nn9-Vo-kfI" id="N6f-tr-BMH"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Album" id="znq-Gg-Bg1">
+                                        <connections>
+                                            <action selector="pickAnImageButtonPressed:" destination="Nn9-Vo-kfI" id="PcL-ab-MKW"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="cGE-kP-9mF"/>
                                 </items>
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

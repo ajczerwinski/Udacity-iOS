@@ -111,6 +111,45 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    // Specify details for how the image gets displayed in imagePickerView
+    // Set content mode to aspect fit
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            
+            imagePickerView.image = image
+            imagePickerView.contentMode = UIViewContentMode.Center
+            imagePickerView.contentMode = UIViewContentMode.ScaleAspectFit
+            imagePickerView.clipsToBounds = true
+            
+            self.dismissViewControllerAnimated(true, completion: nil)
+            
+        }
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    // TextField delegate methods
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        textField.text = ""
+        
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        textField.resignFirstResponder()
+        
+        return true
+        
+    }
     
     
     // Turn on observers to listen for keyboard
@@ -164,6 +203,50 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
+    @IBAction func pickAnImageButtonPressed(sender: AnyObject) {
+        
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        
+        // Album button (sender.tag == 0) present photo library
+        // Otherwise present camera
+        
+        if sender.tag == 0 {
+            
+            pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        } else {
+            pickerController.sourceType = UIImagePickerControllerSourceType.Camera
+        }
+        
+        presentViewController(pickerController, animated: true, completion: nil)
+        
+    }
+    
+    // CITATION: Got significant help from Udacity Discussion forum post:
+    // https://discussions.udacity.com/t/spoiler-mememe-completionwithitemshandler
+    // -and-saving-the-meme-struct/13203
+    
+    
+    @IBAction func shareButtonPressed(sender: AnyObject) {
+        
+        let image = generateMemedImage()
+        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+        controller.completionWithItemsHandler = {
+            
+            activity, completed, returned, error in
+            if completed {
+                
+                self.saveImage()
+                self.dismissViewControllerAnimated(true, completion: nil)
+                
+            }
+            
+        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+        
+    }
     
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
