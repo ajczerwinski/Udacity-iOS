@@ -275,7 +275,7 @@
         <!--Meme Detail View Controller-->
         <scene sceneID="g7A-ZY-zRt">
             <objects>
-                <viewController id="ahw-9t-zTA" customClass="MemeDetailViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeDetailViewController" id="ahw-9t-zTA" customClass="MemeDetailViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WbX-dK-ZG6"/>
                         <viewControllerLayoutGuide type="bottom" id="nz8-qX-04I"/>
@@ -283,12 +283,26 @@
                     <view key="view" contentMode="scaleToFill" id="eU1-44-zPF">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUu-y8-640">
+                                <rect key="frame" x="0.0" y="80" width="600" height="476"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="GUu-y8-640" firstAttribute="leading" secondItem="eU1-44-zPF" secondAttribute="leadingMargin" constant="-20" id="1NC-lW-BRb"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GUu-y8-640" secondAttribute="trailing" constant="-20" id="CSS-08-niA"/>
+                            <constraint firstItem="nz8-qX-04I" firstAttribute="top" secondItem="GUu-y8-640" secondAttribute="bottom" constant="44" id="nmK-X8-sEA"/>
+                            <constraint firstItem="GUu-y8-640" firstAttribute="top" secondItem="WbX-dK-ZG6" secondAttribute="bottom" constant="60" id="spX-vi-kQQ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="memeDetailImageView" destination="GUu-y8-640" id="bKx-qM-ZzP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dh6-xS-6Gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2424" y="26"/>
+            <point key="canvasLocation" x="2436" y="26"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aYl-l2-km6">
@@ -315,6 +329,6 @@
         <image name="table_30x30" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ujg-Zn-AJ6"/>
+        <segue reference="sdF-V0-h7A"/>
     </inferredMetricsTieBreakers>
 </document>

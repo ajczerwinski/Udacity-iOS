@@ -10,6 +10,16 @@ import UIKit
 
 class MemeDetailViewController: UIViewController {
     
+    var selectedMeme: Meme!
+    
+    @IBOutlet weak var memeDetailImageView: UIImageView!
+    
+    override func viewWillAppear(animated: Bool) {
+     
+        memeDetailImageView.image = selectedMeme.memedImage
+        
+    }
+    
     
     
     
