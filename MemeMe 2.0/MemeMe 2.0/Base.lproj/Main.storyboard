@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="1010" y="-413"/>
         </scene>
-        <!--Meme Table View Controller Controller-->
+        <!--Sent Memes Table View Controller Controller-->
         <scene sceneID="lI7-0a-UAh">
             <objects>
-                <tableViewController id="7MC-pV-wTD" customClass="MemeTableViewControllerController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7MC-pV-wTD" customClass="SentMemesTableViewControllerController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="101" sectionHeaderHeight="28" sectionFooterHeight="28" id="5sb-cY-Wdp">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -184,7 +184,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="TWJ-bK-Qyk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TWJ-bK-Qyk">
                                 <rect key="frame" x="0.0" y="60" width="600" height="496"/>
                             </imageView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L9l-qn-YOk">
@@ -272,6 +272,24 @@
             </objects>
             <point key="canvasLocation" x="1756" y="26"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="g7A-ZY-zRt">
+            <objects>
+                <viewController id="ahw-9t-zTA" customClass="MemeDetailViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WbX-dK-ZG6"/>
+                        <viewControllerLayoutGuide type="bottom" id="nz8-qX-04I"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eU1-44-zPF">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dh6-xS-6Gp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2424" y="26"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="aYl-l2-km6">
             <objects>
@@ -293,7 +311,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="1536" height="2048"/>
         <image name="collection_30x30" width="30" height="30"/>
         <image name="table_30x30" width="30" height="30"/>
     </resources>

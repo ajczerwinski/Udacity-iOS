@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MemeTableViewControllerController: UITableViewController {
+class SentMemesTableViewControllerController: UITableViewController {
     
 //    var memes = [Meme]()
 
