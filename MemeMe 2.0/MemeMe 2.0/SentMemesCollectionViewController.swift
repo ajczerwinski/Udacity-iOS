@@ -40,6 +40,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     override func viewWillAppear(animated: Bool) {
         
+        super.viewWillAppear(animated)
         collectionView!.reloadData()
         
     }
@@ -53,10 +54,10 @@ class SentMemesCollectionViewController: UICollectionViewController {
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
-        let meme =  memes[indexPath.item]
+        let meme =  self.memes[indexPath.item]
 //        cell.setText(meme.topText, bottomString: meme.bottomText)
-        let imageView = UIImageView(image: meme.memedImage)
-        cell.memeImageView = imageView
+        
+        cell.memeImageView.image = meme.memedImage
         
         return cell
         
