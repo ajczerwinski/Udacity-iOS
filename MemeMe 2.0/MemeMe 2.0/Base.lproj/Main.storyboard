@@ -214,6 +214,14 @@
                     </view>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bottomTextField" destination="UYO-x6-cgO" id="8OR-Df-hxK"/>
+                        <outlet property="cameraButtonUI" destination="LbC-On-Bi9" id="Dya-Bf-Ga3"/>
+                        <outlet property="imagePickerView" destination="TWJ-bK-Qyk" id="uTy-24-A1L"/>
+                        <outlet property="shareButtonUI" destination="dy5-at-Yn6" id="vmM-MW-sWD"/>
+                        <outlet property="toolbarUI" destination="L9l-qn-YOk" id="KRC-AS-sVR"/>
+                        <outlet property="topTextField" destination="efW-Op-vLU" id="636-bm-82J"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2ep-a6-ZW8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
