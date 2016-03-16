@@ -13,7 +13,15 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-    var memes = [Meme]()
+//    var memes = [Meme]()
+    
+    var memes: [Meme]! {
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.memes
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +33,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
     
-        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
-        memes = applicationDelegate.memes
+//        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+//        memes = applicationDelegate.memes
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        collectionView!.reloadData()
         
     }
     
@@ -38,7 +52,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionCell", forIndexPath: indexPath) as! MemeCollectionCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme =  memes[indexPath.item]
 //        cell.setText(meme.topText, bottomString: meme.bottomText)
         let imageView = UIImageView(image: meme.memedImage)
