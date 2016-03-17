@@ -74,6 +74,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             shareButtonUI.enabled = true
         }
         
+        toolbarUI.backgroundColor = UIColor.grayColor()
+        
         topTextField.defaultTextAttributes = memeTextAttributes
         bottomTextField.defaultTextAttributes = memeTextAttributes
         
@@ -103,7 +105,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Hide toolbar so it doesn't show in the memed image
         
         toolbarUI.hidden = true
-        navigationBarUI.hidden = true
+//        navigationBarUI.hidden = true
         
         // Render view to an image
         
@@ -117,7 +119,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // Un-hide toolbar now that memed image is captured
         
         toolbarUI.hidden = false
-        navigationBarUI.hidden = false
+//        navigationBarUI.hidden = false
         
         return memedImage
         
