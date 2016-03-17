@@ -23,7 +23,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBOutlet weak var toolbarUI: UIToolbar!
     
-    @IBOutlet weak var navigationBarUI: UINavigationBar!
+//    @IBOutlet weak var navigationBarUI: UINavigationBar!
     
     // Specify the text attributes to approximate the Impact font
     // CITATION: Found solution to issue I was having where the text color was transparent in Udacity Forums: https://discussions.udacity.com/t/mememe-
@@ -54,9 +54,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
-        
-        unsubscribeFromKeyboardNotifications()
+        subscribeToKeyboardNotifications()
         setTheScreenToDefault()
+        
+    }
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        unsubscribeFromKeyboardNotifications()
         
     }
     
@@ -172,7 +179,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func subscribeToKeyboardNotifications() {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide", name: UIKeyboardWillHideNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
         
     }
     
@@ -192,7 +199,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         if bottomTextField.isFirstResponder() {
             
-            view.frame.origin.y = getKeyboardHeight(notification) * -1
+            view.frame.origin.y += getKeyboardHeight(notification) * -1
             
         }
         
