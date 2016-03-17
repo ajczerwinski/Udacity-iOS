@@ -23,6 +23,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBOutlet weak var toolbarUI: UIToolbar!
     
+    @IBOutlet weak var navigationBarUI: UINavigationBar!
+    
     // Specify the text attributes to approximate the Impact font
     // CITATION: Found solution to issue I was having where the text color was transparent in Udacity Forums: https://discussions.udacity.com/t/mememe-
     // transparent-text-in-textfield-no-white-background/21336/2
@@ -96,11 +98,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         
-        navigationController?.navigationBar.hidden = true
+//        navigationController?.navigationBar.hidden = true
         
         // Hide toolbar so it doesn't show in the memed image
         
         toolbarUI.hidden = true
+        navigationBarUI.hidden = true
         
         // Render view to an image
         
@@ -109,11 +112,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        navigationController?.navigationBar.hidden = false
+//        navigationController?.navigationBar.hidden = false
         
         // Un-hide toolbar now that memed image is captured
         
         toolbarUI.hidden = false
+        navigationBarUI.hidden = false
         
         return memedImage
         
@@ -129,7 +133,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             imagePickerView.image = image
             imagePickerView.contentMode = UIViewContentMode.Center
             imagePickerView.contentMode = UIViewContentMode.ScaleAspectFit
-            imagePickerView.clipsToBounds = true
+//            imagePickerView.clipsToBounds = true
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
