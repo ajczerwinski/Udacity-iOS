@@ -41,22 +41,26 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let space: CGFloat = 3.0
         let width = view.frame.size.width
         let height = view.frame.size.height
-        var dimension: CGFloat
+//        var dimension: CGFloat
         
         print(height)
         print(width)
         
-        if height > width {
-            
-            dimension = (width - (2 * space)) / 3.0
-            flowLayout.minimumInteritemSpacing = space
-        } else {
-            dimension = (width - (5 * space)) / 6.0
-            flowLayout.minimumInteritemSpacing = space * 3
+//        if height > width {
+//            
+//            dimension = (width - (2 * space)) / 3.0
+//            flowLayout.minimumInteritemSpacing = space
+//        } else {
+//            dimension = (width - (5 * space)) / 6.0
+//            flowLayout.minimumInteritemSpacing = space * 3
+//
+//        }
+//        collectionView?.clipsToBounds = true
 
-        }
-        collectionView?.clipsToBounds = true
+        // CITATION testing this method for controlling cell layout from Udacity forum: 
+        // https://discussions.udacity.com/t/mememe-collectionview-flow-layout/39382/2
         
+        let dimension: CGFloat = view.frame.size.width >= view.frame.size.height ? (view.frame.size.width - (5 * space)) / 6.0 :  (view.frame.size.width - (2 * space)) / 3.0
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
         
