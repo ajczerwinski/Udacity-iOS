@@ -37,6 +37,8 @@ class SentMemesTableViewControllerController: UITableViewController {
         let meme = self.memes[indexPath.row]
         
         cell.memeImage.image = meme.memedImage
+        cell.memeImage.backgroundColor = UIColor.grayColor()
+        cell.memeText.text = "\(meme.topText) ... \(meme.bottomText)"
         
         return cell
         
