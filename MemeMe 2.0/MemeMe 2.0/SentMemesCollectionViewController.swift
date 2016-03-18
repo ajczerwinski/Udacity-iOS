@@ -13,20 +13,11 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
-//    var memes = [Meme]()
-    
     var memes: [Meme]! {
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.memes
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        manageCellDimensions()
         
     }
     
@@ -36,39 +27,45 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
     }
     
+    // CITATION relied heavily on the following two sources:
+    // https://discussions.udacity.com/t/mememe-collectionview-flow-layout/39382/2
+    // http://stackoverflow.com/questions/28325277/how-to-set-cell-
+    // spacing-and-uicollectionview-uicollectionviewflowlayout-size-r
+    
+    // Customize the layout of the Collection View
+    
     func manageCellDimensions() {
         
-        let space: CGFloat = 3.0
+        let space: CGFloat = 2.0
         let width = view.frame.size.width
         let height = view.frame.size.height
-//        var dimension: CGFloat
+        var dimension: CGFloat
         
-        print(height)
-        print(width)
-        
-//        if height > width {
-//            
-//            dimension = (width - (2 * space)) / 3.0
-//            flowLayout.minimumInteritemSpacing = space
-//        } else {
-//            dimension = (width - (5 * space)) / 6.0
-//            flowLayout.minimumInteritemSpacing = space * 3
-//
-//        }
-//        collectionView?.clipsToBounds = true
+        if height > width {
+            
+            dimension = (width - (2 * space)) / 3.2
+            flowLayout.minimumInteritemSpacing = space
 
-        // CITATION testing this method for controlling cell layout from Udacity forum: 
-        // https://discussions.udacity.com/t/mememe-collectionview-flow-layout/39382/2
+        } else {
+            dimension = (width - (5 * space)) / 6.0
+            flowLayout.minimumInteritemSpacing = space * 5
+
+        }
+        collectionView?.clipsToBounds = true
+
         
-        let dimension: CGFloat = view.frame.size.width >= view.frame.size.height ? (view.frame.size.width - (5 * space)) / 6.0 :  (view.frame.size.width - (2 * space)) / 3.0
+        flowLayout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(dimension, dimension)
-        
+    
     }
     
     override func viewWillAppear(animated: Bool) {
         
         super.viewWillAppear(animated)
+        
+        manageCellDimensions()
+        
         collectionView!.reloadData()
         
     }
@@ -83,7 +80,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         let meme =  self.memes[indexPath.item]
-//        cell.setText(meme.topText, bottomString: meme.bottomText)
         
         cell.memeImageView.image = meme.memedImage
         
