@@ -14,4 +14,8 @@ class MemeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var memeText: UILabel!
     
+    
+    
+    
+    
 }

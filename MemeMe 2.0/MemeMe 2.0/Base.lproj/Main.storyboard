@@ -81,7 +81,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBS-Uc-jJQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="150"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="238" height="150"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="150" id="51V-tV-lT0"/>
                                                 <constraint firstAttribute="width" constant="180" id="P5a-MK-i5b"/>
@@ -94,7 +94,7 @@
                                             </variation>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="500" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uSh-8V-tsI">
-                                            <rect key="frame" x="299" y="0.0" width="301" height="150"/>
+                                            <rect key="frame" x="237" y="0.0" width="363" height="150"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -106,7 +106,7 @@
                                         <constraint firstItem="uSh-8V-tsI" firstAttribute="width" secondItem="sBS-Uc-jJQ" secondAttribute="width" id="NWm-0x-huk"/>
                                         <constraint firstItem="sBS-Uc-jJQ" firstAttribute="leading" secondItem="UpN-fv-ask" secondAttribute="leadingMargin" constant="-8" id="Pcy-A7-TDG"/>
                                         <constraint firstItem="uSh-8V-tsI" firstAttribute="leading" secondItem="sBS-Uc-jJQ" secondAttribute="trailing" constant="-1" id="VE5-Dp-Ka1"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="uSh-8V-tsI" secondAttribute="trailing" constant="-8" id="VIM-m8-he2"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="uSh-8V-tsI" secondAttribute="trailing" id="VIM-m8-he2"/>
                                         <constraint firstItem="uSh-8V-tsI" firstAttribute="leading" secondItem="sBS-Uc-jJQ" secondAttribute="trailing" id="Y3d-kJ-0g4"/>
                                         <constraint firstItem="uSh-8V-tsI" firstAttribute="centerY" secondItem="UpN-fv-ask" secondAttribute="centerY" id="e5b-v3-Gvv"/>
                                         <constraint firstItem="uSh-8V-tsI" firstAttribute="leading" secondItem="sBS-Uc-jJQ" secondAttribute="trailing" id="jPx-C5-k04"/>
@@ -185,7 +185,7 @@
         <!--Meme Editor View Controller-->
         <scene sceneID="Ecr-3j-SI5">
             <objects>
-                <viewController id="Nn9-Vo-kfI" customClass="MemeEditorViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MemeEditorViewController" id="Nn9-Vo-kfI" customClass="MemeEditorViewController" customModule="MemeMe_2_0" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cfa-bK-2De"/>
                         <viewControllerLayoutGuide type="bottom" id="xDi-1L-PCY"/>
@@ -303,7 +303,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUu-y8-640">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GUu-y8-640">
                                 <rect key="frame" x="0.0" y="80" width="600" height="476"/>
                             </imageView>
                         </subviews>
