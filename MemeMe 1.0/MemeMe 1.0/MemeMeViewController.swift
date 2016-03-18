@@ -20,6 +20,7 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
     
     @IBOutlet weak var bottomTextField: UITextField!
     
+    
     @IBOutlet weak var toolbarUI: UIToolbar!
     
     // Create Meme object to allow creating/saving/changing 
