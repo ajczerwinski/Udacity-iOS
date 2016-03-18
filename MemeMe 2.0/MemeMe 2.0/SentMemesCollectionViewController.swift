@@ -21,6 +21,8 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
     }
     
+    // Trigger code to manage layout when switching between portrait and landscape
+    
     override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
         
         manageCellDimensions()
@@ -76,6 +78,8 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
     }
     
+    // Populate each cell with data from appropriate index of memes array
+    
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
@@ -87,7 +91,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         
     }
     
-    
+    // Load meme detail view when cell is clicked
     
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         

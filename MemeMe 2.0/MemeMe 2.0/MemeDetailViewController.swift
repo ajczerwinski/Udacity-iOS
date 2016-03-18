@@ -12,23 +12,14 @@ class MemeDetailViewController: UIViewController {
     
     var selectedMeme: Meme!
     
-    
     @IBOutlet weak var memeDetailImageView: UIImageView!
+    
+    // Set the view's image to the memed image
     
     override func viewWillAppear(animated: Bool) {
      
         memeDetailImageView.image = selectedMeme.memedImage
         
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let navController = segue.destinationViewController as! MemeEditorViewController
-        navController.imagePickerView.image = selectedMeme.image
-        navController.topTextField.text = selectedMeme.topText
-        navController.bottomTextField.text = selectedMeme.topText
-        
-    }
-    
-    
     
 }

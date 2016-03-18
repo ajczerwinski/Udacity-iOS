@@ -23,8 +23,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBOutlet weak var toolbarUI: UIToolbar!
     
-//    @IBOutlet weak var navigationBarUI: UINavigationBar!
-    
     // Specify the text attributes to approximate the Impact font
     // CITATION: Found solution to issue I was having where the text color was transparent in Udacity Forums: https://discussions.udacity.com/t/mememe-
     // transparent-text-in-textfield-no-white-background/21336/2
@@ -37,10 +35,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSStrokeWidthAttributeName: NSNumber(double: -3.0)
     
     ]
-    
-    // Background Color CGFloat constant for setting navigation bar background
-    
-    let navBackgroundColor: CGFloat = 235.0 / 255.0
     
     override func viewDidLoad() {
         
@@ -59,7 +53,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
     }
     
-    
     override func viewWillDisappear(animated: Bool) {
         
         super.viewWillAppear(animated)
@@ -70,8 +63,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // Helper function to set screen to default
     
     func setTheScreenToDefault() {
-        
-//        navigationController!.navigationBar.barTintColor = UIColor(red: navBackgroundColor, green: navBackgroundColor, blue: navBackgroundColor, alpha: 0.5)
         
         cameraButtonUI.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         
@@ -107,12 +98,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() -> UIImage {
         
-//        navigationController?.navigationBar.hidden = true
-        
         // Hide toolbar so it doesn't show in the memed image
         
         toolbarUI.hidden = true
-//        navigationBarUI.hidden = true
         
         // Render view to an image
         
@@ -121,12 +109,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let memedImage: UIImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-//        navigationController?.navigationBar.hidden = false
-        
         // Un-hide toolbar now that memed image is captured
         
         toolbarUI.hidden = false
-//        navigationBarUI.hidden = false
         
         return memedImage
         
@@ -142,7 +127,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             imagePickerView.image = image
             imagePickerView.contentMode = UIViewContentMode.Center
             imagePickerView.contentMode = UIViewContentMode.ScaleAspectFit
-//            imagePickerView.clipsToBounds = true
             
             self.dismissViewControllerAnimated(true, completion: nil)
             
@@ -198,9 +182,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func keyboardWillShow(notification: NSNotification) {
         
         if bottomTextField.isFirstResponder() {
-            
             view.frame.origin.y += getKeyboardHeight(notification) * -1
-            
         }
         
     }
@@ -208,9 +190,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func keyboardWillHide(notification: NSNotification) {
         
         if bottomTextField.isFirstResponder() {
-            
             view.frame.origin.y = 0
-            
         }
         
     }
@@ -229,11 +209,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         
-        // Album button (sender.tag == 0) present photo library
-        // Otherwise present camera
-        
         if sender.tag == 0 {
-            
             pickerController.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         } else {
             pickerController.sourceType = UIImagePickerControllerSourceType.Camera

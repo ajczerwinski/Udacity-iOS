@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 class SentMemesTableViewControllerController: UITableViewController {
-    
-//    var memes = [Meme]()
 
     var memes: [Meme]! {
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate
+        
         return appDelegate.memes
         
     }
@@ -28,32 +27,29 @@ class SentMemesTableViewControllerController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return memes.count
+    
     }
     
-//    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-//        return true
-//    }
+    // CITATION: Got significant help on delete function from Udacity forum thread:
+    // https://discussions.udacity.com/t/delete-meme-tableview/17849
+    
+    // Swipe right to left to delete meme from table
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
         if editingStyle == .Delete {
             
             (UIApplication.sharedApplication().delegate as! AppDelegate).memes.removeAtIndex(indexPath.row)
-//            AppDelegate.memes.removeAtIndex(indexPath.row)
             
-//            memes.removeAtIndex(indexPath.row)
-//            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         
         tableView.reloadData()
         
-        
-//        (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
     }
     
-//    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-//        memes.removeAtIndex(indexPath.row)
-//    }
+    // Populate each cell with data from appropriate index of memes array
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -85,9 +81,6 @@ class SentMemesTableViewControllerController: UITableViewController {
         
         navigationController!.pushViewController(detailVC, animated: true)
         
-        
     }
-    
-    
     
 }
