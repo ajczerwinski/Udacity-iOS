@@ -23,7 +23,9 @@ class ViewController: UIViewController {
         
         // TODO: Add all the networking code here!
         
-        let imageURL = NSURL(string: "https://upload.wikimedia.org/wikipedia/en/b/b7/George,_a_perfect_example_of_a_tuxedo_cat.jpg")!
+//        let imageURL = NSURL(string: "https://upload.wikimedia.org/wikipedia/en/b/b7/George,_a_perfect_example_of_a_tuxedo_cat.jpg")!
+        
+        let imageURL = NSURL(string: "http://www.perfectlitter.com/wp-content/uploads/2015/12/Beautifull-cat-cats-14749885-1600-1200.jpg")!
         
         let task = NSURLSession.sharedSession().dataTaskWithURL(imageURL) { (data, response, error) in
             
