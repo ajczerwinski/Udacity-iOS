@@ -83,19 +83,40 @@ class ViewController: UIViewController {
         
         let task = NSURLSession.sharedSession().dataTaskWithRequest(request) { (data, response, error) in
             
-            // if error occurs, print it and re-enable the UI
-            func displayError(error: String) {
-                print(error)
-                print("URL at time of error: \(url)")
-                performUIUpdatesOnMain {
-                    self.setUIEnabled(true)
-                }
-            }
+//            // if error occurs, print it and re-enable the UI
+//            func displayError(error: String) {
+//                print(error)
+//                print("URL at time of error: \(url)")
+//                performUIUpdatesOnMain {
+//                    self.setUIEnabled(true)
+//                }
+//            }
             
             if error == nil {
-                print(data!)
+                // there was data returned
+                if let data = data {
+                    
+                    let parsedResult: AnyObject!
+                    do {
+                        parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+                    }
+                    catch {
+//                        displayError("Could not parse the data as JSON: '\(data)'")
+                        return
+                    }
+                    print(parsedResult)
+                    
+                    if let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String: AnyObject],
+                        photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] {
+                            print(photoArray[0])
+                            
+                            
+                            
+                        }
+                    }
+                }
+                
             }
-        }
         task.resume()
     }
     
