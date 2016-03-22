@@ -23,6 +23,21 @@ var parsedAchievementsJSON = try! NSJSONSerialization.JSONObjectWithData(rawAchi
 func parseJSONAsDictionary(dictionary: NSDictionary) {
     /* Start playing with JSON here... */
     
+    var numAchievements = 0
+    var sumAchievements: Double = 0.0
+    
+    guard let arrayOfCategoryDictionaries = parsedAchievementsJSON["categories"] as? [[String:AnyObject]] else {
+        print("Cannot find key 'categories' in \(parsedAchievementsJSON)")
+        return
+    }
+    
+    for categoryDictionary in arrayOfCategoryDictionaries {
+        guard let matchmakingCategory = categoryDictionary["matchmaking"] as? String else {
+            print("not working")
+            return
+        }
+    }
+    
     guard let arrayOfAchievmentsDictionaries = parsedAchievementsJSON["achievements"] as? [[String:AnyObject]] else {
         print("Cannot find key 'achievements' in \(parsedAchievementsJSON)")
         return
@@ -35,11 +50,23 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
             return
         }
         
+        numAchievements++
+        sumAchievements += Double(achievementPoints)
+//        print(sumAchievements / Double(numAchievements))
+        
+        
         if achievementPoints > 10 {
             print("We got one!")
         }
         
+        if let titleText = achievementDictionary["title"] as? String where titleText.rangeOfString("Cool Running") != nil {
+            print("Here is what you must do to achieve the 'Cool Running' achievement: \(achievementDictionary["description"]!)")
+        }
+        
     }
+    
+    let averageOfAchievements = sumAchievements / Double(numAchievements)
+    print(averageOfAchievements)
     print(arrayOfAchievmentsDictionaries[44]["points"]!)
     
     
