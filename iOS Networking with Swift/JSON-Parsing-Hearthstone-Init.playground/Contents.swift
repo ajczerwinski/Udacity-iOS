@@ -48,6 +48,7 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
             return
         }
         
+        // Looking at a minion card
         if cardType == "Minion" {
             
             guard let attack = cardDictionary["attack"] as? Int else {
@@ -60,6 +61,7 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
                 return
             }
             
+            // How many minions have a cost of 5?
             if manaCost == 5 {
                 print("found a minion with cost of 5")
             }
@@ -67,7 +69,31 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
             if let cardText = cardDictionary["text"] as? String where cardText.rangeOfString("Battlecry") != nil {
                 print("This minion has the battlecry effect")
             }
+            
+            // Calculate stats-to-cost if non-zero cost
+            if manaCost != 0 {
+                
+                numCostRatioItems++
+                
+                guard let health = cardDictionary["health"] as? Int else {
+                    print("Cannot find key 'health' in \(cardDictionary)")
+                    return
+                }
+                sumCostRatio += (Double(attack) + Double(health)) / Double(manaCost)
+            }
+            
+            // Get card cost based on rarity
+            guard let rarityForCard = cardDictionary["rarity"] as? String else {
+                print("Cannot find key 'rarityForCard' in \(cardDictionary)")
+                return
+            }
+            
+            numCostForRarityItemsDictionary[rarityForCard]!++
+            sumCostForRarityDictionary[rarityForCard]! += manaCost
+            
         }
+        
+        
         
         if cardType == "Weapon" {
             
@@ -75,15 +101,21 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
                 print("Cannot find key 'durability' in \(cardDictionary)")
                 return
             }
-            
+            // How many weapons have a durability of 2?
             if durability == 2 {
                 print("found a weapon with durability of 5")
             }
         }
     }
+    
+    // Calculate the average stats-to-cost-ratio
+    print("\(sumCostRatio/Double(numCostRatioItems))")
+    
+    // Calculate the average cost of minions based on rarity
     for rarity in rarities {
-        
+        print("\(rarity): \(Double(sumCostForRarityDictionary[rarity]!) / Double(numCostForRarityItemsDictionary[rarity]!))")
     }
+    
     
     
     
