@@ -40,6 +40,7 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
         print("Cannot find key 'photo' in \(photosDictionary)")
         return
     }
+    print(arrayOfPhotoDictionaries)
     
     for (index, photo) in arrayOfPhotoDictionaries.enumerate() {
         
@@ -63,6 +64,8 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
             print(photoURL)
         }
     }
+    print(parsedAnimalsJSON)
+    
 }
 
 parseJSONAsDictionary(parsedAnimalsJSON)
