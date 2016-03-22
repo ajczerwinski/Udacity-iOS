@@ -23,12 +23,25 @@ var parsedAchievementsJSON = try! NSJSONSerialization.JSONObjectWithData(rawAchi
 func parseJSONAsDictionary(dictionary: NSDictionary) {
     /* Start playing with JSON here... */
     
-    guard let pointAchievements = parsedAchievementsJSON["achievements"] as? NSDictionary else {
+    guard let arrayOfAchievmentsDictionaries = parsedAchievementsJSON["achievements"] as? [[String:AnyObject]] else {
         print("Cannot find key 'achievements' in \(parsedAchievementsJSON)")
         return
     }
     
     print(parsedAchievementsJSON)
+    for achievementDictionary in arrayOfAchievmentsDictionaries {
+        guard let achievementPoints = achievementDictionary["points"] as? Int else {
+            print("Cannot find key 'points' in \(achievementDictionary)")
+            return
+        }
+        
+        if achievementPoints > 10 {
+            print("We got one!")
+        }
+        
+    }
+    print(arrayOfAchievmentsDictionaries[44]["points"]!)
+    
     
 }
 
