@@ -23,6 +23,19 @@ var parsedHearthstoneJSON = try! NSJSONSerialization.JSONObjectWithData(rawHeart
 func parseJSONAsDictionary(dictionary: NSDictionary) {
     /* Start playing with JSON here... */
     
+    var numCostRatioItems = 0
+    var sumCostRatio: Double = 0.0
+    
+    var numCostForRarityItemsDictionary = [String:Int]()
+    var sumCostForRarityDictionary = [String:Int]()
+    
+    let rarities = ["Free", "Common"]
+    
+    for rarity in rarities {
+        numCostForRarityItemsDictionary[rarity] = 0
+        sumCostForRarityDictionary[rarity] = 0
+    }
+    
     guard let arrayOfBasicSetCardDictionaries = parsedHearthstoneJSON["Basic"] as? [[String:AnyObject]] else {
         print("Cannot find key 'Basic' in \(parsedHearthstoneJSON)")
         return
@@ -50,7 +63,26 @@ func parseJSONAsDictionary(dictionary: NSDictionary) {
             if manaCost == 5 {
                 print("found a minion with cost of 5")
             }
+            
+            if let cardText = cardDictionary["text"] as? String where cardText.rangeOfString("Battlecry") != nil {
+                print("This minion has the battlecry effect")
+            }
         }
+        
+        if cardType == "Weapon" {
+            
+            guard let durability = cardDictionary["durability"] as? Int else {
+                print("Cannot find key 'durability' in \(cardDictionary)")
+                return
+            }
+            
+            if durability == 2 {
+                print("found a weapon with durability of 5")
+            }
+        }
+    }
+    for rarity in rarities {
+        
     }
     
     
