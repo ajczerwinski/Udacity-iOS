@@ -117,12 +117,6 @@ class ViewController: UIViewController {
             return "0, 0, 0, 0"
         }
         
-        
-        
-//        let bounds = (Int(Constants.Flickr.SearchLatRange.0), Int(Constants.Flickr.SearchLatRange.1), Int(Constants.Flickr.SearchLonRange.0), Int(Constants.Flickr.SearchLonRange.1))
-//        let minBoundLat = bounds.min
-        
-        return ""
     }
     
     // MARK: Flickr API
@@ -132,6 +126,27 @@ class ViewController: UIViewController {
         print(flickrURLFromParameters(methodParameters))
         
         // TODO: Make request to Flickr!
+        let session = NSURLSession.sharedSession()
+        let request = NSURLRequest(URL: flickrURLFromParameters(methodParameters))
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        
+            func displayError(error: String) {
+                print(error)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.photoTitleLabel.text = "No photo returned. Try again."
+                    self.photoImageView.image = nil
+                }
+            }
+            if error == nil {
+                print(data)
+            } else {
+                print(error!.localizedDescription)
+            }
+        
+        }
+        task.resume()
     }
     
     // MARK: Helper for Creating a URL from Parameters
