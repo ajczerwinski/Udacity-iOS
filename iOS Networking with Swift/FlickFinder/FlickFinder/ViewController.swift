@@ -121,10 +121,10 @@ class ViewController: UIViewController {
     
     // MARK: Flickr API
     
-    private func displayImageFromFlickrBySearch(methodParameters: [String:AnyObject]) {
+    private func displayImageFromFlickrBySearch(var methodParameters: [String:AnyObject]) {
         
         print(flickrURLFromParameters(methodParameters))
-        
+    
         // TODO: Make request to Flickr!
         let session = NSURLSession.sharedSession()
         let request = NSURLRequest(URL: flickrURLFromParameters(methodParameters))
@@ -173,24 +173,88 @@ class ViewController: UIViewController {
                 return
             }
             
-            // Did Flickr return an error? (stat != ok)?
             guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String where stat == Constants.FlickrResponseValues.OKStatus else {
                 displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
                 return
             }
             
-            // Are the "photos" and "photo" keys in our result?
-            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject], photoArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String:AnyObject]] else {
-                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' and '\(Constants.FlickrResponseKeys.Photo)' in \(parsedResult)")
+            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject] else {
+                displayError("Cannot find key '\(Constants.FlickrResponseKeys.Photos)' in \(parsedResult)")
                 return
             }
             
-            guard let imageUrlString = photosDictionary[Constants.FlickrResponseKeys.MediumURL] as? String else {
-                displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photosDictionary)")
+            guard let photosArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String: AnyObject]] else {
+                displayError("Cannot find key '\(Constants.FlickrResponseKeys.Photo)' in \(photosDictionary)")
                 return
             }
+            
+            if photosArray.count == 0 {
+                displayError("No Photos Found. Search Again.")
+                return
+            } else {
+                let randomPhotoIndex = Int(arc4random_uniform(UInt32(photosArray.count)))
+                let photoDictionary = photosArray[randomPhotoIndex] as [String:AnyObject]
+                let photoTitle = photoDictionary[Constants.FlickrResponseKeys.Title] as? String
+                
+                // Does our photo have a key for 'url_m'?
+                guard let imageUrlString = photoDictionary[Constants.FlickrResponseKeys.MediumURL] as? String else {
+                    displayError("Cannot find key '\(Constants.FlickrResponseKeys.MediumURL)' in \(photoDictionary)")
+                    return
+                }
+                
+                // If an image exists at the url, set the image and title
+                let imageURL = NSURL(string: imageUrlString)
+                if let imageData = NSData(contentsOfURL: imageURL!) {
+                    performUIUpdatesOnMain {
+                        self.setUIEnabled(true)
+                        self.photoImageView.image = UIImage(data: imageData)
+                        self.photoTitleLabel.text = photoTitle ?? "(Untitled)"
+                    }
+                } else {
+                    displayError("Image does not exist at \(imageURL)")
+                }
+            }
+            
+            
+            
+//            // Did Flickr return an error? (stat != ok)?
+//            guard let stat = parsedResult[Constants.FlickrResponseKeys.Status] as? String where stat == Constants.FlickrResponseValues.OKStatus else {
+//                displayError("Flickr API returned an error. See error code and message in \(parsedResult)")
+//                return
+//            }
+//            
+//            // Are the "photos" and "photo" keys in our result?
+//            guard let photosDictionary = parsedResult[Constants.FlickrResponseKeys.Photos] as? [String:AnyObject] else {
+//                displayError("Cannot find keys '\(Constants.FlickrResponseKeys.Photos)' and '\(Constants.FlickrResponseKeys.Photos)' in \(parsedResult)")
+//                return
+//            }
+//            
+//            guard let photosArray = photosDictionary[Constants.FlickrResponseKeys.Photo] as? [[String: AnyObject]] else {
+//                displayError("Cannot find key '\(Constants.FlickrResponseKeys.Photo)' in \(photosDictionary)")
+//                return
+//            }
+            
+//            self.photoImageView.image = photosArray[0]["photo"]
+//            self.photoTitleLabel.text =
+            
+//            guard let totalPages = photosDictionary[Constants.FlickrResponseKeys.Pages] as? Int else {
+//                displayError("Cannot find key '\(Constants.FlickrResponseKeys.Pages)' in \(photosDictionary)")
+//                return
+//            }
+            
+            // Pick a random page
+            
+//            let pageLimit = min(totalPages, 40)
+//            let randomPage = Int(arc4random_uniform(UInt32(pageLimit))) + 1
+//            self.displayImageFromFlickrBySearch(methodParameters)
+//            
+//            guard let imageUrlString = photosDictionary[Constants.FlickrResponseKeys.Pages] as? String else {
+//                displayError("Cannot find key '\(Constants.FlickrResponseKeys.Pages)' in \(photosDictionary)")
+//                return
+//            }
         
         }
+        
         task.resume()
     }
     
