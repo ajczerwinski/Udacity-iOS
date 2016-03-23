@@ -139,11 +139,40 @@ class ViewController: UIViewController {
                     self.photoImageView.image = nil
                 }
             }
-            if error == nil {
-                print(data)
-            } else {
-                print(error!.localizedDescription)
+//            if error == nil {
+//                print(data)
+//            } else {
+//                print(error!.localizedDescription)
+//            }
+            
+            // Check for error
+            guard (error == nil) else {
+                displayError("There was an error with the request: \(error)")
+                return
             }
+            
+            // Check if the code response is successful (2xx)
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            // Check to see if data was returned
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return
+            }
+            
+            // parse the data
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            }
+            catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
         
         }
         task.resume()
