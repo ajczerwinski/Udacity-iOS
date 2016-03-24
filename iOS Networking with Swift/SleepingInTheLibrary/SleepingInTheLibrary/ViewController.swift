@@ -49,7 +49,6 @@ class ViewController: UIViewController {
 //        print(url)
 
         
-        
 //        let someParameters = [
 //            "course": "networking",
 //            "nanodegree": "ios",
@@ -68,6 +67,10 @@ class ViewController: UIViewController {
             Constants.FlickrParameterKeys.NoJSONCallback: Constants.FlickrParameterValues.DisableJSONCallback
             
         ]
+        
+        for (key, value) in methodParameters {
+            print("\(key): \(value)")
+        }
         
         let urlString = Constants.Flickr.APIBaseURL + escapedParameters(methodParameters)
         let url = NSURL(string: urlString)!

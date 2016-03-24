@@ -99,8 +99,39 @@ class LoginViewController: UIViewController {
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
             
-            /* 5. Parse the data */
+            // If an error occurs, print it and re-enable the UI
+            func displayError(error: String) {
+                print(error)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.debugTextLabel.text = "Login Failed (Request Token)."
+                }
+            }
+        /* 5. Parse the data */
+            guard let data = data else {
+                displayError("No data was returned by the request")
+                return
+            }
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            }
+            catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            guard let requestToken = parsedResult[Constants.TMDBResponseKeys.RequestToken] as? String else {
+                displayError("Cannot find key '\(Constants.TMDBResponseKeys.RequestToken)' in \(parsedResult)")
+                return
+            }
+                
             /* 6. Use the data! */
+            print(requestToken)
+//            self.appDelegate.requestToken = requestToken
+//            self.loginWithToken(self.appDelegate.requestToken!)
+            
+            
         }
 
         /* 7. Start the request */
