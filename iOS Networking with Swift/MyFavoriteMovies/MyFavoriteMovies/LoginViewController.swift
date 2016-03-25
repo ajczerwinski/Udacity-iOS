@@ -179,7 +179,7 @@ class LoginViewController: UIViewController {
                 print(error)
                 performUIUpdatesOnMain {
                     self.setUIEnabled(true)
-                    self.debugTextLabel.text = "Login Failed (Request Token)."
+                    self.debugTextLabel.text = "Login Failed (Login Step)."
                 }
             }
             
@@ -190,7 +190,7 @@ class LoginViewController: UIViewController {
             }
             
             // Did we get a successful 2XX response?
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode >= 299 else {
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 displayError("Your request returned a status code other than 2xx!")
                 return
             }
@@ -270,7 +270,7 @@ class LoginViewController: UIViewController {
             }
             
             // Did we get a successful 2XX response?
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode >= 299 else {
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 displayError("Your request returned a status code other than 2xx!")
                 return
             }
@@ -339,7 +339,7 @@ class LoginViewController: UIViewController {
             }
             
             // Did we get a successful 2XX response?
-            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode >= 299 else {
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 displayError("Your request returned a status code other than 2xx!")
                 return
             }
