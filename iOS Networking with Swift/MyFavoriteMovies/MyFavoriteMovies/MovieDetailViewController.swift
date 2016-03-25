@@ -228,12 +228,6 @@ class MovieDetailViewController: UIViewController {
                 return
             }
             
-            // Did TheMovieDB return an error?
-//            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
-//                displayError("TheMovieDB returned an error See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
-//                return
-//            }
-            
             // Did we receive a TMDB status_code?
             guard let tmdbStatusCode = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int else {
                 print("Could not find key '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)'")
@@ -249,11 +243,6 @@ class MovieDetailViewController: UIViewController {
                 return
             }
             
-            // Is the "success" key in parsedResult?
-//            guard let success = parsedResult[Constants.TMDBResponseKeys.Success] as? Bool where success == true else {
-//                displayError("Cannot find key '\(Constants.TMDBResponseKeys.Success)' in \(parsedResult)")
-//                return
-//            }
             /* 6. Use the data! */
             self.isFavorite = shouldFavorite
             
