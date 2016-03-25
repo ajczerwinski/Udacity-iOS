@@ -134,6 +134,13 @@ class LoginViewController: UIViewController {
                 displayError("Could not parse the data as JSON: '\(data)'")
                 return
             }
+            
+            // Did theMovieDB return an error?
+            if let  _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
+                displayError("TheMovieDB returned an error. See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
+                return
+            }
+            // Is the "request_token" key in parsedResult?
             guard let requestToken = parsedResult[Constants.TMDBResponseKeys.RequestToken] as? String else {
                 displayError("Cannot find key '\(Constants.TMDBResponseKeys.RequestToken)' in \(parsedResult)")
                 return
@@ -160,12 +167,14 @@ class LoginViewController: UIViewController {
             Constants.TMDBParameterKeys.Password: passwordTextField.text
             
         ]
+        
         /* 2/3. Build the URL, Configure the request */
         let request = NSURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/authentication/token/validate_with_login"))
+        
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
             // If an error occurs, print it and re-enable the UI
-            func displayError(error: String) {
+            func displayError(error: String, debugLabelText: String? = nil) {
                 print(error)
                 performUIUpdatesOnMain {
                     self.setUIEnabled(true)
@@ -201,17 +210,19 @@ class LoginViewController: UIViewController {
                 return
             }
             
+            // Did TheMovieDB return an error?
+            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
+                displayError("TheMovieDB returned an error See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
+                return
+            }
+            
             // Is the "success" key in parsedResult?
             guard let success = parsedResult[Constants.TMDBResponseKeys.Success] as? Bool where success == true else {
                 displayError("Cannot find key '\(Constants.TMDBResponseKeys.Success)' in \(parsedResult)")
                 return
             }
             
-            // Did TheMovieDB return an error?
-            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
-                displayError("TheMovieDB returned an error See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
-                return
-            }
+            
             
             // Is the "request_token" key in parsedResult?
 //            guard let requestToken = parsedResult[Constants.TMDBResponseKeys.RequestToken] as? String else {
@@ -220,6 +231,7 @@ class LoginViewController: UIViewController {
 //            }
             
             /* 6. Use the data! */
+            self.getSessionID(self.appDelegate.requestToken!)
             print("Logged in, now get the session id!")
         }
         
