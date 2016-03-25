@@ -178,16 +178,16 @@ class MovieDetailViewController: UIViewController {
         /* 1. Set the parameters */
         let methodParameters: [String: String!] = [
             Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey,
-            Constants.TMDBParameterKeys.SessionID: self.appDelegate.sessionID
+            Constants.TMDBParameterKeys.SessionID: appDelegate.sessionID!
         ]
         /* 2/3. Build the URL, Configure the request */
-        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/account/id/favorite"))
+        let request = NSMutableURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/account/\(appDelegate.userID!)/favorite"))
         request.HTTPMethod = "POST"
         
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        request.HTTPBody = "{\n  \"media_type\": \"movie\",\n  \"media_id\": 550,\n  \"favorite\": true\n}".dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPBody = "{\"media_type\": \"movie\", \"media_id\": \(movie!.id),\"favorite\":\(shouldFavorite)}".dataUsingEncoding(NSUTF8StringEncoding)
 
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
@@ -229,17 +229,37 @@ class MovieDetailViewController: UIViewController {
             }
             
             // Did TheMovieDB return an error?
-            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
-                displayError("TheMovieDB returned an error See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
+//            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
+//                displayError("TheMovieDB returned an error See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
+//                return
+//            }
+            
+            // Did we receive a TMDB status_code?
+            guard let tmdbStatusCode = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int else {
+                print("Could not find key '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)'")
+                return
+            }
+            
+            // Did we receive the correct TMDB status_code?
+            if shouldFavorite && !(tmdbStatusCode == 12 || tmdbStatusCode == 1) {
+                print("Unrecognized '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)")
+                return
+            } else if !shouldFavorite && tmdbStatusCode != 13 {
+                print("Unrecognized '\(Constants.TMDBResponseKeys.StatusCode)' in \(parsedResult)")
                 return
             }
             
             // Is the "success" key in parsedResult?
-            guard let success = parsedResult[Constants.TMDBResponseKeys.Success] as? Bool where success == true else {
-                displayError("Cannot find key '\(Constants.TMDBResponseKeys.Success)' in \(parsedResult)")
-                return
-            }
+//            guard let success = parsedResult[Constants.TMDBResponseKeys.Success] as? Bool where success == true else {
+//                displayError("Cannot find key '\(Constants.TMDBResponseKeys.Success)' in \(parsedResult)")
+//                return
+//            }
             /* 6. Use the data! */
+            self.isFavorite = shouldFavorite
+            
+            performUIUpdatesOnMain {
+                self.favoriteButton.tintColor = (shouldFavorite) ? nil : UIColor.blackColor()
+            }
             
         }
         
