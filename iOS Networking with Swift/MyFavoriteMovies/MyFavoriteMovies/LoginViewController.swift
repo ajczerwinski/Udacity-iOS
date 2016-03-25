@@ -170,6 +170,7 @@ class LoginViewController: UIViewController {
         
         /* 2/3. Build the URL, Configure the request */
         let request = NSURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/authentication/token/validate_with_login"))
+        print(request.URL!)
         
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
@@ -244,7 +245,7 @@ class LoginViewController: UIViewController {
         /* TASK: Get a session ID, then store it (appDelegate.sessionID) and get the user's id */
         
         /* 1. Set the parameters */
-        let methodParameters: [String:String!] = [
+        let methodParameters = [
             Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey,
             Constants.TMDBParameterKeys.RequestToken: requestToken
             
@@ -258,7 +259,7 @@ class LoginViewController: UIViewController {
                 print(error)
                 performUIUpdatesOnMain {
                     self.setUIEnabled(true)
-                    self.debugTextLabel.text = "Login Failed (Request Token)."
+                    self.debugTextLabel.text = "Login Failed (Session ID)."
                 }
             }
             
@@ -295,14 +296,14 @@ class LoginViewController: UIViewController {
                 return
             }
             
-            // Is the "success" key in parsedResult?
-            guard let success = parsedResult[Constants.TMDBResponseKeys.Success] as? Bool where success == true else {
-                displayError("Cannot find key '\(Constants.TMDBResponseKeys.Success)' in \(parsedResult)")
+            // Is the "sessionID" key in parsedResult?
+            guard let sessionID = parsedResult[Constants.TMDBResponseKeys.SessionID] as? String else {
+                displayError("Cannot find key '\(Constants.TMDBResponseKeys.SessionID)' in \(parsedResult)")
                 return
             }
             /* 6. Use the data! */
-            self.getSessionID(self.appDelegate.requestToken!)
-            print("Logged in, now get the session id!")
+            self.appDelegate.sessionID = sessionID
+            print(sessionID)
         }
         /* 7. Start the request */
         task.resume()
