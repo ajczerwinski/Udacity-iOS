@@ -98,7 +98,6 @@ class LoginViewController: UIViewController {
         
         /* 4. Make the request */
         let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
-            
             // If an error occurs, print it and re-enable the UI
             func displayError(error: String) {
                 print(error)
@@ -107,11 +106,26 @@ class LoginViewController: UIViewController {
                     self.debugTextLabel.text = "Login Failed (Request Token)."
                 }
             }
-        /* 5. Parse the data */
+            
+            // Was there an error?
+            guard (error == nil)  else {
+                displayError("There was an error with your request: \(error)")
+                return
+            }
+            
+            // Did we get a successful 2XX response?
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            // Was there any data returned?
             guard let data = data else {
                 displayError("No data was returned by the request")
                 return
             }
+            
+            /* 5. Parse the data */
             let parsedResult: AnyObject!
             do {
                 parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
@@ -120,18 +134,14 @@ class LoginViewController: UIViewController {
                 displayError("Could not parse the data as JSON: '\(data)'")
                 return
             }
-            
             guard let requestToken = parsedResult[Constants.TMDBResponseKeys.RequestToken] as? String else {
                 displayError("Cannot find key '\(Constants.TMDBResponseKeys.RequestToken)' in \(parsedResult)")
                 return
             }
-                
             /* 6. Use the data! */
             print(requestToken)
-//            self.appDelegate.requestToken = requestToken
-//            self.loginWithToken(self.appDelegate.requestToken!)
-            
-            
+            self.appDelegate.requestToken = requestToken
+            self.loginWithToken(self.appDelegate.requestToken!)
         }
 
         /* 7. Start the request */
@@ -143,11 +153,78 @@ class LoginViewController: UIViewController {
         /* TASK: Login, then get a session id */
         
         /* 1. Set the parameters */
+        let methodParameters: [String:String!] = [
+            Constants.TMDBParameterKeys.ApiKey: Constants.TMDBParameterValues.ApiKey,
+            Constants.TMDBParameterKeys.RequestToken: requestToken,
+            Constants.TMDBParameterKeys.Username: usernameTextField.text,
+            Constants.TMDBParameterKeys.Password: passwordTextField.text
+            
+        ]
         /* 2/3. Build the URL, Configure the request */
+        let request = NSURLRequest(URL: appDelegate.tmdbURLFromParameters(methodParameters, withPathExtension: "/authentication/token/validate_with_login"))
         /* 4. Make the request */
-        /* 5. Parse the data */
-        /* 6. Use the data! */
+        let task = appDelegate.sharedSession.dataTaskWithRequest(request) { (data, response, error) in
+            // If an error occurs, print it and re-enable the UI
+            func displayError(error: String) {
+                print(error)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.debugTextLabel.text = "Login Failed (Request Token)."
+                }
+            }
+            
+            // Was there an error?
+            guard (error == nil) else {
+                displayError("There was an error with your request: \(error)")
+                return
+            }
+            
+            // Did we get a successful 2XX response?
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode >= 299 else {
+                displayError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            // Was there any data returned?
+            guard let data = data else {
+                displayError("No data was returned by the request")
+                return
+            }
+            
+            /* 5. Parse the data */
+            let parsedResult: AnyObject!
+            do {
+                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+            }
+            catch {
+                displayError("Could not parse the data as JSON: '\(data)'")
+                return
+            }
+            
+            // Is the "success" key in parsedResult?
+            guard let success = parsedResult[Constants.TMDBResponseKeys.Success] as? Bool where success == true else {
+                displayError("Cannot find key '\(Constants.TMDBResponseKeys.Success)' in \(parsedResult)")
+                return
+            }
+            
+            // Did TheMovieDB return an error?
+            if let _ = parsedResult[Constants.TMDBResponseKeys.StatusCode] as? Int {
+                displayError("TheMovieDB returned an error See the '\(Constants.TMDBResponseKeys.StatusCode)' and '\(Constants.TMDBResponseKeys.StatusMessage)' in \(parsedResult)")
+                return
+            }
+            
+            // Is the "request_token" key in parsedResult?
+//            guard let requestToken = parsedResult[Constants.TMDBResponseKeys.RequestToken] as? String else {
+//                displayError("Cannot find key '\(Constants.TMDBResponseKeys.RequestToken)' in \(parsedResult)")
+//                return
+//            }
+            
+            /* 6. Use the data! */
+            print("Logged in, now get the session id!")
+        }
+        
         /* 7. Start the request */
+        task.resume()
     }
     
     private func getSessionID(requestToken: String) {
