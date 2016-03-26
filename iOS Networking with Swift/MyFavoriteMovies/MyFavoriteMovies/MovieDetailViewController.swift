@@ -195,8 +195,6 @@ class MovieDetailViewController: UIViewController {
             func displayError(error: String, debugLabelText: String? = nil) {
                 print(error)
                 performUIUpdatesOnMain {
-//                    self.setUIEnabled(true)
-//                    self.debugTextLabel.text = "Login Failed (Login Step)."
                 }
             }
             
@@ -254,13 +252,6 @@ class MovieDetailViewController: UIViewController {
         
         /* 7. Start the request */
         
-        /* If the favorite/unfavorite request completes, then use this code to update the UI...
-        
-        performUIUpdatesOnMain {
-            self.favoriteButton.tintColor = (shouldFavorite) ? nil : UIColor.blackColor()
-        }
-        
-        */
         task.resume()
     }
 }

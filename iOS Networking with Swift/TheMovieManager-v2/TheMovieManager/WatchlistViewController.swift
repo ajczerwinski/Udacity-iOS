@@ -26,7 +26,7 @@ class WatchlistViewController: UIViewController {
         super.viewDidLoad()
         
         // create and set the logout button
-        parentViewController!.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Reply, target: self, action: "logout")
+        parentViewController!.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Reply, target: self, action: #selector(WatchlistViewController.logout))
     }
     
     override func viewWillAppear(animated: Bool) {
