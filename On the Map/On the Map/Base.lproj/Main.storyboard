@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jlf-8E-IiB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BNd-Y7-OMe">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--On The Map-->
         <scene sceneID="6PA-BX-dgF">
             <objects>
                 <tableViewController id="YWE-u0-D75" sceneMemberID="viewController">
@@ -14,6 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="H7x-hF-l84">
+                            <rect key="frame" x="0.0" y="136" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items/>
+                        </toolbar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3PZ-2r-EgQ">
                                 <rect key="frame" x="0.0" y="92" width="600" height="44"/>
@@ -29,13 +35,19 @@
                             <outlet property="delegate" destination="YWE-u0-D75" id="1Mj-Kc-MOL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="TMV-kX-IMW"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="TMV-kX-IMW">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="2zI-Yt-evU"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="XNB-w5-VR5"/>
+                            <barButtonItem title="Pin" id="fqP-V7-YpB"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFn-vm-96x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1371" y="476"/>
         </scene>
-        <!--View Controller-->
+        <!--On The Map-->
         <scene sceneID="8Z0-gt-Sz7">
             <objects>
                 <viewController id="JZa-Qb-WHF" sceneMemberID="viewController">
@@ -48,7 +60,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="cmO-Vp-o5A"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="cmO-Vp-o5A">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="ZoA-fr-bYu"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="knB-Mm-vCu"/>
+                            <barButtonItem title="Pin" id="sSZ-nD-Whb"/>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu3-1Z-K2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,8 +132,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="jGx-c7-nhv" kind="presentation" identifier="" id="aEJ-st-2f3"/>
-                        <segue destination="NbU-3b-che" kind="presentation" id="lJo-vb-AHu"/>
+                        <segue destination="jGx-c7-nhv" kind="relationship" relationship="viewControllers" id="Nq9-na-8u6"/>
+                        <segue destination="NbU-3b-che" kind="relationship" relationship="viewControllers" id="J8e-Uh-yFd"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXT-cD-Nfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
