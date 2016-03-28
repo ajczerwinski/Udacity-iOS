@@ -50,7 +50,7 @@
         <!--On The Map-->
         <scene sceneID="8Z0-gt-Sz7">
             <objects>
-                <viewController id="JZa-Qb-WHF" sceneMemberID="viewController">
+                <viewController id="JZa-Qb-WHF" customClass="MapViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kzT-vx-m0F"/>
                         <viewControllerLayoutGuide type="bottom" id="c0w-sW-aeA"/>
@@ -58,7 +58,18 @@
                     <view key="view" contentMode="scaleToFill" id="zXL-E6-0H1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="BVd-RJ-jyW">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="BVd-RJ-jyW" secondAttribute="trailing" constant="-20" id="lFG-pB-TbC"/>
+                            <constraint firstItem="BVd-RJ-jyW" firstAttribute="leading" secondItem="zXL-E6-0H1" secondAttribute="leadingMargin" constant="-20" id="mxW-86-Eii"/>
+                            <constraint firstItem="BVd-RJ-jyW" firstAttribute="top" secondItem="kzT-vx-m0F" secondAttribute="bottom" id="osY-ri-mkQ"/>
+                            <constraint firstItem="c0w-sW-aeA" firstAttribute="top" secondItem="BVd-RJ-jyW" secondAttribute="bottom" id="rcl-NN-GUz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="cmO-Vp-o5A">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="ZoA-fr-bYu"/>
@@ -67,6 +78,9 @@
                             <barButtonItem title="Pin" id="sSZ-nD-Whb"/>
                         </rightBarButtonItems>
                     </navigationItem>
+                    <connections>
+                        <outlet property="mapView" destination="BVd-RJ-jyW" id="X4g-ZB-dge"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu3-1Z-K2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -76,7 +90,7 @@
         <scene sceneID="fT6-jj-vYF">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jGx-c7-nhv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="uyq-pC-AWm"/>
+                    <tabBarItem key="tabBarItem" title="List" selectedImage="map_icon" id="uyq-pC-AWm"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="e7n-wE-XI6">
@@ -132,8 +146,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="jGx-c7-nhv" kind="relationship" relationship="viewControllers" id="Nq9-na-8u6"/>
-                        <segue destination="NbU-3b-che" kind="relationship" relationship="viewControllers" id="J8e-Uh-yFd"/>
+                        <segue destination="NbU-3b-che" kind="relationship" relationship="viewControllers" id="P18-ES-UHK"/>
+                        <segue destination="jGx-c7-nhv" kind="relationship" relationship="viewControllers" id="8Re-aW-Byb"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXT-cD-Nfi" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,4 +175,7 @@
             <point key="canvasLocation" x="559" y="1155"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map_icon" width="140" height="140"/>
+    </resources>
 </document>
