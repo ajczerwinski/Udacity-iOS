@@ -49,6 +49,10 @@
                                         <constraint firstItem="Dcx-YM-EL8" firstAttribute="centerY" secondItem="Joj-ZQ-TXK" secondAttribute="centerY" id="wtk-Kw-T6K"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pinImage" destination="h7z-nh-gbL" id="2zE-RZ-ny5"/>
+                                    <outlet property="studentName" destination="Dcx-YM-EL8" id="cfs-CC-MoD"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -197,6 +201,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="map_icon" width="140" height="140"/>
+        <image name="map_icon" width="280" height="280"/>
     </resources>
 </document>

@@ -10,7 +10,24 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var studentLocation: [StudentLocation] = [StudentLocation]()
+    var studentLocation = [
+        [
+            "firstName" : "Bob",
+            "lastName" : "Smith",
+            "pinImage" : UIImage(named: "map_icon")!
+            
+        ], [
+            "firstName" : "Jed",
+            "lastName" : "Jones",
+            "pinImage" : UIImage(named: "map_icon")!
+            
+        ],[
+            "firstName" : "Ted",
+            "lastName" : "Toomey",
+            "pinImage" : UIImage(named: "map_icon")!
+            
+        ],
+     ]
     
     override func viewWillAppear(animated: Bool) {
         
@@ -30,9 +47,9 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
         let student = self.studentLocation[indexPath.row]
         
-        cell.pinImage.image = UIImage(named: "map_icon.png")
+        cell.pinImage.image = UIImage(named: "map_icon")
         cell.pinImage.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.studentName.text = "\(student.firstName) \(student.lastName)"
+        cell.studentName.text = "\(student["firstName"]!) \(student["lastName"]!)"
         
         return cell
     }
