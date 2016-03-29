@@ -15,6 +15,19 @@ struct UdacityConstants {
         static let ApiHost = "udacity.com"
         static let ApiPath = "/api"
     }
+    
+    struct UdacityParameterKeys {
+        static let ApiKey = "api_key"
+        static let RequestToken = "request_token"
+        static let SessionID = "session_id"
+        static let Username = "username"
+        static let Password = "password"
+    }
+    
+    struct UdacityParameterValues {
+        static let ApiKey = ""
+    }
+    
 }
 
 

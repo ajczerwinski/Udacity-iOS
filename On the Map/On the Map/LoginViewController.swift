@@ -10,6 +10,11 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    @IBOutlet weak var studentUsername: UITextField!
+    
+    @IBOutlet weak var studentPassword: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

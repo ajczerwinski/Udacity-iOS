@@ -220,6 +220,10 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="studentPassword" destination="ztY-m9-2Ch" id="nQS-Tq-BDk"/>
+                        <outlet property="studentUsername" destination="JTb-qs-TzD" id="u8H-du-6QQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zar-7S-fiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
