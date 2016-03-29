@@ -16,6 +16,7 @@
 		BFE566A41CA9FD3D0047945C /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A31CA9FD3D0047945C /* TableViewController.swift */; };
 		BFE566A61CAA00080047945C /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A51CAA00080047945C /* StudentLocation.swift */; };
 		BFE566A81CAA035F0047945C /* StudentLocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A71CAA035F0047945C /* StudentLocationViewCell.swift */; };
+		BFE566AA1CAA169A0047945C /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A91CAA169A0047945C /* GCDBlackBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		BFE566A31CA9FD3D0047945C /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		BFE566A51CAA00080047945C /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		BFE566A71CAA035F0047945C /* StudentLocationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationViewCell.swift; sourceTree = "<group>"; };
+		BFE566A91CAA169A0047945C /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,7 @@
 				BFE566931CA7138A0047945C /* Assets.xcassets */,
 				BFE566951CA7138A0047945C /* LaunchScreen.storyboard */,
 				BFE566981CA7138A0047945C /* Info.plist */,
+				BFE566A91CAA169A0047945C /* GCDBlackBox.swift */,
 			);
 			path = "On the Map";
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 				BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */,
 				BFE566A61CAA00080047945C /* StudentLocation.swift in Sources */,
 				BFE566A41CA9FD3D0047945C /* TableViewController.swift in Sources */,
+				BFE566AA1CAA169A0047945C /* GCDBlackBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
