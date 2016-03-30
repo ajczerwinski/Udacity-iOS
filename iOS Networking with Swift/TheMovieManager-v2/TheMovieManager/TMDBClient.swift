@@ -83,6 +83,7 @@ class TMDBClient : NSObject {
     func taskForPOSTMethod(method: String, var parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         /* 1. Set the parameters */
+        // parameters["api_key"] = "4e8bdccc3bb63cefbec21f936eca5651"
         parameters[ParameterKeys.ApiKey] = Constants.ApiKey
         
         /* 2/3. Build the URL, Configure the request */

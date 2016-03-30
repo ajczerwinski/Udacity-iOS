@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     // declare account key and session ID for logging into Udacity
+    var sharedSession = NSURLSession.sharedSession()
     var accountKey: String? = nil
     var sessionID: String? = nil
     
@@ -45,5 +46,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+}
+
+extension AppDelegate {
+    
+    func URLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+        
+        let components = NSURLComponents()
+        components.scheme = APIConstants.URLAPIMethods.UdacityAPIScheme
+        components.host = APIConstants.URLAPIMethods.UdacityAPIHost
+        components.path = APIConstants.URLAPIMethods.UdacityAPIPath + (withPathExtension ?? "")
+        components.queryItems = [NSURLQueryItem]()
+        
+        for (key, value) in parameters {
+            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+            components.queryItems!.append(queryItem)
+        }
+        
+        return components.URL!
+        
+    }
+    
 }
 

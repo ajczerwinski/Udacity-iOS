@@ -40,70 +40,70 @@ class LoginViewController: UIViewController {
         } else {
             setUIEnabled(false)
         }
-
+        
     }
     
-    func taskForPOSTMethod(method: String, var parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-        
-//        let url = "https://www.udacity.com/api/session"
-        
-        let request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: "https://www.udacity.com/api/session"))
-        request.HTTPMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("applicaiton/json", forHTTPHeaderField: "Content-Type")
-        var httpBody = "{\"udacity\": {\"username\": \"\(studentUsername.text!)\", \"password\": \"\(studentPassword.text!)\"}}"
-        print(httpBody)
-        request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
-        
-        print(request.HTTPBody!)
-        
-        let session = NSURLSession.sharedSession()
-        
-        let task = session.dataTaskWithRequest(request) { data, response, error in
-            func displayError(error: String, debugLabelText: String? = nil) {
-                print(error)
-                performUIUpdatesOnMain {
-                    self.setUIEnabled(true)
-                    self.debugTextLabel.text = "Login Failed (Login Step)."
-                }
-            }
-//
-//            guard (error == nil) else {
-//                displayError("There was an error with your request: \(error)")
+//    func taskForPOSTMethod(method: String, var parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+//        
+////        let url = "https://www.udacity.com/api/session"
+//        
+//        let request = NSMutableURLRequest(URL: NSURL(fileURLWithPath: "https://www.udacity.com/api/session"))
+//        request.HTTPMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.addValue("applicaiton/json", forHTTPHeaderField: "Content-Type")
+//        var httpBody = "{\"udacity\": {\"username\": \"\(studentUsername.text!)\", \"password\": \"\(studentPassword.text!)\"}}"
+//        print(httpBody)
+//        request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
+//        
+//        print(request.HTTPBody!)
+//        
+//        let session = NSURLSession.sharedSession()
+//        
+//        let task = session.dataTaskWithRequest(request) { data, response, error in
+//            func displayError(error: String, debugLabelText: String? = nil) {
+//                print(error)
+//                performUIUpdatesOnMain {
+//                    self.setUIEnabled(true)
+//                    self.debugTextLabel.text = "Login Failed (Login Step)."
+//                }
+//            }
+////
+////            guard (error == nil) else {
+////                displayError("There was an error with your request: \(error)")
+////                return
+////            }
+////            
+//            guard let data = data else {
+//                displayError("No data was returned by the request!")
 //                return
 //            }
+////
+////            let parsedResult: AnyObject!
+////            do {
+////                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+////            } catch {
+////                displayError("Could not parse the data as JSON: '\(data)'")
+////                return
+////            }
+//            if error != nil {
+//                return
+//            }
+//            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+//            print(newData)
+//            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
 //            
-            guard let data = data else {
-                displayError("No data was returned by the request!")
-                return
-            }
-//
 //            let parsedResult: AnyObject!
 //            do {
-//                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
+//                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
 //            } catch {
-//                displayError("Could not parse the data as JSON: '\(data)'")
+//                print("Could not parse the data as JSON: '\(newData)'")
 //                return
 //            }
-            if error != nil {
-                return
-            }
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
-            print(newData)
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
-            
-            let parsedResult: AnyObject!
-            do {
-                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
-            } catch {
-                print("Could not parse the data as JSON: '\(newData)'")
-                return
-            }
-            print(parsedResult)
-        }
-        task.resume()
-        return task
-    }
+//            print(parsedResult["account"])
+//        }
+//        task.resume()
+//        return task
+//    }
 }
 
 extension LoginViewController {
