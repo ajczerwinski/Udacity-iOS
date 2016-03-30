@@ -13,11 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    var sharedSession = NSURLSession.sharedSession()
-    var accountRegistered: Bool? = false
+    // declare account key and session ID for logging into Udacity
     var accountKey: String? = nil
     var sessionID: String? = nil
-    var sessionExpiration: String? = nil
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

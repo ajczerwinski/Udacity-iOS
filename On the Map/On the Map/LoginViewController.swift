@@ -40,10 +40,10 @@ class LoginViewController: UIViewController {
         } else {
             setUIEnabled(false)
         }
-        getSessionID()
+
     }
     
-    private func getSessionID() {
+    func taskForPOSTMethod(method: String, var parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
 //        let url = "https://www.udacity.com/api/session"
         
@@ -60,24 +60,24 @@ class LoginViewController: UIViewController {
         let session = NSURLSession.sharedSession()
         
         let task = session.dataTaskWithRequest(request) { data, response, error in
-//            func displayError(error: String, debugLabelText: String? = nil) {
-//                print(error)
-//                performUIUpdatesOnMain {
-//                    self.setUIEnabled(true)
-//                    self.debugTextLabel.text = "Login Failed (Login Step)."
-//                }
-//            }
-//            
+            func displayError(error: String, debugLabelText: String? = nil) {
+                print(error)
+                performUIUpdatesOnMain {
+                    self.setUIEnabled(true)
+                    self.debugTextLabel.text = "Login Failed (Login Step)."
+                }
+            }
+//
 //            guard (error == nil) else {
 //                displayError("There was an error with your request: \(error)")
 //                return
 //            }
 //            
-//            guard let data = data else {
-//                displayError("No data was returned by the request!")
-//                return
-//            }
-//            
+            guard let data = data else {
+                displayError("No data was returned by the request!")
+                return
+            }
+//
 //            let parsedResult: AnyObject!
 //            do {
 //                parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
@@ -88,7 +88,7 @@ class LoginViewController: UIViewController {
             if error != nil {
                 return
             }
-            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             print(newData)
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
@@ -102,6 +102,7 @@ class LoginViewController: UIViewController {
             print(parsedResult)
         }
         task.resume()
+        return task
     }
 }
 

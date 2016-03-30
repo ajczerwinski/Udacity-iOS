@@ -16,8 +16,9 @@
 		BFE566A61CAA00080047945C /* StudentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A51CAA00080047945C /* StudentLocation.swift */; };
 		BFE566A81CAA035F0047945C /* StudentLocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A71CAA035F0047945C /* StudentLocationViewCell.swift */; };
 		BFE566AA1CAA169A0047945C /* GCDBlackBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566A91CAA169A0047945C /* GCDBlackBox.swift */; };
-		BFE566AF1CAA25440047945C /* UdacityConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566AE1CAA25440047945C /* UdacityConstants.swift */; };
+		BFE566AF1CAA25440047945C /* ApiConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566AE1CAA25440047945C /* ApiConstants.swift */; };
 		BFE566B11CAB1C0E0047945C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566B01CAB1C0E0047945C /* LoginViewController.swift */; };
+		BFE566B31CAB6F1E0047945C /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE566B21CAB6F1E0047945C /* ApiClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,8 +33,9 @@
 		BFE566A51CAA00080047945C /* StudentLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocation.swift; sourceTree = "<group>"; };
 		BFE566A71CAA035F0047945C /* StudentLocationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentLocationViewCell.swift; sourceTree = "<group>"; };
 		BFE566A91CAA169A0047945C /* GCDBlackBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDBlackBox.swift; sourceTree = "<group>"; };
-		BFE566AE1CAA25440047945C /* UdacityConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityConstants.swift; sourceTree = "<group>"; };
+		BFE566AE1CAA25440047945C /* ApiConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiConstants.swift; sourceTree = "<group>"; };
 		BFE566B01CAB1C0E0047945C /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BFE566B21CAB6F1E0047945C /* ApiClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,7 @@
 		BFE566AB1CAA18060047945C /* Clients */ = {
 			isa = PBXGroup;
 			children = (
-				BFE566AD1CAA18160047945C /* UdacityAPI */,
+				BFE566AD1CAA18160047945C /* APIs */,
 				BFE566AC1CAA180E0047945C /* ParseAPI */,
 			);
 			name = Clients;
@@ -122,12 +124,13 @@
 			name = ParseAPI;
 			sourceTree = "<group>";
 		};
-		BFE566AD1CAA18160047945C /* UdacityAPI */ = {
+		BFE566AD1CAA18160047945C /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				BFE566AE1CAA25440047945C /* UdacityConstants.swift */,
+				BFE566AE1CAA25440047945C /* ApiConstants.swift */,
+				BFE566B21CAB6F1E0047945C /* ApiClient.swift */,
 			);
-			name = UdacityAPI;
+			name = APIs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,12 +206,13 @@
 			files = (
 				BFE566B11CAB1C0E0047945C /* LoginViewController.swift in Sources */,
 				BFE566A81CAA035F0047945C /* StudentLocationViewCell.swift in Sources */,
-				BFE566AF1CAA25440047945C /* UdacityConstants.swift in Sources */,
+				BFE566AF1CAA25440047945C /* ApiConstants.swift in Sources */,
 				BFE566A21CA9E9220047945C /* MapViewController.swift in Sources */,
 				BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */,
 				BFE566A61CAA00080047945C /* StudentLocation.swift in Sources */,
 				BFE566A41CA9FD3D0047945C /* TableViewController.swift in Sources */,
 				BFE566AA1CAA169A0047945C /* GCDBlackBox.swift in Sources */,
+				BFE566B31CAB6F1E0047945C /* ApiClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +364,7 @@
 				BFE5669D1CA7138A0047945C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
