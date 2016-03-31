@@ -24,7 +24,32 @@ class UdacityClient : NSObject {
     }
     
     // POST Method
-    
+    func taskForPOSTMethod(method: String, jsonBody: [String:AnyObject], completionHandler: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        let urlString = UdacityConstants.ApiMethods.UdacityBase + method
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        
+        request.HTTPMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        do {
+            request.HTTPBody = try NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+        } catch {
+            print("Could not serialize json")
+        }
+//        let httpBody = NSJSONSerialization.dataWithJSONObject(jsonBody, options: NSJSONWritingOptions.PrettyPrinted)
+        
+//        "{\"udacity\": {\"username\": \"\(studentUsername.text!)\", \"password\": \"\(studentPassword.text!)\"}}"
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+         
+            // TODO: Complete task
+            
+        }
+        return task
+    }
     
     
     // MARK: Singleton of Udacity class
