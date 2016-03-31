@@ -41,7 +41,80 @@ class LoginViewController: UIViewController {
             setUIEnabled(false)
         }
         
+        
     }
+//      // 1 (can skip setting parameters)
+//        let methodParameters = [
+//            "username": self.studentUsername.text!,
+//            "password": self.studentPassword.text!
+//        ] /* as [String: AnyObject] */
+        
+//        let request = NSMutableURLRequest(URL: appDelegate.URLFromParameters(methodParameters, withPathExtension: "session"))
+        
+        // 2/3. Configure the request from hard-coded URL
+//        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/session")!)
+//        print(request)
+//        request.HTTPMethod = "POST"
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.addValue("applicaiton/json", forHTTPHeaderField: "Content-Type")
+//        
+//        let httpBody = "{\"udacity\": {\"username\": \"\(studentUsername.text!)\", \"password\": \"\(studentPassword.text!)\"}}"
+//        print(httpBody)
+//        request.HTTPBody = httpBody.dataUsingEncoding(NSUTF8StringEncoding)
+//        print(request)
+//        
+//        let session = NSURLSession.sharedSession()
+//        
+//        // 4. Make the request
+//        let task = session.dataTaskWithRequest(request) { data, response, error in
+//            
+//            if error != nil {
+//                print("Error connecting to Udacity")
+//            }
+//            func displayError(error: String, debugLabelText: String? = nil) {
+//                print(error)
+//                performUIUpdatesOnMain {
+//                    self.setUIEnabled(true)
+//                    self.debugTextLabel.text = "Login Failed (Login Step)."
+//                }
+//            }
+
+//            guard (error == nil) else {
+//                displayError("There was an error with your request: \(error)")
+//                return
+//            }
+
+//            guard let data = data else {
+//                displayError("No data was returned by the request!")
+//                return
+//            }
+//            var parsingError: NSError? = nil
+//            let newData = data!.subdataWithRange(NSMakeRange(5, data!.length - 5))
+//            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+//
+//            let parsedResult: [[String:AnyObject]]
+//            do {
+//                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments) as! [[String : AnyObject]]
+//            } catch {
+//                print("Could not parse the data as JSON: '\(newData)'")
+//                return
+//            }
+//            if error != nil {
+//                return
+//            }
+            
+//            let parsedResult: AnyObject!
+//            do {
+//                parsedResult = try NSJSONSerialization.JSONObjectWithData(newData, options: .AllowFragments)
+//            } catch {
+//                print("Could not parse the data as JSON: '\(newData)'")
+//                return
+//            }
+//            print(parsedResult["account"])
+//        }
+//        task.resume()
+        
+//    }
     
 //    func taskForPOSTMethod(method: String, var parameters: [String:AnyObject], jsonBody: String, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
 //        

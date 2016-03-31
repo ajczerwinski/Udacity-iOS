@@ -48,24 +48,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-extension AppDelegate {
+//extension AppDelegate {
+
+//    func URLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
+//        
+//        let components = NSURLComponents()
+//        components.scheme = APIConstants.URLAPIMethods.UdacityAPIScheme
+//        components.host = APIConstants.URLAPIMethods.UdacityAPIHost
+//        components.path = APIConstants.URLAPIMethods.UdacityAPIPath + (withPathExtension ?? "")
+//        components.queryItems = [NSURLQueryItem]()
+//        
+//        for (key, value) in parameters {
+//            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
+//            components.queryItems!.append(queryItem)
+//        }
+//        
+//        return components.URL!
+//        
+//    }
     
-    func URLFromParameters(parameters: [String:AnyObject], withPathExtension: String? = nil) -> NSURL {
-        
-        let components = NSURLComponents()
-        components.scheme = APIConstants.URLAPIMethods.UdacityAPIScheme
-        components.host = APIConstants.URLAPIMethods.UdacityAPIHost
-        components.path = APIConstants.URLAPIMethods.UdacityAPIPath + (withPathExtension ?? "")
-        components.queryItems = [NSURLQueryItem]()
-        
-        for (key, value) in parameters {
-            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
-        }
-        
-        return components.URL!
-        
-    }
-    
-}
+//}
 
