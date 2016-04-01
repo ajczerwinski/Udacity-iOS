@@ -30,7 +30,7 @@ class UdacityClient : NSObject {
         let urlString = ApiMethods.UdacityBase + method
         let url = NSURL(string: urlString)!
         
-        // Configure request
+        // 3. Configure request
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -46,9 +46,9 @@ class UdacityClient : NSObject {
         
 //        "{\"udacity\": {\"username\": \"\(studentUsername.text!)\", \"password\": \"\(studentPassword.text!)\"}}"
         
-        // Make the request
+        // 4. Make the request
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
-        // TODO: Complete task
+            
             func sendError(error: String) {
                 print(error)
                 let userInfo = [NSLocalizedDescriptionKey : error]
@@ -70,13 +70,62 @@ class UdacityClient : NSObject {
                 return
             }
             
-            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+            let newData = UdacityClient.removeUdacityExtraCharactersFromData(data)
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
+            // 5/6. Parse and use the data
             UdacityClient.convertDataWithCompletionHandler(newData, completionHandler: completionHandlerForPOST)
         }
+        
+        // Start the request
         task.resume()
         return task
+    }
+    
+    func taskForGETMethod(method: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        // 1/2. Set parameters and build url
+        let urlString = ApiMethods.UdacityBase + method
+        let url = NSURL(string: urlString)!
+        
+        // 3. Configure request
+        let request = NSMutableURLRequest(URL: url)
+        
+        // 4. Make the request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+        
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForGET(result: nil, error: NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil ) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            let newData = UdacityClient.removeUdacityExtraCharactersFromData(data)
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            
+            // 5/6. Parse and use the data
+            UdacityClient.convertDataWithCompletionHandler(newData, completionHandler: completionHandlerForGET)
+        }
+        
+        // Start the request
+        task.resume()
+        return task
+        
     }
     
     class func convertDataWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
