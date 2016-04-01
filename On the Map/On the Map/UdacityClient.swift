@@ -93,6 +93,20 @@ class UdacityClient : NSObject {
         
     }
     
+    class func substituteKeyInMethod(method: String, key: String, value: String) -> String? {
+        
+        if method.rangeOfString("{\(key)}") != nil {
+            return method.stringByReplacingOccurrencesOfString("{\(key)}", withString: value)
+        } else {
+            return nil
+        }
+        
+    }
+    
+    class func removeUdacityExtraCharactersFromData(data: NSData) -> NSData {
+        return data.subdataWithRange(NSMakeRange(5, data.length - 5))
+    }
+    
     // MARK: Singleton of Udacity class
     class func sharedInstance() -> UdacityClient {
         struct Singleton {

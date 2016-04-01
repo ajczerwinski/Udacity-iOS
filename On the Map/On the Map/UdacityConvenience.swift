@@ -85,7 +85,9 @@ extension UdacityClient {
     }
     
     func getUserInfo(completionHandler: (success: Bool, result: UdacityUser?, errorString: String?) -> Void) {
-        return
+        var mutableMethod: String = ApiMethods.GetUserInfo
+        mutableMethod = UdacityClient.substituteKeyInMethod(mutableMethod, key: UdacityClient.ApiMethods.UserID, value: String(UdacityClient.sharedInstance().sessionID!))!
+        
     }
     
     

@@ -16,10 +16,12 @@ extension UdacityClient {
 //        static let UdacityAPIPath = "/api/"
         static let UdacityBase = "https://www.udacity.com/api/"
         static let SessionLogin = "session"
+        static let SessionDelete = "session"
+        static let UserID = "id"
 
 //        static let ParseBase = "https://api.parse.com/1/classes/"
         static let StudentLocations = "StudentLocation"
-        static let GetUserInfo = "users/"
+        static let GetUserInfo = "users/{id}"
     }
     
     struct UdacityParameterKeys {
@@ -43,6 +45,7 @@ extension UdacityClient {
         static let RegisteredKey = "key"
         static let Session = "session"
         static let SessionID = "id"
+        static let SessionExpiration = "expiration"
         
     }
     

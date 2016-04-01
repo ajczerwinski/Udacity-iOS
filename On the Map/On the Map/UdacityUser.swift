@@ -54,4 +54,14 @@ class UdacityUser {
         
     }
     
+    class func sharedInstance() -> UdacityUser {
+        
+        struct Singleton {
+            static var sharedInstance = UdacityUser()
+        }
+        
+        return Singleton.sharedInstance
+        
+    }
+    
 }
