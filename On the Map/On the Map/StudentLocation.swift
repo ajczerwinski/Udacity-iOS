@@ -10,8 +10,8 @@ import UIKit
 
 struct StudentLocation {
     
-    var firstName: String
-    var lastName: String
+    var firstName: String?
+    var lastName: String?
     var pinImage: UIImage
     
     init(firstName: String, lastName: String, pinImage: UIImage) {

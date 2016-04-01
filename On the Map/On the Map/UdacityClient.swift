@@ -27,7 +27,7 @@ class UdacityClient : NSObject {
     func taskForPOSTMethod(method: String, jsonBody: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
         // 1/2. Set parameters and build url
-        let urlString = UdacityConstants.ApiMethods.UdacityBase + method
+        let urlString = ApiMethods.UdacityBase + method
         let url = NSURL(string: urlString)!
         
         // Configure request
@@ -73,20 +73,24 @@ class UdacityClient : NSObject {
             let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
-            UdacityClient.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
+            UdacityClient.convertDataWithCompletionHandler(newData, completionHandler: completionHandlerForPOST)
         }
         task.resume()
         return task
     }
     
-    class func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
+    class func convertDataWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
         } catch {
-            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON:"]
+            let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
+            completionHandler(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
+        
+        completionHandler(result: parsedResult, error: nil)
+        
     }
     
     // MARK: Singleton of Udacity class

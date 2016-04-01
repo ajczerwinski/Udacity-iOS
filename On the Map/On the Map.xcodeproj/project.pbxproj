@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF086A2E1CAE151900D7773B /* UdacityUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF086A2D1CAE151900D7773B /* UdacityUser.swift */; };
 		BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5668C1CA713890047945C /* AppDelegate.swift */; };
 		BFE566921CA713890047945C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE566901CA713890047945C /* Main.storyboard */; };
 		BFE566941CA7138A0047945C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE566931CA7138A0047945C /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF086A2D1CAE151900D7773B /* UdacityUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityUser.swift; sourceTree = "<group>"; };
 		BFE566891CA713880047945C /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE5668C1CA713890047945C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE566911CA713890047945C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				BFE566B21CAB6F1E0047945C /* UdacityClient.swift */,
 				BFE566AE1CAA25440047945C /* UdacityConstants.swift */,
 				BFE566B41CACAA190047945C /* UdacityConvenience.swift */,
+				BF086A2D1CAE151900D7773B /* UdacityUser.swift */,
 			);
 			name = APIs;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 				BFE566A21CA9E9220047945C /* MapViewController.swift in Sources */,
 				BFE566B91CACB09C0047945C /* ParseClient.swift in Sources */,
 				BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */,
+				BF086A2E1CAE151900D7773B /* UdacityUser.swift in Sources */,
 				BFE566BB1CACB0B60047945C /* ParseConvenience.swift in Sources */,
 				BFE566A61CAA00080047945C /* StudentLocation.swift in Sources */,
 				BFE566A41CA9FD3D0047945C /* TableViewController.swift in Sources */,

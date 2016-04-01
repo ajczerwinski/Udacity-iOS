@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct UdacityConstants {
+extension UdacityClient {
     
     struct ApiMethods {
 //        static let Scheme = "https"
