@@ -39,47 +39,47 @@ extension UdacityClient {
                 print(error)
                 completionHandlerForAuth(success: false, sessionID: nil, errorString: "Login error")
             } else {
-//                if let accountObject = (result as! [String: AnyObject])[UdacityResponseKeys.Account] {
-//                    if let isRegistered: Bool = accountObject[UdacityResponseKeys.RegisteredStatus] {
-//                        if isRegistered {
-//                            if let userKey = accountObject[UdacityResponseKeys.RegisteredKey] {
-//                                if let sessionObject = (result as! [String:AnyObject])[UdacityResponseKeys.Session] {
-//                                    if sessionID = sessionObject[UdacityResponseKeys.SessionID] {
-//                                        self.userKey = (userKey as! String)
-//                                        self.sessionID = (sessionID as! String)
-//                                        print("Yay we found the sessionID! \(self.sessionID)")
-//                                        completionHandlerForAuth(success: true, sessionID: self.sessionID, errorString: nil)
-//                                    } else {
-//                                        // Couldn't get sessionID
-//                                        let errorMessage = "Couldn't get sessionID"
-//                                        print(errorMessage)
-//                                        completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                                    }
-//                                } else {
-//                                    let errorMessage = "Couldn't locate session"
-//                                    print(errorMessage)
-//                                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                                }
-//                            } else {
-//                                let errorMessage = "Couldn't locate key in user results"
-//                                print(errorMessage)
-//                                completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                            }
-//                        } else {
-//                            let errorMessage = "Couldn't find registered user"
-//                            print(errorMessage)
-//                            completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                        }
-//                    } else {
-//                        let errorMessage = "Couldn't find user registration info in account results"
-//                        print(errorMessage)
-//                        completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                    }
-//                } else {
-//                    let errorMessage = "Couldn't locate account info"
-//                    print(errorMessage)
-//                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                }
+                if let accountObject = (result as! [String: AnyObject])[UdacityResponseKeys.Account] {
+                    if let isRegistered: Bool = accountObject[UdacityResponseKeys.RegisteredStatus] {
+                        if isRegistered {
+                            if let userKey = accountObject[UdacityResponseKeys.RegisteredKey] {
+                                if let sessionObject = (result as! [String:AnyObject])[UdacityResponseKeys.Session] {
+                                    if sessionID = sessionObject[UdacityResponseKeys.SessionID] {
+                                        self.userKey = (userKey as! String)
+                                        self.sessionID = (sessionID as! String)
+                                        print("Yay we found the sessionID! \(self.sessionID)")
+                                        completionHandlerForAuth(success: true, sessionID: self.sessionID, errorString: nil)
+                                    } else {
+                                        // Couldn't get sessionID
+                                        let errorMessage = "Couldn't get sessionID"
+                                        print(errorMessage)
+                                        completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                                    }
+                                } else {
+                                    let errorMessage = "Couldn't locate session"
+                                    print(errorMessage)
+                                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                                }
+                            } else {
+                                let errorMessage = "Couldn't locate key in user results"
+                                print(errorMessage)
+                                completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                            }
+                        } else {
+                            let errorMessage = "Couldn't find registered user"
+                            print(errorMessage)
+                            completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                        }
+                    } else {
+                        let errorMessage = "Couldn't find user registration info in account results"
+                        print(errorMessage)
+                        completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                    }
+                } else {
+                    let errorMessage = "Couldn't locate account info"
+                    print(errorMessage)
+                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                }
             }
         }
     }
@@ -87,7 +87,22 @@ extension UdacityClient {
     func getUserInfo(completionHandler: (success: Bool, result: UdacityUser?, errorString: String?) -> Void) {
         var mutableMethod: String = ApiMethods.GetUserInfo
         mutableMethod = UdacityClient.substituteKeyInMethod(mutableMethod, key: UdacityClient.ApiMethods.UserID, value: String(UdacityClient.sharedInstance().sessionID!))!
-        
+        taskForGETMethod(mutableMethod) { (result, error) -> Void in
+            if let error = error {
+                print(error)
+                completionHandler(success: false, result: nil, errorString: error.localizedDescription)
+            } else {
+                if let userObject = (result as? [String:AnyObject]) where userObject.indexForKey("user") != nil {
+                    let userDetail = userObject[UdacityResponseKeys.User] as! [String:AnyObject]
+                    UdacityUser.sharedInstance().setPropertiesFromResults(userDetail)
+                    print("Udacity User data has been loaded! Here is the key: \(UdacityUser.sharedInstance().key)")
+                    completionHandler(success: true, result: UdacityUser.sharedInstance(), errorString: nil)
+                } else {
+                    print("Udacity User data failed to load - No details returned")
+                    completionHandler(success: false, result: nil, errorString: "No details for user returned")
+                }
+            }
+        }
     }
     
     
