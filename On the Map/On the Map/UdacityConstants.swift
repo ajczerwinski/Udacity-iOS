@@ -33,7 +33,10 @@ extension UdacityClient {
     
     
     struct UdacityResponseKeys {
-        static let StatusCode = "status_code"
+        static let User = "user"
+        static let UserFirstName = "first_name"
+        static let UserLastName = "last_name"
+        
         static let StatusMessage = "status_message"
         static let Account = "account"
         static let RegisteredStatus = "registered"

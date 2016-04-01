@@ -21,7 +21,7 @@ extension UdacityClient {
                         print("Successfully logged in! \(result?.key) FirstName: \(result?.firstName) LastName: \(result?.lastName)")
                         completionHandlerForAuth(success: true, errorString: nil)
                     } else {
-                        completionHandler(success: false, errorString: errorString)
+                        completionHandlerForAuth(success: false, errorString: errorString)
                     }
                 }
             } else {
