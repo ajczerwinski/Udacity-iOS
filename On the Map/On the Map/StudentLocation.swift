@@ -45,7 +45,21 @@ struct StudentLocation {
     
     init?(resultObject: [String: AnyObject]) {
         
-        objectID = resultObject[ParseClient.]
+        objectID = resultObject[ParseClient.ParseResponseKeys.ResultsObjectID] as? String
+        uniqueKey = resultObject[ParseClient.ParseResponseKeys.ResultsUniqueKey] as? String
+        firstName = resultObject[ParseClient.ParseResponseKeys.ResultsFirstName] as? String
+        lastName = resultObject[ParseClient.ParseResponseKeys.ResultsLastName] as? String
+        mapString = resultObject[ParseClient.ParseResponseKeys.ResultsMapString] as? String
+        mediaURL = resultObject[ParseClient.ParseResponseKeys.ResultsMediaURL] as? String
+        latitude = resultObject[ParseClient.ParseResponseKeys.ResultsLatitude] as? Double
+        longitude = resultObject[ParseClient.ParseResponseKeys.ResultsLongitude] as? Double
+        createdAt = resultObject[ParseClient.ParseResponseKeys.ResultsCreateAt] as? String
+        updatedAt = resultObject[ParseClient.ParseResponseKeys.ResultsUpdatedAt] as? String
+        
+        // If data we need to display on UI isn't available, don't return the object
+        if objectID == nil || uniqueKey == nil || latitude == nil || longitude == nil || firstName == nil {
+            return nil
+        }
         
     }
     

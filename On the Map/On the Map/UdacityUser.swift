@@ -17,4 +17,10 @@ class UdacityUser {
         }
     }
     
+    var firstName: String? {
+        willSet(newFirstName) {
+            
+        }
+    }
+    
 }
