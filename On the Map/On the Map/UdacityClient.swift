@@ -13,13 +13,14 @@ class UdacityClient : NSObject {
     // MARK: Properties
     
     // shared session
-    var session = NSURLSession.sharedSession()
+    var session: NSURLSession
     
     var sessionID: String? = nil
     var accountKey: String? = nil
     
     // MARK: Initializers
     override init() {
+        session = NSURLSession.sharedSession()
         super.init()
     }
     
@@ -57,13 +58,34 @@ class UdacityClient : NSObject {
             
             guard (error == nil ) else {
                 sendError("There was an error with your request: \(error)")
+                completionHandlerForPOST(result: nil, error: error)
                 return
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+                if let response = response as? NSHTTPURLResponse {
+                    print("Invalid response code: \(response.statusCode)")
+                    if response.statusCode == 403 {
+                        completionHandlerForPOST(result: nil, error: error)
+                    } else {
+                        completionHandlerForPOST(result: nil, error: error)
+                    }
+                } else if let response = response {
+                    print("Invalid response")
+                    completionHandlerForPOST(result: nil, error: error)
+                } else {
+                    print("Invalid request response")
+                    completionHandlerForPOST(result: nil, error: error)
+                }
+//                sendError("Your request returned a status code other than 2xx!")
                 return
             }
+            
+//            guard let response = response else {
+//                print("Received an invalid response!")
+//                completionHandlerForPOST(result: nil, error: error)
+//                return
+//            }
             
             guard let data = data else {
                 sendError("No data was returned by the request!")
@@ -71,7 +93,7 @@ class UdacityClient : NSObject {
             }
             
             let newData = UdacityClient.removeUdacityExtraCharactersFromData(data)
-            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+//            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
             // 5/6. Parse and use the data
             UdacityClient.convertDataWithCompletionHandler(newData, completionHandler: completionHandlerForPOST)
