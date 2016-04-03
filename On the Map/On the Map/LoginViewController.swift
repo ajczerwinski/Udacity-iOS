@@ -40,17 +40,23 @@ class LoginViewController: UIViewController {
         } else {
             setUIEnabled(false)
         }
-        UdacityClient.sharedInstance().authenticateWithUserCredentials(self) { (success, errorString) in
+        UdacityClient.sharedInstance().authenticateWithUserCredentials(studentUsername.text!, password: studentPassword.text!) { (success, errorString) in
             performUIUpdatesOnMain {
                 if success {
-                    print("success!")
+                    self.completeLogin()
                 } else {
                     self.displayError(errorString)
                 }
             }
         }
     }
+    
+    private func completeLogin() {
+        debugTextLabel.text = ""
+        let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
+        presentViewController(controller, animated: true, completion: nil)
     }
+}
 
 
 
