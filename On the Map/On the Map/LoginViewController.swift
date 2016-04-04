@@ -52,6 +52,7 @@ class LoginViewController: UIViewController {
     }
     
     private func completeLogin() {
+        ParseClient.sharedInstance()
         debugTextLabel.text = ""
         let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
         presentViewController(controller, animated: true, completion: nil)

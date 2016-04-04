@@ -17,6 +17,9 @@ extension ParseClient {
     
     struct ParseAPIMethods {
         
+        static let ParseScheme = "https"
+        static let ParseHost = "api.parse.com"
+        static let ParsePath = "/1/classes"
         static let ParseBase = "https://api.parse.com/1/classes/"
         static let GetStudentLocations = "StudentLocation"
         static let PostStudentLocations = "StudentLocation"

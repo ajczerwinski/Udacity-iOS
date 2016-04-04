@@ -44,7 +44,7 @@ extension UdacityClient {
                 if let accountObject = (result as! [String:AnyObject])[UdacityClient.UdacityResponseKeys.Account] {
                     if let isRegistered: Bool = accountObject[UdacityResponseKeys.RegisteredStatus] as? Bool {
                         if isRegistered {
-                            if let userKey = accountObject[self.UdacityResponseKeys.RegisteredKey] {
+//                            if let userKey = accountObject[self.UdacityResponseKeys.RegisteredKey] {
 //                                if let sessionObject = (result as! [String:AnyObject])[self.UdacityResponseKeys.Session] {
 //                                    if let sessionID = sessionObject[UdacityResponseKeys.SessionID] {
 //                                        self.accountKey = (userKey as! String)
@@ -60,12 +60,12 @@ extension UdacityClient {
 //                                    let errorMessage = "Couldn't locate session information in results"
 //                                    print(errorMessage)
 //                                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                                }
-                            } else {
-                                let errorMessage = "Couldn't locate key in user results"
-                                print(errorMessage)
-                                completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-                            }
+////                                }
+//                            } else {
+//                                let errorMessage = "Couldn't locate key in user results"
+//                                print(errorMessage)
+//                                completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+//                            }
                         } else {
                             let errorMessage = "User is not registered"
                             print(errorMessage)

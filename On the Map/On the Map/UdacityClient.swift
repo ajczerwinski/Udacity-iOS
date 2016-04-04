@@ -58,25 +58,27 @@ class UdacityClient : NSObject {
             
             guard (error == nil ) else {
                 sendError("There was an error with your request: \(error)")
-                completionHandlerForPOST(result: nil, error: error)
+//                completionHandlerForPOST(result: nil, error: error)
                 return
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                if let response = response as? NSHTTPURLResponse {
-                    print("Invalid response code: \(response.statusCode)")
-                    if response.statusCode == 403 {
-                        completionHandlerForPOST(result: nil, error: error)
-                    } else {
-                        completionHandlerForPOST(result: nil, error: error)
-                    }
-                } else if let response = response {
-                    print("Invalid response")
-                    completionHandlerForPOST(result: nil, error: error)
-                } else {
-                    print("Invalid request response")
-                    completionHandlerForPOST(result: nil, error: error)
-                }
+                
+                sendError("Your request returned a status code other than 2xx!")
+//                if let response = response as? NSHTTPURLResponse {
+//                    print("Invalid response code: \(response.statusCode)")
+//                    if response.statusCode == 403 {
+//                        completionHandlerForPOST(result: nil, error: error)
+//                    } else {
+//                        completionHandlerForPOST(result: nil, error: error)
+//                    }
+//                } else if let response = response {
+//                    print("Invalid response")
+//                    completionHandlerForPOST(result: nil, error: error)
+//                } else {
+//                    print("Invalid request response")
+//                    completionHandlerForPOST(result: nil, error: error)
+//                }
 //                sendError("Your request returned a status code other than 2xx!")
                 return
             }
@@ -96,7 +98,7 @@ class UdacityClient : NSObject {
 //            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
             // 5/6. Parse and use the data
-            UdacityClient.convertDataWithCompletionHandler(newData, completionHandler: completionHandlerForPOST)
+            UdacityClient.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
         }
         
         // Start the request
@@ -141,7 +143,7 @@ class UdacityClient : NSObject {
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
             // 5/6. Parse and use the data
-            UdacityClient.convertDataWithCompletionHandler(newData, completionHandler: completionHandlerForGET)
+            UdacityClient.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForGET)
         }
         
         // Start the request
@@ -150,17 +152,18 @@ class UdacityClient : NSObject {
         
     }
     
-    class func convertDataWithCompletionHandler(data: NSData, completionHandler: (result: AnyObject!, error: NSError?) -> Void) {
+    // POSSIBLE SEG FAULT CAUSE
+    class func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!
         do {
             parsedResult = try NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)
         } catch {
             let userInfo = [NSLocalizedDescriptionKey : "Could not parse the data as JSON: '\(data)'"]
-            completionHandler(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
+            completionHandlerForConvertData(result: nil, error: NSError(domain: "convertDataWithCompletionHandler", code: 1, userInfo: userInfo))
         }
         
-        completionHandler(result: parsedResult, error: nil)
+        completionHandlerForConvertData(result: parsedResult, error: nil)
         
     }
     

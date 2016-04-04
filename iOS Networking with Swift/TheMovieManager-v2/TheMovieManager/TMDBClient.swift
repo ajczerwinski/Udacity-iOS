@@ -229,4 +229,21 @@ class TMDBClient : NSObject {
         }
         return Singleton.sharedInstance
     }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
