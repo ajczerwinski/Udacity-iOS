@@ -61,6 +61,51 @@ class ParseClient: NSObject {
         return task
     }
     
+    func taskForPOSTMethod(method: String, jsonBody: [String: AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        let urlString = ParseAPIMethods.ParseBase + method
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        request.addValue(ParseConstants.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
+        request.addValue(ParseConstants.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        do {
+            request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+            print("Request Body: \(jsonBody)")
+        }
+        
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+         
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForPOST(result: nil, error: NSError(domain: "taskForPOSTMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request")
+                return
+            }
+            
+            ParseClient.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForPOST)
+            
+        }
+        
+        task.resume()
+        return task
+    }
+    
     class func substituteKeyInParameters(parameters: [String: AnyObject], key: String, value: String) -> [String: AnyObject] {
         var resultsObject: [String:AnyObject] = [:]
         for (objectKey, objectValue) in parameters {
