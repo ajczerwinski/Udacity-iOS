@@ -22,13 +22,6 @@ class ParseClient: NSObject {
     }
 
     func taskForGETMethod(method: String, var parameters: [String: AnyObject], jsonBody: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
-//        if substituteIntoParameters {
-//            mutableParameters = ParseClient.substituteKeyInParameters(mutableParameters, key: ParseURLKeys.UniqueKey, value: UdacityUser.sharedInstance().key!)
-//        }
-        
-//        let urlString = ParseAPIMethods.ParseBase + method + ParseClient.escapedParameters(mutableParameters)
-//        print("the url is: \(urlString)")
-//        let url = NSURL(string: urlString)!
         
         parameters[ParseURLKeys.UniqueKey] = ParseConstants.APIKey
         
@@ -60,10 +53,7 @@ class ParseClient: NSObject {
                 sendError("No data was returned by the request")
                 return
             }
-            
-            // POSSIBLE SEG FAULT CAUSE
-//            ParseClient.parseJSONWithCompletionHandler(data, completionHandlerForAuth: completionHandlerForAuth)
-//            
+                      
             ParseClient.convertDataWithCompletionHandler(data, completionHandlerForConvertData: completionHandlerForGET)
         }
         

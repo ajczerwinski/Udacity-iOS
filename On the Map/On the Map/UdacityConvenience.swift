@@ -41,31 +41,31 @@ extension UdacityClient {
                 print(error)
                 completionHandlerForAuth(success: false, sessionID: nil, errorString: "Connection Error")
             } else {
-                if let accountObject = (result as! [String:AnyObject])[UdacityClient.UdacityResponseKeys.Account] {
+                if let accountObject = (result as! [String:AnyObject])[UdacityResponseKeys.Account] {
                     if let isRegistered: Bool = accountObject[UdacityResponseKeys.RegisteredStatus] as? Bool {
                         if isRegistered {
-//                            if let userKey = accountObject[self.UdacityResponseKeys.RegisteredKey] {
-//                                if let sessionObject = (result as! [String:AnyObject])[self.UdacityResponseKeys.Session] {
-//                                    if let sessionID = sessionObject[UdacityResponseKeys.SessionID] {
-//                                        self.accountKey = (userKey as! String)
-//                                        self.sessionID = (sessionID as! String)
-//                                        print("Yay we found the sessionID! \(self.sessionID)")
-//                                        completionHandlerForAuth(success: true, sessionID: self.sessionID, errorString: nil)
-//                                    } else {
-//                                        let errorMessage = "Couldn't locate ID in the session results"
-//                                        print(errorMessage)
-//                                        completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                                    }
-//                                } else {
-//                                    let errorMessage = "Couldn't locate session information in results"
-//                                    print(errorMessage)
-//                                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-////                                }
-//                            } else {
-//                                let errorMessage = "Couldn't locate key in user results"
-//                                print(errorMessage)
-//                                completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
-//                            }
+                            if let userKey = accountObject[UdacityResponseKeys.RegisteredKey] {
+                                if let sessionObject = (result as! [String:AnyObject])[UdacityResponseKeys.Session] {
+                                    if let sessionID = sessionObject[UdacityResponseKeys.SessionID] {
+                                        self.accountKey = (userKey as! String)
+                                        self.sessionID = (sessionID as! String)
+                                        print("Yay we found the sessionID! \(self.sessionID)")
+                                        completionHandlerForAuth(success: true, sessionID: self.sessionID, errorString: nil)
+                                    } else {
+                                        let errorMessage = "Couldn't locate ID in the session results"
+                                        print(errorMessage)
+                                        completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                                    }
+                                } else {
+                                    let errorMessage = "Couldn't locate session information in results"
+                                    print(errorMessage)
+                                    completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                                }
+                            } else {
+                                let errorMessage = "Couldn't locate key in user results"
+                                print(errorMessage)
+                                completionHandlerForAuth(success: false, sessionID: nil, errorString: errorMessage)
+                            }
                         } else {
                             let errorMessage = "User is not registered"
                             print(errorMessage)

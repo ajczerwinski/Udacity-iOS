@@ -27,6 +27,15 @@ class UdacityClient : NSObject {
     // POST Method
     func taskForPOSTMethod(method: String, jsonBody: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
+        // TODO Set Parameters like in GET Method
+        
+//        parameters[UdacityParameterKeys.APIKey] =
+        
+        
+//        parameters[ParseURLKeys.UniqueKey] = ParseConstants.APIKey
+        
+        
+        
         // 1/2. Set parameters and build url
         let urlString = ApiMethods.UdacityBase + method
         let url = NSURL(string: urlString)!
@@ -65,21 +74,7 @@ class UdacityClient : NSObject {
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
                 
                 sendError("Your request returned a status code other than 2xx!")
-//                if let response = response as? NSHTTPURLResponse {
-//                    print("Invalid response code: \(response.statusCode)")
-//                    if response.statusCode == 403 {
-//                        completionHandlerForPOST(result: nil, error: error)
-//                    } else {
-//                        completionHandlerForPOST(result: nil, error: error)
-//                    }
-//                } else if let response = response {
-//                    print("Invalid response")
-//                    completionHandlerForPOST(result: nil, error: error)
-//                } else {
-//                    print("Invalid request response")
-//                    completionHandlerForPOST(result: nil, error: error)
-//                }
-//                sendError("Your request returned a status code other than 2xx!")
+
                 return
             }
             
