@@ -152,6 +152,55 @@ class ParseClient: NSObject {
         
     }
     
+    class func buildJSONBodyFromUdacityUser() -> [String: AnyObject] {
+        
+        var jsonBody: [String: AnyObject] = [:]
+        if let value = UdacityUser.sharedInstance().studentLocation.uniqueKey {
+            jsonBody[ParseParameterKeys.UniqueKey] = value
+        } else {
+            return [:]
+        }
+        if let value = UdacityUser.sharedInstance().studentLocation.firstName {
+            jsonBody[ParseParameterKeys.FirstName] = value
+        } else {
+            return [:]
+        }
+        if let value = UdacityUser.sharedInstance().studentLocation.lastName {
+            jsonBody[ParseParameterKeys.LastName] = value
+        } else {
+            return [:]
+        }
+        if let value = UdacityUser.sharedInstance().studentLocation.mapString {
+            jsonBody[ParseParameterKeys.MapString] = value
+        } else {
+            return [:]
+        }
+        if let value = UdacityUser.sharedInstance().studentLocation.mediaURL {
+            jsonBody[ParseParameterKeys.MediaURL] = value
+        } else {
+            return [:]
+        }
+        if let value = UdacityUser.sharedInstance().studentLocation.latitude {
+            jsonBody[ParseParameterKeys.Latitude] = value
+        } else {
+            return [:]
+        }
+        if let value = UdacityUser.sharedInstance().studentLocation.longitude {
+            jsonBody[ParseParameterKeys.Longitude] = value
+        } else {
+            return [:]
+        }
+        return jsonBody
+    }
+    
+    class func substituteKeyInMethod(method: String, key: String, value: String) -> String? {
+        if method.rangeOfString("{\(key)}") != nil {
+            return method.stringByReplacingOccurrencesOfString("{\(key)}", withString: value)
+        } else {
+            return nil
+        }
+    }
+    
     class func substituteKeyInParameters(parameters: [String: AnyObject], key: String, value: String) -> [String: AnyObject] {
         var resultsObject: [String:AnyObject] = [:]
         for (objectKey, objectValue) in parameters {
