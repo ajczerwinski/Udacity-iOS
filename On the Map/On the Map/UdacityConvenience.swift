@@ -105,4 +105,17 @@ extension UdacityClient {
             }
         }
     }
+    
+    // TODO: implement deleteSessionID method
+//    func deleteSessionID(completionHandler: (success: Bool, errorString: String?) -> Void) {
+//        
+//        
+//        
+//    }
+    
+    // TODO: implement function to load Udacity sign up page
+//    func loadUdacitySignUpPage() {
+//
+//    }
+    
 }

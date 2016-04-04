@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 struct StudentLocation {
     
@@ -60,6 +61,52 @@ struct StudentLocation {
         if objectID == nil || uniqueKey == nil || latitude == nil || longitude == nil || firstName == nil {
             return nil
         }
+        
+    }
+    
+    func mapAnnotationPoint() -> MKPointAnnotation {
+        
+        let lat = CLLocationDegrees(latitude!)
+        let long = CLLocationDegrees(longitude!)
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        return annotation
+        
+    }
+    
+    func mapAnnotation() -> MKPointAnnotation {
+        
+        let annotation = self.mapAnnotationPoint()
+        annotation.title = "\(firstName!) \(lastName!)"
+        annotation.subtitle = mediaURL!
+        return annotation
+        
+    }
+    
+    func daysSinceLastUpdated() -> Int? {
+        
+        if var dateString = updatedAt {
+            
+            dateString = dateString.stringByReplacingOccurrencesOfString("T", withString: " ")
+            dateString = dateString.stringByReplacingOccurrencesOfString("Z", withString: "")
+            let formatter = NSDateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss.SSS"
+            if let record = formatter.dateFromString(dateString) {
+                return daysBetweenDates(record, endDate: NSDate())
+            } else {
+                return nil
+            }
+            
+        }
+        return nil
+    }
+    
+    func daysBetweenDates(startDate: NSDate, endDate: NSDate) -> Int {
+        
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
+        return components.day
         
     }
     
