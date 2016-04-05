@@ -106,16 +106,34 @@ extension UdacityClient {
         }
     }
     
-    // TODO: implement deleteSessionID method
-//    func deleteSessionID(completionHandler: (success: Bool, errorString: String?) -> Void) {
-//        
-//        
-//        
-//    }
+    // deleteSessionID method
+    func deleteSessionID(completionHandler: (success: Bool, errorString: String?) -> Void) {
+        
+        let method = ApiMethods.SessionDelete
+        taskForDELETEMethod(method) { (result, error) in
+            if let error = error {
+                print("Error in getUserInfo: \(error.localizedDescription)")
+                completionHandler(success: false, errorString: error.localizedDescription)
+            } else {
+                if let resultObject = (result as? [String: AnyObject]) where resultObject.indexForKey(UdacityResponseKeys.Session) != nil {
+                    if let sessionObject = resultObject[UdacityResponseKeys.Session] as? [String: AnyObject] {
+                        if let sessionID = sessionObject[UdacityResponseKeys.SessionID] as? String {
+                            print("Successfully logged out with Session ID: \(sessionID)")
+                            completionHandler(success: true, errorString: nil)
+                            return
+                        }
+                    }
+                }
+                print("Failed to log out of Udacity Session")
+                completionHandler(success: false, errorString: "Unable to delete Session ID")
+            }
+        }
+        
+    }
     
     // TODO: implement function to load Udacity sign up page
 //    func loadUdacitySignUpPage() {
-//
-//    }
     
+//    }
+
 }

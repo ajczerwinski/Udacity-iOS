@@ -11,20 +11,18 @@ import UIKit
 extension UdacityClient {
     
     struct ApiMethods {
-//        static let Scheme = "https"
-//        static let UdacityAPIHost = "www.udacity.com"
-//        static let UdacityAPIPath = "/api/"
+
         static let UdacityBase = "https://www.udacity.com/api/"
         static let SessionLogin = "session"
         static let SessionDelete = "session"
         static let UserID = "id"
 
-//        static let ParseBase = "https://api.parse.com/1/classes/"
         static let StudentLocations = "StudentLocation"
         static let GetUserInfo = "users/{id}"
     }
     
     struct UdacityParameterKeys {
+        
         static let APIKey = "api_key"
         static let RequestToken = "request_token"
         static let SessionID = "session_id"
@@ -35,6 +33,7 @@ extension UdacityClient {
     
     
     struct UdacityResponseKeys {
+        
         static let User = "user"
         static let UserFirstName = "first_name"
         static let UserLastName = "last_name"
