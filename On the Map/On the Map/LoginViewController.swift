@@ -57,6 +57,12 @@ class LoginViewController: UIViewController {
         let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
         presentViewController(controller, animated: true, completion: nil)
     }
+    
+    @IBAction func signUpButtonPressed(sender: UIButton) {
+        UdacityClient.sharedInstance().loadUdacitySignUpPage()
+    }
+    
+    
 }
 
 

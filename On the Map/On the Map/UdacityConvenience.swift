@@ -6,7 +6,7 @@
 //  Copyright © 2016 Allen Czerwinski. All rights reserved.
 //
 
-//import UIKit
+import UIKit
 import Foundation
 
 extension UdacityClient {
@@ -132,8 +132,8 @@ extension UdacityClient {
     }
     
     // TODO: implement function to load Udacity sign up page
-//    func loadUdacitySignUpPage() {
-    
-//    }
+    func loadUdacitySignUpPage() {
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
+    }
 
 }
