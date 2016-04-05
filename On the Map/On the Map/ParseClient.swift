@@ -21,15 +21,21 @@ class ParseClient: NSObject {
         super.init()
     }
 
-    func taskForGETMethod(method: String, var parameters: [String: AnyObject], jsonBody: String, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+    func taskForGETMethod(method: String, parameters: [String: AnyObject], substituteIntoParameters: Bool = false, completionHandlerForGET: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        parameters[ParseURLKeys.UniqueKey] = ParseConstants.APIKey
+        var mutableParameters = parameters
+        if substituteIntoParameters {
+            mutableParameters = ParseClient.substituteKeyInParameters(mutableParameters, key: ParseURLKeys.UniqueKey, value: UdacityUser.sharedInstance().key!)
+        }
         
-        let request = NSMutableURLRequest(URL: escapedParameters(parameters, withPathExtension: method))
-        request.HTTPMethod = "GET"
+        let urlString = ParseAPIMethods.ParseBase + method + ParseClient.escapedParameters(mutableParameters)
+        
+//        parameters[ParseURLKeys.UniqueKey] = ParseConstants.APIKey
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
         request.addValue(ParseConstants.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(ParseConstants.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
+//        request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
@@ -231,20 +237,23 @@ class ParseClient: NSObject {
         
     }
     
-    private func escapedParameters(parameters: [String: AnyObject], withPathExtension: String? = nil) -> NSURL {
+    class func escapedParameters(parameters: [String: AnyObject]) -> String {
         
-        let components = NSURLComponents()
-        components.scheme = ParseAPIMethods.ParseScheme
-        components.host = ParseAPIMethods.ParseHost
-        components.path = ParseAPIMethods.ParsePath + (withPathExtension ?? "")
-        components.queryItems = [NSURLQueryItem]()
+//        let components = NSURLComponents()
+//        components.scheme = ParseAPIMethods.ParseScheme
+//        components.host = ParseAPIMethods.ParseHost
+//        components.path = ParseAPIMethods.ParsePath + (withPathExtension ?? "")
+//        components.queryItems = [NSURLQueryItem]()
+        
+        var urlVars = [String]()
         
         for (key, value) in parameters {
-            let queryItem = NSURLQueryItem(name: key, value: "\(value)")
-            components.queryItems!.append(queryItem)
+            let stringValue = "\(value)"
+            let escapedValue = stringValue.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())
+            urlVars += [key + "=" + "\(escapedValue!)"]
         }
         
-        return components.URL!
+        return (!urlVars.isEmpty ? "?" : "") + urlVars.joinWithSeparator("&")
         
     }
     

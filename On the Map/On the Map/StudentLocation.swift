@@ -111,3 +111,34 @@ struct StudentLocation {
     }
     
 }
+
+class StudentLocationCollection {
+    var collection: [StudentLocation] = []
+    var annotations: [MKPointAnnotation] = []
+    
+    class func sharedInstance() -> StudentLocationCollection {
+        struct Singleton {
+            static var sharedArray = StudentLocationCollection()
+        }
+        return Singleton.sharedArray
+    }
+    
+    func populateCollectionFromResults(clearFirst: Bool, results: [[String: AnyObject]]) -> Void {
+        if clearFirst {
+            collection.removeAll()
+            annotations.removeAll()
+        }
+        for studentLocationObject in results {
+            if let newStudentLocation = StudentLocation(resultObject: studentLocationObject as [String: AnyObject]) {
+                collection.append(newStudentLocation)
+            }
+        }
+        
+        collection.sortInPlace {$0.updatedAt > $1.updatedAt}
+        for location in collection {
+            annotations.append(location.mapAnnotation())
+        }
+        
+    }
+    
+}
