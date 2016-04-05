@@ -27,15 +27,6 @@ class UdacityClient : NSObject {
     // POST Method
     func taskForPOSTMethod(method: String, jsonBody: [String:AnyObject], completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
         
-        // TODO Set Parameters like in GET Method
-        
-//        parameters[UdacityParameterKeys.APIKey] =
-        
-        
-//        parameters[ParseURLKeys.UniqueKey] = ParseConstants.APIKey
-        
-        
-        
         // 1/2. Set parameters and build url
         let urlString = ApiMethods.UdacityBase + method
         let url = NSURL(string: urlString)!
@@ -52,9 +43,6 @@ class UdacityClient : NSObject {
         } catch {
             print("Could not serialize json")
         }
-//        let httpBody = NSJSONSerialization.dataWithJSONObject(jsonBody, options: NSJSONWritingOptions.PrettyPrinted)
-        
-//        "{\"udacity\": {\"username\": \"\(studentUsername.text!)\", \"password\": \"\(studentPassword.text!)\"}}"
         
         // 4. Make the request
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
@@ -78,19 +66,12 @@ class UdacityClient : NSObject {
                 return
             }
             
-//            guard let response = response else {
-//                print("Received an invalid response!")
-//                completionHandlerForPOST(result: nil, error: error)
-//                return
-//            }
-            
             guard let data = data else {
                 sendError("No data was returned by the request!")
                 return
             }
             
             let newData = UdacityClient.removeUdacityExtraCharactersFromData(data)
-//            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
             
             // 5/6. Parse and use the data
             UdacityClient.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForPOST)
@@ -147,7 +128,67 @@ class UdacityClient : NSObject {
         
     }
     
-    // POSSIBLE SEG FAULT CAUSE
+    func taskForDELETEMethod(method: String, completionHandlerForDELETE: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        // 1/2. Set parameters and build url
+        let urlString = ApiMethods.UdacityBase + method
+        let url = NSURL(string: urlString)!
+        
+        // 3. Configure request and manage the cookie
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "DELETE"
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        
+        if let theCookies = sharedCookieStorage.cookies {
+            for cookie in theCookies {
+                if cookie.name == "XSRF-TOKEN" {
+                    xsrfCookie = cookie
+                }
+            }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        
+        // 4. Make the request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            func sendError(error: String) {
+                print(error)
+                let userInfo = [NSLocalizedDescriptionKey : error]
+                completionHandlerForDELETE(result: nil, error: NSError(domain: "taskForGETMethod", code: 1, userInfo: userInfo))
+            }
+            
+            guard (error == nil ) else {
+                sendError("There was an error with your request: \(error)")
+                return
+            }
+            
+            guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
+                sendError("Your request returned a status code other than 2xx!")
+                return
+            }
+            
+            guard let data = data else {
+                sendError("No data was returned by the request!")
+                return
+            }
+            
+            let newData = UdacityClient.removeUdacityExtraCharactersFromData(data)
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+            
+            // 5/6. Parse and use the data
+            UdacityClient.convertDataWithCompletionHandler(newData, completionHandlerForConvertData: completionHandlerForDELETE)
+        }
+        
+        // Start the request
+        task.resume()
+        return task
+        
+    }
+    
     class func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!
