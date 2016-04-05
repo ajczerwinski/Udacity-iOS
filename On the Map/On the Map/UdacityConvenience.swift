@@ -39,7 +39,7 @@ extension UdacityClient {
             
             if let error = error {
                 print(error)
-                completionHandlerForAuth(success: false, sessionID: nil, errorString: "Connection Error")
+                completionHandlerForAuth(success: false, sessionID: nil, errorString: "Connection Error in here yo, login error?")
             } else {
                 if let accountObject = (result as! [String:AnyObject])[UdacityResponseKeys.Account] {
                     if let isRegistered: Bool = accountObject[UdacityResponseKeys.RegisteredStatus] as? Bool {
@@ -87,7 +87,7 @@ extension UdacityClient {
     
     func getUserInfo(completionHandler: (success: Bool, result: UdacityUser?, errorString: String?) -> Void) {
         var mutableMethod: String = ApiMethods.GetUserInfo
-        mutableMethod = UdacityClient.substituteKeyInMethod(mutableMethod, key: UdacityClient.ApiMethods.UserID, value: String(UdacityClient.sharedInstance().sessionID!))!
+        mutableMethod = UdacityClient.substituteKeyInMethod(mutableMethod, key: UdacityClient.ApiMethods.UserID, value: String(UdacityClient.sharedInstance().accountKey!))!
         taskForGETMethod(mutableMethod) { (result, error) -> Void in
             if let error = error {
                 print(error)

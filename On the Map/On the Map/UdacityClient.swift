@@ -29,7 +29,9 @@ class UdacityClient : NSObject {
         
         // 1/2. Set parameters and build url
         let urlString = ApiMethods.UdacityBase + method
+        print(urlString)
         let url = NSURL(string: urlString)!
+        print(url)
         
         // 3. Configure request
         let request = NSMutableURLRequest(URL: url)
@@ -54,15 +56,16 @@ class UdacityClient : NSObject {
             }
             
             guard (error == nil ) else {
-                sendError("There was an error with your request: \(error)")
+                print("There was an error with your request: \(error)")
 //                completionHandlerForPOST(result: nil, error: error)
                 return
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                
+                if let response = response as? NSHTTPURLResponse {
+                    print("Invalid statusCode response: \(response.statusCode)")
+                }
                 sendError("Your request returned a status code other than 2xx!")
-
                 return
             }
             
@@ -106,7 +109,7 @@ class UdacityClient : NSObject {
             }
             
             guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
-                sendError("Your request returned a status code other than 2xx!")
+                sendError("Your request returned a status code other than 2xx! \(error)")
                 return
             }
             
