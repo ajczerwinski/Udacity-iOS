@@ -46,5 +46,63 @@ extension ParseClient {
         }
     }
     
+    func getUserStudentLocations(completionHandlerForGET: (success: Bool, errorString: String?) -> Void) {
+        
+        let parameters = [ParseParameterKeys.WhereQuery: "{\"uniqueKey\":\"{uniqueKey}\"}"]
+        let method: String = ParseAPIMethods.GetUserStudentLocation
+        
+        taskForGETMethod(method, parameters: parameters, substituteIntoParameters: true) { (result, error) -> Void in
+            
+            if let error = error {
+                completionHandlerForGET(success: false, errorString: error.localizedDescription)
+            } else {
+                if let resultsObject = (result as? [String: AnyObject]) where resultsObject.indexForKey(ParseResponseKeys.Results) != nil {
+                    print("Results: \(resultsObject)")
+                    if let studentLocationArray = (resultsObject[ParseResponseKeys.Results] as? [[String:AnyObject]]) where studentLocationArray.count > 0 {
+                        if let studentObject:[String:AnyObject] = studentLocationArray[0] {
+                            if let objectID: String = studentObject[ParseResponseKeys.ObjectID] as? String {
+                                UdacityUser.sharedInstance().parseObjectID = objectID
+                                print("User objectID set to: \(objectID)")
+                                completionHandlerForGET(success: true, errorString: nil)
+                            } else {
+                                completionHandlerForGET(success: false, errorString: "No objectID found")
+                            }
+                        } else {
+                            completionHandlerForGET(success: false, errorString: "No student records found")
+                        }
+                    } else {
+                        completionHandlerForGET(success: false, errorString: "Error getting student location from query")
+                    }
+                } else {
+                    completionHandlerForGET(success: false, errorString: "No student location details returned")
+                }
+            }
+            
+        }
+    }
+    
+    func putStudentLocation(completionHandlerForPUT: (success: Bool, errorString: String?) -> Void) {
+        
+        var mutableMethod: String = ParseAPIMethods.PutUserStudentLocation
+        mutableMethod = UdacityClient.substituteKeyInMethod(mutableMethod, key: ParseClient.ParseURLKeys.ObjectID, value: String(UdacityUser.sharedInstance().parseObjectID!))!
+        let jsonBody: [String: AnyObject] = ParseClient.buildJSONBodyFromUdacityUser()
+        taskForPUTMethod(mutableMethod, jsonBody: jsonBody) { (result, error) -> Void in
+            if let error = error {
+                completionHandlerForPUT(success: false, errorString: "Student Location put failed: \(error.localizedDescription)")
+            } else {
+                if let resultsObject = (result as? [String: AnyObject]) {
+                    if let updatedAt = resultsObject[ParseResponseKeys.ResultsUpdatedAt] as? String {
+                        print("User location updated to : \(updatedAt)")
+                        completionHandlerForPUT(success: true, errorString: nil)
+                    } else {
+                        completionHandlerForPUT(success: false, errorString: "Error getting student location post response")
+                    }
+                } else {
+                    completionHandlerForPUT(success: false, errorString: "Student Location Post failed")
+                }
+            }
+        }
+        
+    }
     
 }

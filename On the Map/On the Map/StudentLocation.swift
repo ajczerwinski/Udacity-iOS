@@ -102,14 +102,6 @@ struct StudentLocation {
         return nil
     }
     
-    func daysBetweenDates(startDate: NSDate, endDate: NSDate) -> Int {
-        
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day], fromDate: startDate, toDate: endDate, options: [])
-        return components.day
-        
-    }
-    
 }
 
 class StudentLocationCollection {

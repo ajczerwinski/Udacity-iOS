@@ -29,13 +29,11 @@ class ParseClient: NSObject {
         }
         
         let urlString = ParseAPIMethods.ParseBase + method + ParseClient.escapedParameters(mutableParameters)
-        
-//        parameters[ParseURLKeys.UniqueKey] = ParseConstants.APIKey
+
         let url = NSURL(string: urlString)!
         let request = NSMutableURLRequest(URL: url)
         request.addValue(ParseConstants.ParseID, forHTTPHeaderField: "X-Parse-Application-Id")
         request.addValue(ParseConstants.APIKey, forHTTPHeaderField: "X-Parse-REST-API-Key")
-//        request.HTTPBody = jsonBody.dataUsingEncoding(NSUTF8StringEncoding)
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             
