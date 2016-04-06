@@ -46,24 +46,27 @@ class LoginViewController: UIViewController {
                     self.completeLogin()
                 } else {
                     self.displayError(errorString)
+                    self.setUIEnabled(true)
                 }
             }
         }
     }
     
-    private func completeLogin() {
+    func completeLogin() {
         ParseClient.sharedInstance().loadStudentLocations() { (success, errorString) in
             if success {
                 print("Successfully loaded student locations! \(StudentLocationCollection.sharedInstance().collection.count)")
                 performUIUpdatesOnMain {
-                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                    let resultVC = storyboard.instantiateViewControllerWithIdentifier("NavigationManagerController") as! UINavigationController
-                    self.presentViewController(resultVC, animated: true, completion: nil)
+//                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let resultVC = self.storyboard!.instantiateViewControllerWithIdentifier("NavigationManagerController") as! UINavigationController
+                        self.presentViewController(resultVC, animated: true, completion: nil)
                 
                 
                     
                 }
                 
+            } else {
+                print("failed to get student data")
             }
         }
         debugTextLabel.text = ""
