@@ -220,7 +220,7 @@ class ParseClient: NSObject {
         }
         return resultsObject
     }
-    
+    // CHECK HERE
     class func convertDataWithCompletionHandler(data: NSData, completionHandlerForConvertData: (result: AnyObject!, error: NSError?) -> Void) {
         
         var parsedResult: AnyObject!

@@ -23,6 +23,7 @@ extension ParseClient {
         }
     }
     
+    // LOOK HERE APPEARS TO BE TASK FOR GET METHOD but seems to get through successfully
     func getStudentLocations(completionHandlerForGET: (success: Bool, errorString: String?) -> Void) {
         let parameters = [ParseParameterKeys.SortOrder: "-updatedAt"]
         taskForGETMethod(ParseAPIMethods.GetStudentLocations, parameters: parameters) { (result, error) -> Void in

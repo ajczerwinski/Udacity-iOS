@@ -123,6 +123,7 @@ class StudentLocationCollection {
         for studentLocationObject in results {
             if let newStudentLocation = StudentLocation(resultObject: studentLocationObject as [String: AnyObject]) {
                 collection.append(newStudentLocation)
+                print(collection[0].firstName)
             }
         }
         
