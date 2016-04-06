@@ -52,10 +52,23 @@ class LoginViewController: UIViewController {
     }
     
     private func completeLogin() {
-        ParseClient.sharedInstance()
+        ParseClient.sharedInstance().loadStudentLocations() { (success, errorString) in
+            if success {
+                print("Successfully loaded student locations! \(StudentLocationCollection.sharedInstance().collection.count)")
+                performUIUpdatesOnMain {
+                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                    let resultVC = storyboard.instantiateViewControllerWithIdentifier("NavigationManagerController") as! UINavigationController
+                    self.presentViewController(resultVC, animated: true, completion: nil)
+                
+                
+                    
+                }
+                
+            }
+        }
         debugTextLabel.text = ""
-        let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
-        presentViewController(controller, animated: true, completion: nil)
+//        let controller = storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
+//        presentViewController(controller, animated: true, completion: nil)
     }
     
     @IBAction func signUpButtonPressed(sender: UIButton) {

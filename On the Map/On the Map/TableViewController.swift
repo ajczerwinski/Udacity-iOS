@@ -36,22 +36,31 @@ class TableViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if studentLocation.count <= 100 {
-            return studentLocation.count
-        } else {
-            return 100
-        }
+//        if studentLocation.count <= 100 {
+//            return studentLocation.count
+//        } else {
+//            return 100
+//        }
+        
+//        print(StudentLocationCollection.sharedInstance().collection.count)
+        return StudentLocationCollection.sharedInstance().collection.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
-        let student = self.studentLocation[indexPath.row]
+//        let student = self.studentLocation[indexPath.row]
+//        
+//        cell.pinImage.image = UIImage(named: "map_icon")
+//        cell.pinImage.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.studentName.text = "\(student["firstName"]!) \(student["lastName"]!)"
         
-        cell.pinImage.image = UIImage(named: "map_icon")
-        cell.pinImage.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.studentName.text = "\(student["firstName"]!) \(student["lastName"]!)"
+//        return cell
+//        let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
+        let student = StudentLocationCollection.sharedInstance().collection[indexPath.row]
+        cell.studentName.text = ("\(student.firstName!) \(student.lastName!)")
+        cell.pinImage.image = UIImage(named: "map_icon")!
+        
         
         return cell
     }
-    
 }
