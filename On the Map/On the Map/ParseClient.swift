@@ -237,12 +237,6 @@ class ParseClient: NSObject {
     
     class func escapedParameters(parameters: [String: AnyObject]) -> String {
         
-//        let components = NSURLComponents()
-//        components.scheme = ParseAPIMethods.ParseScheme
-//        components.host = ParseAPIMethods.ParseHost
-//        components.path = ParseAPIMethods.ParsePath + (withPathExtension ?? "")
-//        components.queryItems = [NSURLQueryItem]()
-        
         var urlVars = [String]()
         
         for (key, value) in parameters {

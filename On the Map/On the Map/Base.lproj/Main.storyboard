@@ -221,10 +221,10 @@
             </objects>
             <point key="canvasLocation" x="-1547" y="889"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--NavigationController-->
         <scene sceneID="yAy-Qy-Jtb">
             <objects>
-                <navigationController storyboardIdentifier="NavigationManagerController" id="7ng-Pd-Myv" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationManagerController" title="NavigationController" id="7ng-Pd-Myv" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vDI-TG-l02">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

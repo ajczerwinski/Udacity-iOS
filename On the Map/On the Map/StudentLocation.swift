@@ -32,13 +32,13 @@ struct StudentLocation {
         }
     }
     
-    init(firstName: String, lastName: String, pinImage: UIImage) {
-        
-        self.firstName = firstName
-        self.lastName = lastName
-        self.pinImage = pinImage
-        
-    }
+//    init(firstName: String, lastName: String, pinImage: UIImage) {
+//        
+//        self.firstName = firstName
+//        self.lastName = lastName
+//        self.pinImage = pinImage
+//        
+//    }
     
     init() {
         
@@ -123,7 +123,7 @@ class StudentLocationCollection {
         for studentLocationObject in results {
             if let newStudentLocation = StudentLocation(resultObject: studentLocationObject as [String: AnyObject]) {
                 collection.append(newStudentLocation)
-                print(collection[0].firstName)
+//                print(collection[0].firstName)
             }
         }
         

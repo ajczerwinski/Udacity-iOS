@@ -41,14 +41,14 @@ class LoginViewController: UIViewController {
             setUIEnabled(false)
         }
         UdacityClient.sharedInstance().authenticateWithUserCredentials(studentUsername.text!, password: studentPassword.text!) { (success, errorString) in
-            performUIUpdatesOnMain {
+            dispatch_async(dispatch_get_main_queue(), {
                 if success {
                     self.completeLogin()
                 } else {
                     self.displayError(errorString)
                     self.setUIEnabled(true)
                 }
-            }
+            })
         }
     }
     
@@ -56,14 +56,15 @@ class LoginViewController: UIViewController {
         ParseClient.sharedInstance().loadStudentLocations() { (success, errorString) in
             if success {
                 print("Successfully loaded student locations! \(StudentLocationCollection.sharedInstance().collection.count)")
-                performUIUpdatesOnMain {
+                dispatch_async(dispatch_get_main_queue(), {
 //                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                    let storyboard = UIStoryboard(name: "Main",  bundle: nil)
                     let resultVC = self.storyboard!.instantiateViewControllerWithIdentifier("NavigationManagerController") as! UINavigationController
-                        self.presentViewController(resultVC, animated: true, completion: nil)
+                    self.presentViewController(resultVC, animated: true, completion: nil)
                 
                 
                     
-                }
+                })
                 
             } else {
                 print("failed to get student data")

@@ -10,24 +10,10 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    var studentLocation = [
-        [
-            "firstName" : "Bob",
-            "lastName" : "Smith",
-            "pinImage" : UIImage(named: "map_icon")!
-            
-        ], [
-            "firstName" : "Jed",
-            "lastName" : "Jones",
-            "pinImage" : UIImage(named: "map_icon")!
-            
-        ],[
-            "firstName" : "Ted",
-            "lastName" : "Toomey",
-            "pinImage" : UIImage(named: "map_icon")!
-            
-        ],
-     ]
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        getStudentLocations()
+    }
     
     override func viewWillAppear(animated: Bool) {
         
@@ -44,10 +30,13 @@ class TableViewController: UITableViewController {
         
 //        print(StudentLocationCollection.sharedInstance().collection.count)
         return StudentLocationCollection.sharedInstance().collection.count
+//        return 1
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
+        let studentLocation = StudentLocationCollection.sharedInstance().collection[indexPath.row]
+        
 //        let student = self.studentLocation[indexPath.row]
 //        
 //        cell.pinImage.image = UIImage(named: "map_icon")
@@ -56,11 +45,34 @@ class TableViewController: UITableViewController {
         
 //        return cell
 //        let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
-        let student = StudentLocationCollection.sharedInstance().collection[indexPath.row]
-        cell.studentName.text = ("\(student.firstName!) \(student.lastName!)")
+//        let student = StudentLocationCollection.sharedInstance().collection[indexPath.row]
+//        let student = studentLocation[indexPath.row]
+//        cell.studentName.text = ("\(student) \(student)")
+        cell.studentName.text = studentLocation.firstName
         cell.pinImage.image = UIImage(named: "map_icon")!
         
         
         return cell
+    }
+    
+    func getStudentLocations() {
+        
+        ParseClient.sharedInstance().getUserStudentLocations() { (success, error) in
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), { 
+                    print("Error in getting student location data")
+                })
+            } else if success {
+                print("got student data!")
+                dispatch_async(dispatch_get_main_queue(), { 
+                    self.tableView.reloadData()
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), { 
+                print("could not get student data")
+                })
+            }
+        
+        }
     }
 }
