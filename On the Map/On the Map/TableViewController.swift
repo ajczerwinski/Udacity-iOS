@@ -50,7 +50,7 @@ class TableViewController: UITableViewController {
     
     func getStudentLocations() {
         
-        ParseClient.sharedInstance().loadStudentLocations() { (success, error) in
+        ParseClient.sharedInstance().getStudentLocations() { (success, error) in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), { 
                     print("Error in getting student location data")
