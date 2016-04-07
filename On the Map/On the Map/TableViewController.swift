@@ -10,27 +10,16 @@ import UIKit
 
 class TableViewController: UITableViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        getStudentLocations()
-    }
-    
     override func viewWillAppear(animated: Bool) {
-        
+        getStudentLocations()
         tableView.reloadData()
         
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if studentLocation.count <= 100 {
-//            return studentLocation.count
-//        } else {
-//            return 100
-//        }
         
-//        print(StudentLocationCollection.sharedInstance().collection.count)
         return StudentLocationCollection.sharedInstance().collection.count
-//        return 1
+
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -48,7 +37,7 @@ class TableViewController: UITableViewController {
 //        let student = StudentLocationCollection.sharedInstance().collection[indexPath.row]
 //        let student = studentLocation[indexPath.row]
 //        cell.studentName.text = ("\(student) \(student)")
-        cell.studentName.text = studentLocation.firstName
+        cell.studentName.text = studentLocation.fullName
         cell.pinImage.image = UIImage(named: "map_icon")!
         
         
@@ -57,10 +46,11 @@ class TableViewController: UITableViewController {
     
     func getStudentLocations() {
         
-        ParseClient.sharedInstance().getUserStudentLocations() { (success, error) in
+        ParseClient.sharedInstance().loadStudentLocations() { (success, error) in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), { 
                     print("Error in getting student location data")
+                    self.tableView.reloadData()
                 })
             } else if success {
                 print("got student data!")

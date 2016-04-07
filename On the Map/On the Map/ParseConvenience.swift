@@ -82,6 +82,28 @@ extension ParseClient {
         }
     }
     
+    func postStudentLocation(completionHandlerForPOST: (success: Bool, errorString: String?) -> Void) {
+        
+        let jsonBody: [String: AnyObject] = ParseClient.buildJSONBodyFromUdacityUser()
+        taskForPOSTMethod(ParseAPIMethods.PostStudentLocations, jsonBody: jsonBody) { (result, error) -> Void in
+            if let error = error {
+                completionHandlerForPOST(success: false, errorString: "Failed to POST student location: \(error.localizedDescription)")
+            } else {
+                if let resultsObject = (result as? [String: AnyObject]) {
+                    if let objectID = resultsObject[ParseResponseKeys.ObjectID] as? String {
+                        UdacityUser.sharedInstance().studentLocation.objectID = objectID
+                        completionHandlerForPOST(success: true, errorString: nil)
+                    } else {
+                        completionHandlerForPOST(success: false, errorString: "Error unpacking Student Location in POST")
+                    }
+                
+                } else {
+                    completionHandlerForPOST(success: false, errorString: "Failed to POST student location")
+                }
+            }
+        }
+    }
+    
     func putStudentLocation(completionHandlerForPUT: (success: Bool, errorString: String?) -> Void) {
         
         var mutableMethod: String = ParseAPIMethods.PutUserStudentLocation
