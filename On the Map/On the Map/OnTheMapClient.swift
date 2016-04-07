@@ -69,9 +69,108 @@ class OnTheMapClient: NSObject {
         return task
     }
     
+    func taskForPOSTMethod(method: String, baseURL: String, headers: [String: String]?, jsonBody: [String: AnyObject]?, completionHandlerForPOST: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        // 1/2/3. Set parameters, build the url and configure the request
+        let urlString = baseURL + method
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "POST"
+        if let headers = headers {
+            for(key, value) in headers {
+                request.addValue(value, forHTTPHeaderField: key)
+            }
+        } else {
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        }
+        
+        if let jsonBody = jsonBody {
+            do {
+                request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(jsonBody, options: .PrettyPrinted)
+            }
+        }
+        
+        print(request.allHTTPHeaderFields)
+        print(NSString(data: request.HTTPBody!, encoding: NSUTF8StringEncoding)!)
+        
+        // 4. Make the request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            OnTheMapClient.manageErrors(data, response: response, error: error, completionHandler: completionHandlerForPOST)
+            
+            // 5/6. Parse and use the data
+            if let data = data {
+                
+                var newData: NSData
+                // If data comes from Udacity, strip the first 5 characters
+                if data == OnTheMapClient.Methods.UdacityPostOrDeleteSession {
+                    newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+                } else {
+                    newData = data
+                }
+                
+                OnTheMapClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandlerForPOST)
+                
+            }
+        }
+        
+        // 7. start the request and return it
+        task.resume()
+        return task
+        
+    }
     
-    
-    
+    func taskForDELETEMethod(method: String, completionHandlerForDELETE: (result: AnyObject!, error: NSError?) -> Void) -> NSURLSessionDataTask {
+        
+        // 1/2/3. Set the parameters, build URL and configure request
+        var baseURL = "https://"
+        // If method is coming from Udacity, use UdacityBaseURL, otherwise use Parse
+        if method == OnTheMapClient.Methods.UdacityPostOrDeleteSession {
+            baseURL = Constants.UdacityBaseURL
+        } else {
+            baseURL = Constants.ParseBaseURL
+        }
+        
+        let urlString = baseURL + method
+        let url = NSURL(string: urlString)!
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "DELETE"
+        // Cookie management
+        var xsrfCookie: NSHTTPCookie? = nil
+        let sharedCookieStorage = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        for cookie in sharedCookieStorage.cookies! {
+            if cookie.name == "XSRF-TOKEN" { xsrfCookie = cookie }
+        }
+        
+        if let xsrfCookie = xsrfCookie {
+            request.setValue(xsrfCookie.value, forHTTPHeaderField: "X-XSRF-TOKEN")
+        }
+        let session = NSURLSession.sharedSession()
+        
+        // 4. Manage the request
+        let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            
+            OnTheMapClient.manageErrors(data, response: response, error: error, completionHandler: completionHandlerForDELETE)
+            
+            // 5/6. Parse the data and use it
+            if let data = data {
+                var newData: NSData
+                // If data comes from Udacity, strip the first 5 characters
+                if data == OnTheMapClient.Methods.UdacityPostOrDeleteSession {
+                    newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
+                } else {
+                    newData = data
+                }
+                OnTheMapClient.parseJSONWithCompletionHandler(newData, completionHandler: completionHandlerForDELETE)
+            }
+        }
+        
+        // 7. Start the request and return it
+        task.resume()
+        return task
+        
+    }
     
     
     
