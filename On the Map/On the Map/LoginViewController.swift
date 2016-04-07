@@ -59,7 +59,7 @@ class LoginViewController: UIViewController {
                 dispatch_async(dispatch_get_main_queue(), {
 //                    let storyboard = UIStoryboard(name: "Main", bundle: nil)
 //                    let storyboard = UIStoryboard(name: "Main",  bundle: nil)
-                    let resultVC = self.storyboard!.instantiateViewControllerWithIdentifier("NavigationManagerController") as! UINavigationController
+                    let resultVC = self.storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
                     self.presentViewController(resultVC, animated: true, completion: nil)
                 
                 
