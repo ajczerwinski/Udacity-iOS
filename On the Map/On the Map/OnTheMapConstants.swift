@@ -10,10 +10,16 @@ import Foundation
 
 extension OnTheMapClient {
     
+    //  Authentication services (for implementing Facebook login later on)
+    enum AuthService {
+        case Udacity
+        case Facebook
+    }
+    
     struct Constants {
         
         // Parse Authorization
-        static let ParseID: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
+        static let ParseId: String = "QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr"
         static let APIKey: String = "QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY"
         
         // URLs
@@ -35,13 +41,13 @@ extension OnTheMapClient {
     
     struct URLKeys {
         
-        static let UserID = "id"
+        static let UserId = "id"
         
     }
     
     struct ParameterKeys {
         
-        static let UserID = "id"
+        static let UserId = "id"
         static let Limit = "limit"
         static let Skip = "skip"
         static let Where = "where"
@@ -51,7 +57,7 @@ extension OnTheMapClient {
     
     struct HeaderKeys {
         
-        static let ParseAppID = "X-Parse-Application-Id"
+        static let ParseAppId = "X-Parse-Application-Id"
         static let ParseRESTAPIKey = "X-Parse-REST-API-Key"
         
     }

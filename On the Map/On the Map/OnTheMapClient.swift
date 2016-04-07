@@ -13,6 +13,8 @@ class OnTheMapClient: NSObject {
     //Shared session
     var session: NSURLSession
     
+    var authServiceUsed: AuthService?
+    
     var sessionID: String? = nil
     var userID: Int? = nil
     
