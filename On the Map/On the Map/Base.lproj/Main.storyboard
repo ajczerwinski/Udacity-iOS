@@ -60,7 +60,25 @@
                             <outlet property="delegate" destination="YWE-u0-D75" id="1Mj-Kc-MOL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="On The Map" id="TMV-kX-IMW"/>
+                    <navigationItem key="navigationItem" title="On The Map" id="TMV-kX-IMW">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="cZ8-T6-vv7">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="YWE-u0-D75" id="6c0-qP-Do2"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="snf-uV-KFE">
+                                <connections>
+                                    <action selector="reloadButtonPressed:" destination="YWE-u0-D75" id="EDR-do-Vrh"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="fLV-FI-rr9">
+                                <connections>
+                                    <segue destination="Xos-6K-NlD" kind="presentation" id="LlN-hj-mag"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GFn-vm-96x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -91,7 +109,23 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="cmO-Vp-o5A">
-                        <barButtonItem key="leftBarButtonItem" id="ZoA-fr-bYu"/>
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="Z7F-Mw-e8Z">
+                            <connections>
+                                <action selector="logoutButtonPressed:" destination="JZa-Qb-WHF" id="fV4-Q9-0ra"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="refresh" id="k5y-LL-8Wv">
+                                <connections>
+                                    <action selector="reloadButtonPressed:" destination="JZa-Qb-WHF" id="qfF-8J-GVy"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="pin" id="BnK-WP-QCq">
+                                <connections>
+                                    <segue destination="Xos-6K-NlD" kind="presentation" id="n57-G4-s4Y"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="BVd-RJ-jyW" id="X4g-ZB-dge"/>
@@ -100,6 +134,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qu3-1Z-K2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="703" y="1282"/>
+        </scene>
+        <!--Student Details View Controller-->
+        <scene sceneID="5gU-cl-UHF">
+            <objects>
+                <viewController id="Xos-6K-NlD" customClass="StudentDetailsViewController" customModule="On_the_Map" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Mhp-xn-bH7"/>
+                        <viewControllerLayoutGuide type="bottom" id="xRI-Gz-gow"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JDt-e9-d3J">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0g-R9-LWl">
+                                <rect key="frame" x="304" y="98" width="17" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8R-Lz-A7G">
+                                <rect key="frame" x="533" y="28" width="48" height="30"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="cancelButtonPressed:" destination="Xos-6K-NlD" eventType="touchUpInside" id="hyg-sO-owD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s8R-Lz-A7G" firstAttribute="top" secondItem="Mhp-xn-bH7" secondAttribute="bottom" constant="8" id="4C2-ua-yLL"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="s8R-Lz-A7G" secondAttribute="trailing" id="MTq-WO-j73"/>
+                            <constraint firstItem="G0g-R9-LWl" firstAttribute="centerX" secondItem="JDt-e9-d3J" secondAttribute="centerX" id="XqJ-I6-CNg"/>
+                            <constraint firstItem="G0g-R9-LWl" firstAttribute="top" secondItem="Mhp-xn-bH7" secondAttribute="bottom" constant="78" id="sKN-oM-32p"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JGz-3y-PXI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1425" y="777"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="vIo-Hp-BSM">
@@ -286,7 +359,11 @@
     <resources>
         <image name="list" width="32" height="32"/>
         <image name="map" width="32" height="32"/>
+        <image name="pin" width="32" height="32"/>
         <image name="udacity" width="256" height="256"/>
         <image name="udacity_background" width="316" height="538"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="n57-G4-s4Y"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -78,4 +78,35 @@ class StudentListViewController: UITableViewController {
             self.presentViewController(alert, animated: true, completion: nil)
         })
     }
+    
+    @IBAction func reloadButtonPressed(sender: AnyObject) {
+    
+        getStudentLocations()
+        
+    }
+    
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        
+        OnTheMapClient.sharedInstance().deleteSession { (success, error) in
+            
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), {
+                    AlertConvenience.showAlert(self, error: error!)
+                })
+            } else if success {
+                print("Session successfully deleted")
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not delete session/logout"])
+                    AlertConvenience.showAlert(self, error: error)
+                })
+            }
+        }
+        
+    }
+    
+    
 }

@@ -58,6 +58,7 @@ extension OnTheMapClient {
                 completionHandler(success: false, error: error)
             } else {
                 if let results = result["session"]!!["id"] as? String {
+                    OnTheMapClient.sharedInstance().authServiceUsed = nil
                     OnTheMapClient.sharedInstance().sessionId = nil
                     print("Session deleted for ID: \(results)")
                     completionHandler(success: true, error: nil)

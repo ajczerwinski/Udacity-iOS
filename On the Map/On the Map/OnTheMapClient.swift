@@ -161,7 +161,7 @@ class OnTheMapClient: NSObject {
             if let data = data {
                 var newData: NSData
                 // If data comes from Udacity, strip the first 5 characters
-                if data == OnTheMapClient.Methods.UdacityDeleteSession {
+                if method == OnTheMapClient.Methods.UdacityDeleteSession {
                     newData = data.subdataWithRange(NSMakeRange(5, data.length - 5))
                 } else {
                     newData = data

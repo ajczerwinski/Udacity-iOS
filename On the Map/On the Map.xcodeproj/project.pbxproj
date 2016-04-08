@@ -12,6 +12,7 @@
 		BF3FAFE51CB6FADE00505F5E /* OnTheMapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE41CB6FADE00505F5E /* OnTheMapConstants.swift */; };
 		BF3FAFE71CB6FAF000505F5E /* OnTheMapConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */; };
 		BF3FAFE91CB7210600505F5E /* AlertConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */; };
+		BF3FAFEC1CB8536E00505F5E /* StudentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */; };
 		BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5668C1CA713890047945C /* AppDelegate.swift */; };
 		BFE566921CA713890047945C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE566901CA713890047945C /* Main.storyboard */; };
 		BFE566941CA7138A0047945C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE566931CA7138A0047945C /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		BF3FAFE41CB6FADE00505F5E /* OnTheMapConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConstants.swift; sourceTree = "<group>"; };
 		BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConvenience.swift; sourceTree = "<group>"; };
 		BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConvenience.swift; sourceTree = "<group>"; };
+		BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewController.swift; sourceTree = "<group>"; };
 		BFE566891CA713880047945C /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE5668C1CA713890047945C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE566911CA713890047945C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				BFE566A71CAA035F0047945C /* StudentLocationViewCell.swift */,
 				BFE566B01CAB1C0E0047945C /* LoginViewController.swift */,
 				BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */,
+				BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				BFE566AF1CAA25440047945C /* UdacityConstants.swift in Sources */,
 				BFE566A21CA9E9220047945C /* StudentMapViewController.swift in Sources */,
 				BFE566B91CACB09C0047945C /* ParseClient.swift in Sources */,
+				BF3FAFEC1CB8536E00505F5E /* StudentDetailsViewController.swift in Sources */,
 				BF3FAFE91CB7210600505F5E /* AlertConvenience.swift in Sources */,
 				BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */,
 				BF086A2E1CAE151900D7773B /* UdacityUser.swift in Sources */,
