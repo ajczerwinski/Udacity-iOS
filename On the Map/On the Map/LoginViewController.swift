@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var appDelegate: AppDelegate!
     
@@ -20,12 +20,24 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        studentUsername.delegate = self
+        studentPassword.delegate = self
+        
+//        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         setUIEnabled(true)
     }
     
+    func textFieldDidBeginEditing(textField: UITextField) {
+        
+        textField.text = ""
+        
+    }
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
@@ -42,22 +54,6 @@ class LoginViewController: UIViewController {
                 })
             }
         }
-        
-//        if studentUsername.text!.isEmpty || studentPassword.text!.isEmpty {
-//            debugTextLabel.text = "Username or Password Empty"
-//        } else {
-//            setUIEnabled(false)
-//        }
-//        UdacityClient.sharedInstance().authenticateWithUserCredentials(studentUsername.text!, password: studentPassword.text!) { (success, errorString) in
-//            dispatch_async(dispatch_get_main_queue(), {
-//                if success {
-//                    self.completeLogin()
-//                } else {
-//                    self.displayError(errorString)
-//                    self.setUIEnabled(true)
-//                }
-//            })
-//        }
     }
     
     func completeLogin(service: OnTheMapClient.AuthService) {
