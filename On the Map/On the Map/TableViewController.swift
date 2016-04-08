@@ -30,30 +30,12 @@ class TableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
         let studentLocation = StudentLocation.sharedInstance.studentArray[indexPath.row]
-        cell.studentName.text = "\(studentLocation.firstName) \(studentLocation.lastName)"
+        cell.studentName.text = "\(studentLocation.firstName!) \(studentLocation.lastName!)"
         cell.pinImage.image = UIImage(named: "map_icon")
         
         return cell
     }
-//        let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
-//        let studentLocation = StudentLocationCollection.sharedInstance().collection[indexPath.row]
-//        
-////        let student = self.studentLocation[indexPath.row]
-////        
-////        cell.pinImage.image = UIImage(named: "map_icon")
-////        cell.pinImage.contentMode = UIViewContentMode.ScaleAspectFit
-////        cell.studentName.text = "\(student["firstName"]!) \(student["lastName"]!)"
-//        
-////        return cell
-////        let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
-////        let student = StudentLocationCollection.sharedInstance().collection[indexPath.row]
-////        let student = studentLocation[indexPath.row]
-////        cell.studentName.text = ("\(student) \(student)")
-//        cell.studentName.text = studentLocation.fullName
-//        cell.pinImage.image = UIImage(named: "map_icon")!
-//        
-//        
-//        return cell
+
     
     func getStudentLocations() {
         
