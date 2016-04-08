@@ -196,11 +196,11 @@ class OnTheMapClient: NSObject {
         guard let statusCode = (response as? NSHTTPURLResponse)?.statusCode where statusCode >= 200 && statusCode <= 299 else {
             if let response = response as? NSHTTPURLResponse {
                 if response.statusCode == 403 {
-                    print("Authentication Error: Status code: \(response.statusCode)")
-                    completionHandler(result: nil, error: NSError(domain: "Authentication Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Status code: ](response.statusCode)!"]))
+                    print("Authentication Error: Invalid Username/Password")
+                    completionHandler(result: nil, error: NSError(domain: "Authentication Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Invalid Username or Password!"]))
                 } else {
                     print("Server Error: Request returned an invalid response. Status code: \(response.statusCode)")
-                    completionHandler(result: nil, error: NSError(domain: "Server Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Request returned an invalid response. Status code: \(response.statusCode)!"]))
+                    completionHandler(result: nil, error: NSError(domain: "Server Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Username and Password cannot be blank!"]))
                 }
             } else if let response = response {
                 print("Server Error: Request returned an invalid response. Response: \(response)!")
