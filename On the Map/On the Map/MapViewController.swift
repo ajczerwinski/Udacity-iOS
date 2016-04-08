@@ -58,7 +58,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
-            annotation.title = "\(location.firstName) \(location.lastName)"
+            annotation.title = "\(location.firstName!) \(location.lastName!)"
             annotation.subtitle = location.mediaURL! as! String
             
             annotations.append(annotation)
@@ -77,7 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinTintColor = UIColor.redColor()
+            pinView!.pinTintColor = UIColor.grayColor()
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         } else {
             pinView!.annotation = annotation

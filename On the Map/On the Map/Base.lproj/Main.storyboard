@@ -113,8 +113,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="yTj-oW-xOT">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity_background" translatesAutoresizingMaskIntoConstraints="NO" id="yTj-oW-xOT">
                                 <rect key="frame" x="0.0" y="-350" width="600" height="950"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacity" translatesAutoresizingMaskIntoConstraints="NO" id="H0A-yV-ePx">
+                                <rect key="frame" x="180" y="28" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="GfU-6V-hsh"/>
+                                    <constraint firstAttribute="height" constant="128" id="Yi9-8W-elE"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5R6-Et-S5X">
                                 <rect key="frame" x="233" y="224" width="134" height="31"/>
@@ -184,12 +191,15 @@
                             <constraint firstItem="5R6-Et-S5X" firstAttribute="centerX" secondItem="QcH-GL-yAq" secondAttribute="centerX" id="6uf-JX-lUl"/>
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="8IW-IR-lNh"/>
                             <constraint firstItem="JTb-qs-TzD" firstAttribute="top" secondItem="5R6-Et-S5X" secondAttribute="bottom" constant="20" id="AGf-MX-iQ9"/>
+                            <constraint firstItem="H0A-yV-ePx" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" constant="160" id="AVI-34-ReF"/>
                             <constraint firstItem="yTj-oW-xOT" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" constant="-20" id="CAM-B2-1Pi"/>
                             <constraint firstItem="rOH-bI-iL0" firstAttribute="top" secondItem="fHi-qp-5Fx" secondAttribute="bottom" constant="20" id="Ck9-20-9FA"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="top" secondItem="ztY-m9-2Ch" secondAttribute="bottom" constant="10" id="FbZ-jE-bHO"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="GWO-AS-K8G"/>
                             <constraint firstItem="rOH-bI-iL0" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="Hxa-CP-wq3"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="Iaf-Fm-Uy9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="H0A-yV-ePx" secondAttribute="trailing" constant="160" id="Kys-z7-7cc"/>
+                            <constraint firstItem="H0A-yV-ePx" firstAttribute="top" secondItem="5FG-6u-zTT" secondAttribute="bottom" constant="8" id="M6M-TD-NWh"/>
                             <constraint firstItem="fHi-qp-5Fx" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="Q1G-3S-3yF"/>
                             <constraint firstItem="fHi-qp-5Fx" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="WGF-cu-Hq3"/>
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="top" secondItem="JTb-qs-TzD" secondAttribute="bottom" constant="10" id="Y9R-Jg-7iL"/>
@@ -199,11 +209,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="JTb-qs-TzD" secondAttribute="trailing" id="gZz-ma-fdP"/>
                             <constraint firstItem="rOH-bI-iL0" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="hzv-Ql-sGG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yTj-oW-xOT" secondAttribute="trailing" constant="-20" id="i9R-NW-m9c"/>
+                            <constraint firstItem="H0A-yV-ePx" firstAttribute="centerX" secondItem="QcH-GL-yAq" secondAttribute="centerX" id="qr3-vN-3pf"/>
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="vsf-S7-OAV"/>
                             <constraint firstItem="fHi-qp-5Fx" firstAttribute="top" secondItem="k4N-RQ-RtD" secondAttribute="bottom" constant="5" id="x0D-tO-IAH"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="AVI-34-ReF"/>
+                                <exclude reference="Kys-z7-7cc"/>
                                 <exclude reference="YUb-jn-v87"/>
                             </mask>
                         </variation>
@@ -248,7 +261,7 @@
         <scene sceneID="EeW-0u-DwG">
             <objects>
                 <navigationController title="List View" automaticallyAdjustsScrollViewInsets="NO" id="8tP-ue-knZ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="List" id="3MZ-tA-3Qz"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="3MZ-tA-3Qz"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hKh-Px-79v">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -267,7 +280,7 @@
         <scene sceneID="4mB-GO-RjV">
             <objects>
                 <navigationController title="Map View" automaticallyAdjustsScrollViewInsets="NO" id="19s-7u-gYb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="WO0-vP-nNt"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="WO0-vP-nNt"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="t95-9D-RID">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -284,6 +297,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="768" height="1024"/>
+        <image name="list" width="32" height="32"/>
+        <image name="map" width="32" height="32"/>
+        <image name="udacity" width="256" height="256"/>
+        <image name="udacity_background" width="316" height="538"/>
     </resources>
 </document>
