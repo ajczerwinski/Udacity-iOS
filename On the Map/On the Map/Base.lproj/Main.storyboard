@@ -166,7 +166,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="QSj-vM-Wvf"/>
                                 </constraints>
-                                <state key="normal" title="Don't have an account? Sign Up">
+                                <state key="normal" title="Don't have an account? Sign Up!">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -174,15 +174,6 @@
                                     <action selector="signUpButtonPressed:" destination="jlf-8E-IiB" eventType="touchUpInside" id="viX-m4-4dm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="rOH-bI-iL0">
-                                <rect key="frame" x="20" y="474" width="560" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="52" id="vDN-My-vZe"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -193,10 +184,8 @@
                             <constraint firstItem="JTb-qs-TzD" firstAttribute="top" secondItem="5R6-Et-S5X" secondAttribute="bottom" constant="20" id="AGf-MX-iQ9"/>
                             <constraint firstItem="H0A-yV-ePx" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" constant="160" id="AVI-34-ReF"/>
                             <constraint firstItem="yTj-oW-xOT" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" constant="-20" id="CAM-B2-1Pi"/>
-                            <constraint firstItem="rOH-bI-iL0" firstAttribute="top" secondItem="fHi-qp-5Fx" secondAttribute="bottom" constant="20" id="Ck9-20-9FA"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="top" secondItem="ztY-m9-2Ch" secondAttribute="bottom" constant="10" id="FbZ-jE-bHO"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="GWO-AS-K8G"/>
-                            <constraint firstItem="rOH-bI-iL0" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="Hxa-CP-wq3"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="Iaf-Fm-Uy9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0A-yV-ePx" secondAttribute="trailing" constant="160" id="Kys-z7-7cc"/>
                             <constraint firstItem="H0A-yV-ePx" firstAttribute="top" secondItem="5FG-6u-zTT" secondAttribute="bottom" constant="8" id="M6M-TD-NWh"/>
@@ -207,7 +196,6 @@
                             <constraint firstItem="JTb-qs-TzD" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="ZDc-2L-upF"/>
                             <constraint firstItem="Rgu-kZ-T8k" firstAttribute="top" secondItem="yTj-oW-xOT" secondAttribute="bottom" id="fIN-tn-e7d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JTb-qs-TzD" secondAttribute="trailing" id="gZz-ma-fdP"/>
-                            <constraint firstItem="rOH-bI-iL0" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="hzv-Ql-sGG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yTj-oW-xOT" secondAttribute="trailing" constant="-20" id="i9R-NW-m9c"/>
                             <constraint firstItem="H0A-yV-ePx" firstAttribute="centerX" secondItem="QcH-GL-yAq" secondAttribute="centerX" id="qr3-vN-3pf"/>
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="vsf-S7-OAV"/>
@@ -222,7 +210,6 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="debugTextLabel" destination="rOH-bI-iL0" id="Gce-zo-Qw1"/>
                         <outlet property="loginButtonUI" destination="k4N-RQ-RtD" id="0eq-Uc-LUq"/>
                         <outlet property="studentPassword" destination="ztY-m9-2Ch" id="nQS-Tq-BDk"/>
                         <outlet property="studentUsername" destination="JTb-qs-TzD" id="u8H-du-6QQ"/>

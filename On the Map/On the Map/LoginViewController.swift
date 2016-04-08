@@ -15,15 +15,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var studentUsername: UITextField!
     @IBOutlet weak var studentPassword: UITextField!
     @IBOutlet weak var loginButtonUI: UIButton!
-    @IBOutlet weak var debugTextLabel: UILabel!
+    // @IBOutlet weak var debugTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         studentUsername.delegate = self
         studentPassword.delegate = self
-        
-//        appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         
         setUIEnabled(true)
     }
@@ -69,7 +67,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func signUpButtonPressed(sender: UIButton) {
-        UdacityClient.sharedInstance().loadUdacitySignUpPage()
+
+        UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
+        
     }
     
     
@@ -83,8 +83,8 @@ extension LoginViewController {
         studentUsername.enabled = enabled
         studentPassword.enabled = enabled
         loginButtonUI.enabled = enabled
-        debugTextLabel.text = ""
-        debugTextLabel.enabled = enabled
+        // debugTextLabel.text = ""
+        // debugTextLabel.enabled = enabled
         
         if enabled {
             loginButtonUI.alpha = 1.0
@@ -92,10 +92,10 @@ extension LoginViewController {
             loginButtonUI.alpha = 0.5
         }
     }
-    
-    private func displayError(errorString: String?) {
-        if let errorString = errorString {
-            debugTextLabel.text = errorString
-        }
-    }
+//    
+//    private func displayError(errorString: String?) {
+//        if let errorString = errorString {
+//            debugTextLabel.text = errorString
+//        }
+//    }
 }

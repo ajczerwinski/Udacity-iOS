@@ -67,6 +67,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF3FAFEA1CB83DDB00505F5E /* Deprecated Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFE566B81CACB09C0047945C /* ParseClient.swift */,
+				BFE566B61CACB0910047945C /* ParseConstants.swift */,
+				BFE566BA1CACB0B60047945C /* ParseConvenience.swift */,
+				BFE566B21CAB6F1E0047945C /* UdacityClient.swift */,
+				BFE566AE1CAA25440047945C /* UdacityConstants.swift */,
+				BFE566B41CACAA190047945C /* UdacityConvenience.swift */,
+				BF086A2D1CAE151900D7773B /* UdacityUser.swift */,
+			);
+			name = "Deprecated Files";
+			sourceTree = "<group>";
+		};
 		BFE566801CA713870047945C = {
 			isa = PBXGroup;
 			children = (
@@ -86,6 +100,7 @@
 		BFE5668B1CA713890047945C /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
+				BF3FAFEA1CB83DDB00505F5E /* Deprecated Files */,
 				BFE566A01CA9E8CC0047945C /* Model */,
 				BFE5669F1CA9E8C80047945C /* View */,
 				BFE5669E1CA9E8C30047945C /* Controller */,
@@ -138,13 +153,6 @@
 		BFE566AD1CAA18160047945C /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				BFE566B81CACB09C0047945C /* ParseClient.swift */,
-				BFE566B61CACB0910047945C /* ParseConstants.swift */,
-				BFE566BA1CACB0B60047945C /* ParseConvenience.swift */,
-				BFE566B21CAB6F1E0047945C /* UdacityClient.swift */,
-				BFE566AE1CAA25440047945C /* UdacityConstants.swift */,
-				BFE566B41CACAA190047945C /* UdacityConvenience.swift */,
-				BF086A2D1CAE151900D7773B /* UdacityUser.swift */,
 				BF3FAFE21CB6FACC00505F5E /* OnTheMapClient.swift */,
 				BF3FAFE41CB6FADE00505F5E /* OnTheMapConstants.swift */,
 				BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */,

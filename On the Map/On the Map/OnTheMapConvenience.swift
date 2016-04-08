@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension OnTheMapClient {
     
@@ -175,5 +176,4 @@ extension OnTheMapClient {
             }
         }
     }
-    
 }
