@@ -26,7 +26,46 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func populateStudentLocations() {
-        ParseClient.sharedInstance()
+        OnTheMapClient.sharedInstance().getStudentLocations() { (success, error) in
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), {
+                    AlertConvenience.showAlert(self, error: error!)
+                })
+            } else if success {
+                print("Yay we got student data!")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.setMapLocations()
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not get student data for map"])
+                    AlertConvenience.showAlert(self, error: error)
+                })
+            }
+        }
+    }
+    
+    func setMapLocations() {
+        
+        var annotations = [MKPointAnnotation]()
+        
+        for location in StudentLocation.sharedInstance.studentArray {
+            
+            let latitude = CLLocationDegrees(location.latitude! as Double)
+            let longitude = CLLocationDegrees(location.longitude! as Double)
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "\(location.firstName) \(location.lastName)"
+            annotation.subtitle = location.mediaURL! as! String
+            
+            annotations.append(annotation)
+        }
+        
+        mapView.addAnnotations(annotations)
+        
     }
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -58,49 +97,5 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         
     }
-    
-    
-//    func hardCodedLocationData() -> [[String : AnyObject]] {
-//        
-//        return [
-//            [
-//                "createdAt" : "2015-02-24T22:27:14.456Z",
-//                "firstName" : "Bob",
-//                "lastName" : "Smith",
-//                "latitude" : 28.1461248,
-//                "longitude" : -82.75676799999999,
-//                "mapString" : "Tarpon Springs, FL",
-//                "mediaURL" : "www.linkedin.com/in/jessicauelmen/en",
-//                "objectId" : "kj18GEaWD8",
-//                "uniqueKey" : 872458750,
-//                "updatedAt" : "2015-03-09T22:07:09.593Z"
-//                
-//            ], [
-//                "createdAt" : "2015-02-24T22:35:30.639Z",
-//                "firstName" : "Jed",
-//                "lastName" : "Jones",
-//                "latitude" : 35.1740471,
-//                "longitude" : -79.3922539,
-//                "mapString" : "Southern Pines, NC",
-//                "mediaURL" : "http://www.linkedin.com/pub/gabrielle-miller-messner/11/557/60/en",
-//                "objectId" : "8ZEuHF5uX8",
-//                "uniqueKey" : 2256298598,
-//                "updatedAt" : "2015-03-11T03:23:49.582Z"
-//            ],
-//               [
-//                "createdAt" : "2015-02-24T22:30:54.442Z",
-//                "firstName" : "Ted",
-//                "lastName" : "Toomey",
-//                "latitude" : 37.7617,
-//                "longitude" : -122.4216,
-//                "mapString" : "18th and Valencia, San Francisco, CA",
-//                "mediaURL" : "http://en.wikipedia.org/wiki/Swift_%28programming_language%29",
-//                "objectId" : "hiz0vOTmrL",
-//                "uniqueKey" : 2362758535,
-//                "updatedAt" : "2015-03-10T17:20:31.828Z"
-//            ]
-//        ]
-//    }
-    
     
 }
