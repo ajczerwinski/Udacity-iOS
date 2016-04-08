@@ -43,11 +43,11 @@ class LoginViewController: UIViewController {
             }
         }
         
-        if studentUsername.text!.isEmpty || studentPassword.text!.isEmpty {
-            debugTextLabel.text = "Username or Password Empty"
-        } else {
-            setUIEnabled(false)
-        }
+//        if studentUsername.text!.isEmpty || studentPassword.text!.isEmpty {
+//            debugTextLabel.text = "Username or Password Empty"
+//        } else {
+//            setUIEnabled(false)
+//        }
 //        UdacityClient.sharedInstance().authenticateWithUserCredentials(studentUsername.text!, password: studentPassword.text!) { (success, errorString) in
 //            dispatch_async(dispatch_get_main_queue(), {
 //                if success {

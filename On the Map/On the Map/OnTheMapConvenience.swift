@@ -14,7 +14,7 @@ extension OnTheMapClient {
     func postSession(username: String, password: String, completionHandler: (success: Bool, error: NSError?) -> Void) {
         
         // 1. Specify parameters, method, and HTTPBody.
-        let method: String = Methods.UdacityPostOrDeleteSession
+        let method: String = Methods.UdacityPostSession
         let jsonBody: [String:AnyObject] = [
             OnTheMapClient.JSONBodyKeys.Udacity: [
                 OnTheMapClient.JSONBodyKeys.Username: "\(username)",
@@ -23,14 +23,15 @@ extension OnTheMapClient {
         ]
         
         // 2. Make the request
-        taskForPOSTMethod(method, baseURL: OnTheMapClient.Constants.UdacityBaseURL, headers: nil, jsonBody: jsonBody) { result, error in
+        taskForPOSTMethod(method, baseURL: OnTheMapClient.Constants.UdacityBaseURL, headers: nil, jsonBody: jsonBody) { JSONResult, error in
             
             // 3. Send result (if successful) to the completion handler
             if let error = error {
                 print("Unsuccessful posting Session")
                 completionHandler(success: false, error: error)
             } else {
-                if let results = result["account"] as? [String: AnyObject] {
+                if let results = JSONResult["account"] as? [String: AnyObject] {
+                    OnTheMapClient.sharedInstance().authServiceUsed = OnTheMapClient.AuthService.Udacity
                     StudentLocation.sharedInstance.uniqueKey = results["key"] as? String
                     print("uniqueKey: \(StudentLocation.sharedInstance.uniqueKey)")
                     completionHandler(success: true, error: nil)
@@ -45,8 +46,8 @@ extension OnTheMapClient {
     func deleteSession(completionHandler: (success: Bool, error: NSError?) -> Void) {
         
         // 1. Specify parameters, method, and HTTP Body
-        let method: String = Methods.UdacityPostOrDeleteSession
-        
+        let method: String = Methods.UdacityDeleteSession
+
         // 2. Make the request
         taskForDELETEMethod(method) { result, error in
             
@@ -56,7 +57,7 @@ extension OnTheMapClient {
                 completionHandler(success: false, error: error)
             } else {
                 if let results = result["session"]!!["id"] as? String {
-                    OnTheMapClient.sharedInstance().sessionID = nil
+                    OnTheMapClient.sharedInstance().sessionId = nil
                     print("Session deleted for ID: \(results)")
                     completionHandler(success: true, error: nil)
                 } else {

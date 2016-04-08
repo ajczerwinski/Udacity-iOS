@@ -32,7 +32,8 @@ extension OnTheMapClient {
         
         // Udacity
         static let UdacityUserData = "users/{id}"
-        static let UdacityPostOrDeleteSession = "session"
+        static let UdacityPostSession = "session"
+        static let UdacityDeleteSession = "session"
         
         // Parse
         static let ParseGetOrPostStudentLocation = "StudentLocation"
