@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class StudentListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,18 @@ class TableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        let target = StudentLocation.sharedInstance.studentArray[indexPath.row]
+        let targetToLoad = target.mediaURL!
+        if targetToLoad.rangeOfString("http") != nil {
+            UIApplication.sharedApplication().openURL(NSURL(string: "\(targetToLoad)")!)
+            
+        } else {
+            showAlert("Invalid Link!")
+        }
+    }
 
     
     func getStudentLocations() {
@@ -57,5 +69,13 @@ class TableViewController: UITableViewController {
             }
         
         }
+    }
+    
+    func showAlert(error: String) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
     }
 }
