@@ -26,13 +26,14 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var submitButtonUI: UIButton!
     @IBOutlet weak var findOnMapButtonUI: UIButton!
     
+    
     @IBOutlet weak var mapView: MKMapView!
     
     var studentLocation = StudentLocation.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         findOnMapButtonUI.layer.cornerRadius = 6
         submitButtonUI.layer.cornerRadius = 6
         
@@ -63,12 +64,14 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
         
+       
         let address = enterLocation.text
         if let address = address {
             self.geocodeAddress(address)
         } else {
             print("Didn't get a location")
         }
+        
         presentSecondUI()
         
     }
@@ -81,6 +84,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     
     // UI Helper functions
+    // Make the UI elements for the first view visible and hide second
     func presentFirstUI() {
         
         let cancelButtonColorRed: CGFloat = 57.0 / 255.0
@@ -106,6 +110,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Make the UI elements for the second view visible and hide first
     func presentSecondUI() {
         
         cancelButtonUI.tintColor = UIColor.whiteColor()
@@ -127,6 +132,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
     // Helper function to get geocoded address from user inputted search string
     
     func geocodeAddress(address: String) {
@@ -141,8 +147,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
                 // place pin on mapView
                 self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
                 // set the map zoom distance
-                self.mapView.camera.altitude = 20000.0
                 self.mapView.setCenterCoordinate(placemark.location!.coordinate, animated: true)
+                self.mapView.camera.altitude = 20000.0
                 
             
             } else if let error = error {
