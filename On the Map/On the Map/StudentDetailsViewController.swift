@@ -37,6 +37,9 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         findOnMapButtonUI.layer.cornerRadius = 6
         submitButtonUI.layer.cornerRadius = 6
         
+        // Grab student's name for use when they submit their location/url later
+        getStudentName()
+        
         enterURL.delegate = self
         enterLocation.delegate = self
         
@@ -60,6 +63,19 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func submitButtonPressed(sender: AnyObject) {
+        
+        if let url = enterURL.text {
+            // If the url doesn't have proper web url prefix, prepend it
+            if !url.hasPrefix("http://") && !url.hasPrefix("https://") {
+                studentLocation.mediaURL = "http://" + url
+            } else {
+                studentLocation.mediaURL = url
+            }
+            postUserInfoToParse()
+        // If blank, prompt the user to fill in URL field
+        } else {
+            showAlert("URL field cannot be blank")
+        }
     }
     
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
@@ -163,6 +179,58 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
             
         })
         
+    }
+    
+    // Helper function to get Student's name
+    func getStudentName() {
+        OnTheMapClient.sharedInstance().queryStudentName { (success, error) in
+            
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), {
+                    AlertConvenience.showAlert(self, error: error!)
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                })
+            } else if success {
+                print("Got student's name, no further action")
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Couldn't get student's name from server"])
+                    AlertConvenience.showAlert(self, error: error)
+                })
+            }
+        }
+    }
+    
+    // Helper function to push User's name, location, and url to Parse server
+    func postUserInfoToParse() {
+        
+        OnTheMapClient.sharedInstance().postStudentLocation(studentLocation) { (success, error) in
+            
+            if error != nil {
+                dispatch_async(dispatch_get_main_queue(), {
+                    AlertConvenience.showAlert(self, error: error!)
+                })
+            } else if success {
+                print("successfully posted student location!")
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to post StudentLocation to Parse"])
+                    AlertConvenience.showAlert(self, error: error)
+                })
+            }
+        }
+    }
+    
+    // Local alert helper function
+    func showAlert(error: String) {
+        dispatch_async(dispatch_get_main_queue(), {
+            let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+        })
     }
     
 }

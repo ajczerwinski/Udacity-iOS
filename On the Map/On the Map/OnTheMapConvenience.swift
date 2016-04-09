@@ -173,7 +173,11 @@ extension OnTheMapClient {
                 print("Unsuccessful POST")
                 completionHandler(success: false, error: error)
             } else {
-                completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse data from postStudentLocation"]))
+                if let result = result {
+                    completionHandler(success: true, error: nil)
+                } else {
+                    completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not get student location data"]))
+                }
             }
         }
     }

@@ -70,7 +70,7 @@ class StudentListViewController: UITableViewController {
         
         }
     }
-    
+    // Local alert helper function
     func showAlert(error: String) {
         dispatch_async(dispatch_get_main_queue(), {
             let alert = UIAlertController(title: "", message: error, preferredStyle: UIAlertControllerStyle.Alert)
