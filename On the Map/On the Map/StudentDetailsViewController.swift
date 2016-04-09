@@ -10,11 +10,23 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class StudentDetailsViewController: UIViewController {
+class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var topUIBar: UIView!
+    @IBOutlet weak var bottomUIBar: UIView!
     
+    @IBOutlet weak var whereUStudyingTop: UILabel!
+    @IBOutlet weak var whereUStudyingMiddle: UILabel!
+    @IBOutlet weak var whereUStudyingBottom: UILabel!
     
+    @IBOutlet weak var enterURL: UITextField!
+    @IBOutlet weak var enterLocation: UITextField!
     
+    @IBOutlet weak var cancelButtonUI: UIButton!
+    @IBOutlet weak var submitButtonUI: UIButton!
+    @IBOutlet weak var findOnMapButtonUI: UIButton!
+    
+    @IBOutlet weak var mapView: MKMapView!
     
     
     
