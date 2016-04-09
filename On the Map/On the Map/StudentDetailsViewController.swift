@@ -28,6 +28,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    var studentLocation = StudentLocation.sharedInstance
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,6 +44,34 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
+    
+    
+    
+    @IBAction func submitButtonPressed(sender: AnyObject) {
+    }
+    
+    @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
+        
+        let address = enterLocation.text
+        if let address = address {
+            self.geocodeAddress(address)
+        } else {
+            print("Didn't get a location")
+        }
+        presentSecondUI()
+        
+    }
+    
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    
+    
+    // UI Helper functions
     func presentFirstUI() {
         
         let cancelButtonColorRed: CGFloat = 57.0 / 255.0
@@ -63,7 +93,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         bottomUIBar.hidden = false
         
         findOnMapButtonUI.hidden = false
-
+        
         
     }
     
@@ -88,8 +118,36 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func cancelButtonPressed(sender: AnyObject) {
+    // Helper function to get geocoded address from user inputted search string
+    
+    func geocodeAddress(address: String) {
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
+            // If we find a match to the user-inputted address, pick the first one and get mapData from it
+            if let placemark = placemarks?[0] {
+                self.studentLocation.latitude = Double(placemark.location!.coordinate.latitude)
+                self.studentLocation.longitude = Double(placemark.location!.coordinate.longitude)
+                self.studentLocation.mapString = address
+                // place pin on mapView
+                self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
+                // set the map zoom distance
+                self.mapView.camera.altitude = 20000.0
+                self.mapView.setCenterCoordinate(placemark.location!.coordinate, animated: true)
+                
+            
+            } else if let error = error {
+                dispatch_async(dispatch_get_main_queue(), {
+                    AlertConvenience.showAlert(self, error: error)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to complete geocoding request"])
+                })
+            }
+            
+        })
+        
     }
+    
 }

@@ -221,6 +221,9 @@
                                         <state key="normal" title="Find on the Map">
                                             <color key="titleColor" red="0.22352941179999999" green="0.37647058820000001" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="findOnTheMapButtonPressed:" destination="Xos-6K-NlD" eventType="touchUpInside" id="Mn5-eN-xz2"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79607843137254897" green="0.80000000000000004" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
@@ -256,6 +259,9 @@
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" red="0.22352941179999999" green="0.37647058820000001" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="submitButtonPressed:" destination="Xos-6K-NlD" eventType="touchUpInside" id="tfs-S9-CXH"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.22352941176470589" green="0.37647058823529411" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
