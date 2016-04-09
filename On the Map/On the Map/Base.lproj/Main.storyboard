@@ -147,6 +147,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-Mh-6Gt">
+                                <rect key="frame" x="0.0" y="159" width="600" height="441"/>
+                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGR-kl-esF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
                                 <subviews>
@@ -197,9 +200,6 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-Mh-6Gt">
-                                <rect key="frame" x="0.0" y="159" width="600" height="441"/>
-                            </mapView>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s8R-Lz-A7G">
                                 <rect key="frame" x="533" y="28" width="48" height="30"/>
                                 <state key="normal" title="Cancel"/>
@@ -222,29 +222,9 @@
                                             <color key="titleColor" red="0.22352941179999999" green="0.37647058820000001" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qCy-wB-fhL">
-                                        <rect key="frame" x="240" y="28" width="120" height="35"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="0DH-5m-Ayd"/>
-                                            <constraint firstAttribute="width" constant="120" id="kfB-ad-Zfi"/>
-                                            <constraint firstAttribute="height" constant="35" id="zCg-DP-dD1"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" red="0.22352941179999999" green="0.37647058820000001" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="0DH-5m-Ayd"/>
-                                            </mask>
-                                        </variation>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79607843137254897" green="0.80000000000000004" blue="0.7803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="qCy-wB-fhL" firstAttribute="centerX" secondItem="qRz-Pw-3qN" secondAttribute="centerX" id="Ake-qQ-VE8"/>
-                                    <constraint firstItem="qCy-wB-fhL" firstAttribute="centerY" secondItem="qRz-Pw-3qN" secondAttribute="centerY" id="B33-Ys-aLD"/>
                                     <constraint firstAttribute="height" constant="90" id="ZrN-eg-qPV"/>
                                     <constraint firstItem="fNI-fJ-hPa" firstAttribute="centerX" secondItem="qRz-Pw-3qN" secondAttribute="centerX" id="cgI-10-MQJ"/>
                                     <constraint firstItem="fNI-fJ-hPa" firstAttribute="centerY" secondItem="qRz-Pw-3qN" secondAttribute="centerY" id="hPv-bH-07N"/>
@@ -265,6 +245,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Mb-UJ-UXJ">
+                                <rect key="frame" x="277" y="539" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="FF8-5Q-kON"/>
+                                    <constraint firstAttribute="height" constant="35" id="nLB-A5-lww"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" red="0.22352941179999999" green="0.37647058820000001" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.22352941176470589" green="0.37647058823529411" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -274,7 +266,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="s8R-Lz-A7G" secondAttribute="trailing" id="MTq-WO-j73"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Czp-Mh-6Gt" secondAttribute="trailing" constant="-20" id="PKB-u4-Wdp"/>
                             <constraint firstItem="YGR-kl-esF" firstAttribute="leading" secondItem="JDt-e9-d3J" secondAttribute="leadingMargin" constant="-20" id="R0x-PU-iTw"/>
+                            <constraint firstItem="9Mb-UJ-UXJ" firstAttribute="centerX" secondItem="JDt-e9-d3J" secondAttribute="centerX" id="VXJ-e8-j6b"/>
                             <constraint firstItem="xRI-Gz-gow" firstAttribute="top" secondItem="Czp-Mh-6Gt" secondAttribute="bottom" id="XnB-TQ-6eG"/>
+                            <constraint firstItem="xRI-Gz-gow" firstAttribute="top" secondItem="9Mb-UJ-UXJ" secondAttribute="bottom" constant="26" id="YJK-43-yiH"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qRz-Pw-3qN" secondAttribute="trailing" constant="-20" id="Z18-ds-X6f"/>
                             <constraint firstItem="Czp-Mh-6Gt" firstAttribute="top" secondItem="ZOk-hI-Bf4" secondAttribute="bottom" constant="59" id="aEz-Am-CWK"/>
                             <constraint firstItem="sbN-2P-3J5" firstAttribute="top" secondItem="YGR-kl-esF" secondAttribute="bottom" constant="20" id="dhV-qJ-gzl"/>
@@ -294,7 +288,7 @@
                         <outlet property="enterURL" destination="ZOk-hI-Bf4" id="qxY-PK-55k"/>
                         <outlet property="findOnMapButtonUI" destination="fNI-fJ-hPa" id="Wnj-0T-nkj"/>
                         <outlet property="mapView" destination="Czp-Mh-6Gt" id="bEO-mV-PuC"/>
-                        <outlet property="submitButtonUI" destination="qCy-wB-fhL" id="mYl-8k-TId"/>
+                        <outlet property="submitButtonUI" destination="9Mb-UJ-UXJ" id="N4y-6H-zVN"/>
                         <outlet property="topUIBar" destination="YGR-kl-esF" id="QfU-qr-P0b"/>
                         <outlet property="whereUStudyingBottom" destination="PRz-cV-h1h" id="yqB-KU-gbN"/>
                         <outlet property="whereUStudyingMiddle" destination="8vW-aD-m7O" id="2m9-7g-GtI"/>
