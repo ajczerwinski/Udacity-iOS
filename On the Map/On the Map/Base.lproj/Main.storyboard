@@ -375,7 +375,7 @@
                                     <action selector="signUpButtonPressed:" destination="jlf-8E-IiB" eventType="touchUpInside" id="viX-m4-4dm"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cay-3o-L1v">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cay-3o-L1v">
                                 <rect key="frame" x="20" y="540" width="560" height="40"/>
                                 <color key="backgroundColor" red="0.21568627450980393" green="0.31372549019607843" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>

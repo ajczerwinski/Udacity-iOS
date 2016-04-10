@@ -44,16 +44,21 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+            <key>CFBundleURLName</key>
+            <string>com.udacity.OnTheMap</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>fb365362206864879</string>
+                <string>fb365362206864879onthemap</string>
+                <string>onthemap</string>
+                <string>fbauth2</string>
 			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>
 	<string>365362206864879</string>
 	<key>FacebookDisplayName</key>
-	<string>onthemap</string>
+	<string>Udacity</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>

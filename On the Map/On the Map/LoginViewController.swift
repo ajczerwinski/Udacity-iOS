@@ -10,20 +10,20 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginButtonDelegate */ {
     
-    var appDelegate: AppDelegate!
+//    var appDelegate: AppDelegate!
     
     @IBOutlet weak var studentUsername: UITextField!
     @IBOutlet weak var studentPassword: UITextField!
     @IBOutlet weak var loginButtonUI: UIButton!
-
+    
 //    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        facebookLoginButton.delegate = self
-        
         studentUsername.delegate = self
         studentPassword.delegate = self
         
@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidAppear(false)
 //        checkFacebookLoginStatus()
     }
-    
+//    
 //    func checkFacebookLoginStatus() {
 //        
 //        if (FBSDKAccessToken.currentAccessToken() != nil) {
@@ -91,7 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-//    func loginButton(loginFacebookButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
+//    func loginButton(facebookLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
 //        
 //        if ((error) != nil) {
 //            print("Failed to login with Facebook")
@@ -108,8 +108,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //            }
 //        }
 //    }
-    
-//    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+//    
+//    func loginButtonDidLogOut(facebookLoginButton: FBSDKLoginButton!) {
 //        print("User logged out")
 //    }
     

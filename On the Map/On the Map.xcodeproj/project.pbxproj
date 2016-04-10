@@ -44,6 +44,7 @@
 		BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BFB9888D1CBAF9D700537854 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
+		BFB988911CBB115E00537854 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BFE566891CA713880047945C /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE5668C1CA713890047945C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE566911CA713890047945C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -99,11 +100,13 @@
 				BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */,
 			);
 			name = Frameworks;
+			path = "On the Map";
 			sourceTree = "<group>";
 		};
 		BFE566801CA713870047945C = {
 			isa = PBXGroup;
 			children = (
+				BFB988881CBA199F00537854 /* Frameworks */,
 				BFE5668B1CA713890047945C /* On the Map */,
 				BFE5668A1CA713880047945C /* Products */,
 			);
@@ -120,7 +123,7 @@
 		BFE5668B1CA713890047945C /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
-				BFB988881CBA199F00537854 /* Frameworks */,
+				BFB988911CBB115E00537854 /* Bridging-Header.h */,
 				BF3FAFEA1CB83DDB00505F5E /* Deprecated Files */,
 				BFE566A01CA9E8CC0047945C /* Model */,
 				BFE5669F1CA9E8C80047945C /* View */,
@@ -397,6 +400,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.allen.czerwinski.On-the-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Debug;
 		};
@@ -414,6 +418,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.allen.czerwinski.On-the-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};

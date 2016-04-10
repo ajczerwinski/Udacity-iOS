@@ -15,19 +15,24 @@ import UIKit
 
 class LoginTextField: UITextField {
     
+    // Inset the placeholder text 10 pixels
     override func textRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 0)
     }
     
+    // Inset the text while editing by 10 pixels
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return CGRectInset(bounds, 10, 0)
     }
     
+    // Set RGB parameters to create a light orange background color that looks good with the
+    // Udacity login background
     
     let backgroundColorRed: CGFloat = 251.0 / 255.0
     let backgroundColorGreen: CGFloat = 188.0 / 255.0
     let backgroundColorBlue: CGFloat = 149.0 / 255.0
     
+    // Set background color
     override func awakeFromNib() {
         layer.backgroundColor = UIColor(red: backgroundColorRed, green: backgroundColorGreen, blue: backgroundColorBlue, alpha: 1.0).CGColor
         textColor = UIColor.whiteColor()
