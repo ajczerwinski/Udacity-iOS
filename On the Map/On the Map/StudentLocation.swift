@@ -19,7 +19,6 @@ class StudentLocation: NSObject {
     var uniqueKey: String?
     var latitude: Double?
     var longitude: Double?
-    
     var createdAt: String?
     var updatedAt: String?
     

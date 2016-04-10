@@ -16,15 +16,22 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     override func viewDidLoad() {
  
         super.viewDidLoad()
-        populateStudentLocations()
         mapView.delegate = self
         
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         super.viewWillAppear(animated)
+        populateStudentLocations()
+        
     }
     
+    // CITATION: got help with understanding the need to use (and how to implement) asynchronous
+    // threading when populating the map data since if page is loaded before the completion handler
+    // completes and doesn't have the asynchronous ability to get the data afterward, then no data
+    // gets loaded to the page
+    // https://discussions.udacity.com/t/problem-passing-student-data-array-to-map-view/44934
     func populateStudentLocations() {
         OnTheMapClient.sharedInstance().getStudentLocations() { (success, error) in
             if error != nil {
@@ -45,6 +52,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
+    // Create the Map annotations from user data
     func setMapLocations() {
         
         var annotations = [MKPointAnnotation]()
@@ -68,6 +76,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    // Set basic attributes of the map annotations
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -77,7 +86,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         if pinView == nil {
             pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
             pinView!.canShowCallout = true
-            pinView!.pinTintColor = UIColor.grayColor()
+            pinView!.pinTintColor = UIColor.blueColor()
             pinView!.rightCalloutAccessoryView = UIButton(type: .DetailDisclosure)
         } else {
             pinView!.annotation = annotation
@@ -87,6 +96,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    // Load in defaul browser the url address in the subtitle field of the annotaiton
     func mapView(mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
         if control == view.rightCalloutAccessoryView {
@@ -111,7 +121,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     }
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
-        
+        // Delete the user session and allow user to log out
         OnTheMapClient.sharedInstance().deleteSession { (success, error) in
             
             if error != nil {

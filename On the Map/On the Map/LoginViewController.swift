@@ -15,7 +15,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var studentUsername: UITextField!
     @IBOutlet weak var studentPassword: UITextField!
     @IBOutlet weak var loginButtonUI: UIButton!
-    // @IBOutlet weak var debugTextLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func loginButtonPressed(sender: AnyObject) {
-        
+        self.setUIEnabled(false)
         OnTheMapClient.sharedInstance().postSession(studentUsername.text!, password: studentPassword.text!) { (success, error) in
             if success == true {
                 print("Yay successfully logged in!")
@@ -50,41 +49,41 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 dispatch_async(dispatch_get_main_queue(), {
                     AlertConvenience.showAlert(self, error: error!)
                 })
+                self.setUIEnabled(true)
             }
         }
     }
     
+    //
     func completeLogin(service: OnTheMapClient.AuthService) {
         
-            studentUsername.text = ""
-            studentPassword.text = ""
-                
-            OnTheMapClient.sharedInstance().authServiceUsed = service
-
-            let resultVC = self.storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
-            self.presentViewController(resultVC, animated: true, completion: nil)
+        studentUsername.text = ""
+        studentPassword.text = ""
+            
+        OnTheMapClient.sharedInstance().authServiceUsed = service
+        self.setUIEnabled(true)
+        
+        let resultVC = self.storyboard!.instantiateViewControllerWithIdentifier("StudentTabController") as! UITabBarController
+        self.presentViewController(resultVC, animated: true, completion: nil)
 
     }
     
+    // Load the Udacity sign up page in Safari if the user clicks the 'Sign Up' button
     @IBAction func signUpButtonPressed(sender: UIButton) {
 
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.udacity.com/account/auth#!/signup")!)
         
     }
-    
-    
 }
 
-
-
+// Disable/Enable the Text Fields and Login button so user can't click them while completion handlers
+// are firing
 extension LoginViewController {
     
     private func setUIEnabled(enabled: Bool) {
         studentUsername.enabled = enabled
         studentPassword.enabled = enabled
         loginButtonUI.enabled = enabled
-        // debugTextLabel.text = ""
-        // debugTextLabel.enabled = enabled
         
         if enabled {
             loginButtonUI.alpha = 1.0
@@ -92,10 +91,4 @@ extension LoginViewController {
             loginButtonUI.alpha = 0.5
         }
     }
-//    
-//    private func displayError(errorString: String?) {
-//        if let errorString = errorString {
-//            debugTextLabel.text = errorString
-//        }
-//    }
 }

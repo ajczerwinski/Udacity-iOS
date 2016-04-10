@@ -20,12 +20,13 @@ class StudentListViewController: UITableViewController {
         
     }
     
+    // Set the number of rows to the count of the studentArray (100 max)
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return StudentLocation.sharedInstance.studentArray.count
 
     }
-    
+    // Generate the data for each table row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("StudentLocationTableViewCell") as! StudentLocationTableViewCell
@@ -36,6 +37,7 @@ class StudentListViewController: UITableViewController {
         return cell
     }
     
+    // Load the link provided by the user when the table row is selected by the user
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
         let target = StudentLocation.sharedInstance.studentArray[indexPath.row]
@@ -48,7 +50,11 @@ class StudentListViewController: UITableViewController {
         }
     }
 
-    
+    // CITATION: got help with understanding the need to use (and how to implement) asynchronous
+    // threading when populating the map data since if page is loaded before the completion handler
+    // completes and doesn't have the asynchronous ability to get the data afterward, then no data
+    // gets loaded to the page
+    // https://discussions.udacity.com/t/problem-passing-student-data-array-to-map-view/44934
     func getStudentLocations() {
         
         OnTheMapClient.sharedInstance().getStudentLocations() { (success, error) in
@@ -81,12 +87,13 @@ class StudentListViewController: UITableViewController {
     
     @IBAction func reloadButtonPressed(sender: AnyObject) {
     
+        // Refresh the student location data from Parse
         getStudentLocations()
         
     }
     
     @IBAction func logoutButtonPressed(sender: AnyObject) {
-        
+        // Delete the user session so user is no longer logged in to the app
         OnTheMapClient.sharedInstance().deleteSession { (success, error) in
             
             if error != nil {

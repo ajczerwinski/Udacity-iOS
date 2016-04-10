@@ -183,7 +183,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     // Helper function to get Student's name
     func getStudentName() {
-        OnTheMapClient.sharedInstance().queryStudentName { (success, error) in
+        OnTheMapClient.sharedInstance().getStudentName { (success, error) in
             
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), {

@@ -72,6 +72,7 @@
 		BF3FAFEA1CB83DDB00505F5E /* Deprecated Files */ = {
 			isa = PBXGroup;
 			children = (
+				BFE566A91CAA169A0047945C /* GCDBlackBox.swift */,
 				BFE566B81CACB09C0047945C /* ParseClient.swift */,
 				BFE566B61CACB0910047945C /* ParseConstants.swift */,
 				BFE566BA1CACB0B60047945C /* ParseConvenience.swift */,
@@ -111,7 +112,6 @@
 				BFE566931CA7138A0047945C /* Assets.xcassets */,
 				BFE566951CA7138A0047945C /* LaunchScreen.storyboard */,
 				BFE566981CA7138A0047945C /* Info.plist */,
-				BFE566A91CAA169A0047945C /* GCDBlackBox.swift */,
 			);
 			path = "On the Map";
 			sourceTree = "<group>";

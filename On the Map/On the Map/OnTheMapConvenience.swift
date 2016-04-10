@@ -70,7 +70,7 @@ extension OnTheMapClient {
     }
     
     // MARK: GET Udacity Student Name
-    func queryStudentName(completionHandler: (success: Bool, error: NSError?) -> Void) -> Void {
+    func getStudentName(completionHandler: (success: Bool, error: NSError?) -> Void) -> Void {
         
         // 1. Specify parameters, method, and HTTP Body
         let method: String
@@ -116,7 +116,7 @@ extension OnTheMapClient {
     // GET student locations from Parse
     func getStudentLocations(completionHandler: (success: Bool, error: NSError?) -> Void) -> Void {
         
-        // 1. Specify parameters, method, and HTTP Body
+        // 1. Specify parameters, method, and HTTP Body, limit to 100 results, sort by last updated
         let parameters: [String: AnyObject] = [
             OnTheMapClient.ParameterKeys.Limit: Int(100),
             OnTheMapClient.ParameterKeys.Order: "-updatedAt"
