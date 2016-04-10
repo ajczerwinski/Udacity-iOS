@@ -13,6 +13,8 @@
 		BF3FAFE71CB6FAF000505F5E /* OnTheMapConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */; };
 		BF3FAFE91CB7210600505F5E /* AlertConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */; };
 		BF3FAFEC1CB8536E00505F5E /* StudentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */; };
+		BFB9888A1CBA19B100537854 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */; };
+		BFB9888C1CBA19CB00537854 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */; };
 		BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5668C1CA713890047945C /* AppDelegate.swift */; };
 		BFE566921CA713890047945C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE566901CA713890047945C /* Main.storyboard */; };
 		BFE566941CA7138A0047945C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE566931CA7138A0047945C /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 		BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConvenience.swift; sourceTree = "<group>"; };
 		BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConvenience.swift; sourceTree = "<group>"; };
 		BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewController.swift; sourceTree = "<group>"; };
+		BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BFE566891CA713880047945C /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE5668C1CA713890047945C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE566911CA713890047945C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,6 +67,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFB9888C1CBA19CB00537854 /* FBSDKLoginKit.framework in Frameworks */,
+				BFB9888A1CBA19B100537854 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +90,15 @@
 			name = "Deprecated Files";
 			sourceTree = "<group>";
 		};
+		BFB988881CBA199F00537854 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */,
+				BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BFE566801CA713870047945C = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +118,7 @@
 		BFE5668B1CA713890047945C /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
+				BFB988881CBA199F00537854 /* Frameworks */,
 				BF3FAFEA1CB83DDB00505F5E /* Deprecated Files */,
 				BFE566A01CA9E8CC0047945C /* Model */,
 				BFE5669F1CA9E8C80047945C /* View */,
@@ -367,6 +383,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					the,
+					Map,
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.allen.czerwinski.On-the-Map";
@@ -378,6 +400,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/On",
+					the,
+					Map,
+				);
 				INFOPLIST_FILE = "On the Map/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.allen.czerwinski.On-the-Map";
