@@ -30,6 +30,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         studentUsername.textColor = UIColor.whiteColor()
         
         setUIEnabled(true)
+        
     }
     
     override func viewDidAppear(animated: Bool) {
