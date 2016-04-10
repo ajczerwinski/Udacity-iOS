@@ -10,6 +10,12 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
+// CITATION: found information about how to integrate Facebook Login Button here:
+// http://www.brianjcoleman.com/tutorial-how-to-use-login-in-facebook-sdk-4-0-for-swift/
+// Leaving commented out for time being as I am hitting a bug where the system can't find
+// the Bridging-Header.h target in build settings when I add to Swift Compiler Code Generation
+// Section
+
 class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginButtonDelegate */ {
     
 //    var appDelegate: AppDelegate!
