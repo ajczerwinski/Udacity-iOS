@@ -147,9 +147,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-Mh-6Gt">
-                                <rect key="frame" x="0.0" y="159" width="600" height="441"/>
-                            </mapView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGR-kl-esF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
                                 <subviews>
@@ -263,6 +260,16 @@
                                     <action selector="submitButtonPressed:" destination="Xos-6K-NlD" eventType="touchUpInside" id="tfs-S9-CXH"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ALS-qo-pCs">
+                                <rect key="frame" x="290" y="309" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="D4i-Xa-eHW"/>
+                                    <constraint firstAttribute="height" constant="50" id="ZNe-nw-nVb"/>
+                                </constraints>
+                            </activityIndicatorView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-Mh-6Gt">
+                                <rect key="frame" x="0.0" y="159" width="600" height="441"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" red="0.22352941176470589" green="0.37647058823529411" blue="0.54509803921568623" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -270,7 +277,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="YGR-kl-esF" secondAttribute="trailing" constant="-20" id="Eds-DM-nk8"/>
                             <constraint firstItem="sbN-2P-3J5" firstAttribute="leading" secondItem="JDt-e9-d3J" secondAttribute="leading" constant="80" id="Eug-cj-g2X"/>
                             <constraint firstAttribute="trailingMargin" secondItem="s8R-Lz-A7G" secondAttribute="trailing" id="MTq-WO-j73"/>
+                            <constraint firstItem="ALS-qo-pCs" firstAttribute="centerX" secondItem="JDt-e9-d3J" secondAttribute="centerX" id="OQS-wq-HZV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Czp-Mh-6Gt" secondAttribute="trailing" constant="-20" id="PKB-u4-Wdp"/>
+                            <constraint firstItem="ALS-qo-pCs" firstAttribute="centerY" secondItem="JDt-e9-d3J" secondAttribute="centerY" id="QQl-Kj-sqc"/>
                             <constraint firstItem="YGR-kl-esF" firstAttribute="leading" secondItem="JDt-e9-d3J" secondAttribute="leadingMargin" constant="-20" id="R0x-PU-iTw"/>
                             <constraint firstItem="9Mb-UJ-UXJ" firstAttribute="centerX" secondItem="JDt-e9-d3J" secondAttribute="centerX" id="VXJ-e8-j6b"/>
                             <constraint firstItem="xRI-Gz-gow" firstAttribute="top" secondItem="Czp-Mh-6Gt" secondAttribute="bottom" id="XnB-TQ-6eG"/>
@@ -288,6 +297,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityView" destination="ALS-qo-pCs" id="953-Zm-ckF"/>
                         <outlet property="bottomUIBar" destination="qRz-Pw-3qN" id="ye2-fT-3kc"/>
                         <outlet property="cancelButtonUI" destination="s8R-Lz-A7G" id="EvQ-7E-1HZ"/>
                         <outlet property="enterLocation" destination="sbN-2P-3J5" id="vck-OM-caO"/>
@@ -507,6 +517,6 @@
         <image name="udacity_background" width="316" height="538"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LlN-hj-mag"/>
+        <segue reference="n57-G4-s4Y"/>
     </inferredMetricsTieBreakers>
 </document>

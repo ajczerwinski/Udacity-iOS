@@ -27,9 +27,10 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var findOnMapButtonUI: UIButton!
     
     
+    @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     
-    var studentLocation = StudentLocation.sharedInstance
+    var studentLocation = StudentLocation()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,7 +81,10 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
         
-       
+        activityView.hidden = false
+        mapView.hidden = true
+        activityView.startAnimating()
+        
         let address = enterLocation.text
         if let address = address {
             self.geocodeAddress(address)
@@ -88,6 +92,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
             print("Didn't get a location")
         }
         
+        activityView.stopAnimating()
         presentSecondUI()
         
     }
@@ -122,6 +127,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         bottomUIBar.hidden = false
         
         findOnMapButtonUI.hidden = false
+        activityView.hidden = true
         
         
     }
