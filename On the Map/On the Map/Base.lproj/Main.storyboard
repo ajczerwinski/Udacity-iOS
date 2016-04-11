@@ -375,17 +375,6 @@
                                     <action selector="signUpButtonPressed:" destination="jlf-8E-IiB" eventType="touchUpInside" id="viX-m4-4dm"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cay-3o-L1v">
-                                <rect key="frame" x="20" y="540" width="560" height="40"/>
-                                <color key="backgroundColor" red="0.21568627450980393" green="0.31372549019607843" blue="0.61960784313725492" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="560" id="FLN-wN-hBe"/>
-                                    <constraint firstAttribute="height" constant="40" id="G4s-CP-AmQ"/>
-                                </constraints>
-                                <state key="normal" title="Sign in with Facebook">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                            </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JTb-qs-TzD" customClass="LoginTextField" customModule="On_the_Map" customModuleProvider="target">
                                 <rect key="frame" x="20" y="274" width="560" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -408,13 +397,11 @@
                             <constraint firstItem="yTj-oW-xOT" firstAttribute="top" secondItem="QcH-GL-yAq" secondAttribute="topMargin" constant="-350" id="5dO-Tm-mfv"/>
                             <constraint firstItem="5R6-Et-S5X" firstAttribute="centerX" secondItem="QcH-GL-yAq" secondAttribute="centerX" id="6uf-JX-lUl"/>
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="8IW-IR-lNh"/>
-                            <constraint firstItem="Rgu-kZ-T8k" firstAttribute="top" secondItem="cay-3o-L1v" secondAttribute="bottom" constant="20" id="9SL-Iu-IQ8"/>
                             <constraint firstItem="JTb-qs-TzD" firstAttribute="top" secondItem="5R6-Et-S5X" secondAttribute="bottom" constant="20" id="AGf-MX-iQ9"/>
                             <constraint firstItem="H0A-yV-ePx" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" constant="160" id="AVI-34-ReF"/>
                             <constraint firstItem="yTj-oW-xOT" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" constant="-20" id="CAM-B2-1Pi"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="top" secondItem="ztY-m9-2Ch" secondAttribute="bottom" constant="10" id="FbZ-jE-bHO"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="GWO-AS-K8G"/>
-                            <constraint firstItem="cay-3o-L1v" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="HUF-kG-xXi"/>
                             <constraint firstItem="k4N-RQ-RtD" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="Iaf-Fm-Uy9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H0A-yV-ePx" secondAttribute="trailing" constant="160" id="Kys-z7-7cc"/>
                             <constraint firstItem="H0A-yV-ePx" firstAttribute="top" secondItem="5FG-6u-zTT" secondAttribute="bottom" constant="8" id="M6M-TD-NWh"/>
@@ -423,7 +410,6 @@
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="top" secondItem="JTb-qs-TzD" secondAttribute="bottom" constant="10" id="Y9R-Jg-7iL"/>
                             <constraint firstItem="ztY-m9-2Ch" firstAttribute="centerX" secondItem="QcH-GL-yAq" secondAttribute="centerX" id="YUb-jn-v87"/>
                             <constraint firstItem="JTb-qs-TzD" firstAttribute="leading" secondItem="QcH-GL-yAq" secondAttribute="leadingMargin" id="ZDc-2L-upF"/>
-                            <constraint firstItem="cay-3o-L1v" firstAttribute="trailing" secondItem="QcH-GL-yAq" secondAttribute="trailingMargin" id="cyq-up-xXU"/>
                             <constraint firstItem="Rgu-kZ-T8k" firstAttribute="top" secondItem="yTj-oW-xOT" secondAttribute="bottom" id="fIN-tn-e7d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="JTb-qs-TzD" secondAttribute="trailing" id="gZz-ma-fdP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yTj-oW-xOT" secondAttribute="trailing" constant="-20" id="i9R-NW-m9c"/>

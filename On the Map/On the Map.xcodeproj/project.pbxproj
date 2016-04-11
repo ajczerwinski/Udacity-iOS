@@ -13,8 +13,6 @@
 		BF3FAFE71CB6FAF000505F5E /* OnTheMapConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */; };
 		BF3FAFE91CB7210600505F5E /* AlertConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */; };
 		BF3FAFEC1CB8536E00505F5E /* StudentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */; };
-		BFB9888A1CBA19B100537854 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */; };
-		BFB9888C1CBA19CB00537854 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */; };
 		BFB9888E1CBAF9D700537854 /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFB9888D1CBAF9D700537854 /* LoginTextField.swift */; };
 		BFE5668D1CA713890047945C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE5668C1CA713890047945C /* AppDelegate.swift */; };
 		BFE566921CA713890047945C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFE566901CA713890047945C /* Main.storyboard */; };
@@ -41,10 +39,7 @@
 		BF3FAFE61CB6FAEF00505F5E /* OnTheMapConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnTheMapConvenience.swift; sourceTree = "<group>"; };
 		BF3FAFE81CB7210600505F5E /* AlertConvenience.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertConvenience.swift; sourceTree = "<group>"; };
 		BF3FAFEB1CB8536E00505F5E /* StudentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewController.swift; sourceTree = "<group>"; };
-		BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		BFB9888D1CBAF9D700537854 /* LoginTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
-		BFB988911CBB115E00537854 /* Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		BFE566891CA713880047945C /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE5668C1CA713890047945C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFE566911CA713890047945C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -70,8 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFB9888C1CBA19CB00537854 /* FBSDKLoginKit.framework in Frameworks */,
-				BFB9888A1CBA19B100537854 /* FBSDKCoreKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,20 +86,9 @@
 			name = "Deprecated Files";
 			sourceTree = "<group>";
 		};
-		BFB988881CBA199F00537854 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BFB9888B1CBA19CB00537854 /* FBSDKLoginKit.framework */,
-				BFB988891CBA19B100537854 /* FBSDKCoreKit.framework */,
-			);
-			name = Frameworks;
-			path = "On the Map";
-			sourceTree = "<group>";
-		};
 		BFE566801CA713870047945C = {
 			isa = PBXGroup;
 			children = (
-				BFB988881CBA199F00537854 /* Frameworks */,
 				BFE5668B1CA713890047945C /* On the Map */,
 				BFE5668A1CA713880047945C /* Products */,
 			);
@@ -123,7 +105,6 @@
 		BFE5668B1CA713890047945C /* On the Map */ = {
 			isa = PBXGroup;
 			children = (
-				BFB988911CBB115E00537854 /* Bridging-Header.h */,
 				BF3FAFEA1CB83DDB00505F5E /* Deprecated Files */,
 				BFE566A01CA9E8CC0047945C /* Model */,
 				BFE5669F1CA9E8C80047945C /* View */,

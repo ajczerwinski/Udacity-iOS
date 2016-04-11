@@ -7,16 +7,14 @@
 //
 
 import UIKit
-import FBSDKCoreKit
-import FBSDKLoginKit
 
 // CITATION: found information about how to integrate Facebook Login Button here:
 // http://www.brianjcoleman.com/tutorial-how-to-use-login-in-facebook-sdk-4-0-for-swift/
-// Leaving commented out for time being as I am hitting a bug where the system can't find
+// Deleting for time being as I am hitting a bug where the system can't find
 // the Bridging-Header.h target in build settings when I add to Swift Compiler Code Generation
 // Section
 
-class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginButtonDelegate */ {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
 //    var appDelegate: AppDelegate!
     
@@ -24,12 +22,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginBu
     @IBOutlet weak var studentPassword: UITextField!
     @IBOutlet weak var loginButtonUI: UIButton!
     
-//    @IBOutlet weak var facebookLoginButton: FBSDKLoginButton!
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        facebookLoginButton.delegate = self
         studentUsername.delegate = self
         studentPassword.delegate = self
         
@@ -41,19 +36,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginBu
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(false)
-//        checkFacebookLoginStatus()
     }
-//    
-//    func checkFacebookLoginStatus() {
-//        
-//        if (FBSDKAccessToken.currentAccessToken() != nil) {
-//            completeLogin(OnTheMapClient.AuthService.Facebook)
-//        } else {
-//            facebookLoginButton.readPermissions = ["email"]
-//        }
-//        
-//    }
-    
+
     func textFieldDidBeginEditing(textField: UITextField) {
         
         textField.text = ""
@@ -83,7 +67,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginBu
         }
     }
     
-    //
     func completeLogin(service: OnTheMapClient.AuthService) {
         
         studentUsername.text = ""
@@ -96,29 +79,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate /* FBSDKLoginBu
         self.presentViewController(resultVC, animated: true, completion: nil)
 
     }
-    
-//    func loginButton(facebookLoginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-//        
-//        if ((error) != nil) {
-//            print("Failed to login with Facebook")
-//            dispatch_async(dispatch_get_main_queue(), {
-//                AlertConvenience.showAlert(self, error: error!)
-//            })
-//        } else if result.isCancelled {
-//            print("Cancelled Facebook login")
-//        }
-//        else {
-//            if result.grantedPermissions.contains("email") {
-//                completeLogin(OnTheMapClient.AuthService.Facebook)
-//                print("Succefully logged in via Facebook!")
-//            }
-//        }
-//    }
-//    
-//    func loginButtonDidLogOut(facebookLoginButton: FBSDKLoginButton!) {
-//        print("User logged out")
-//    }
-    
+        
     // Load the Udacity sign up page in Safari if the user clicks the 'Sign Up' button
     @IBAction func signUpButtonPressed(sender: UIButton) {
 
