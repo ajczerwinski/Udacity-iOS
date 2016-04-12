@@ -83,6 +83,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
         
+        mapView.hidden = true
         startGeocoding()
         
         let address = enterLocation.text
@@ -92,7 +93,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
             print("Didn't get a location")
         }
         
-        stopGeocoding()
+        presentSecondUI()
         
     }
     
@@ -153,20 +154,19 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // Helper functions to manage activityView behavior
     func startGeocoding() {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.view.addSubview(self.activityView)
-            self.view.bringSubviewToFront(self.activityView)
-            self.activityView.startAnimating()
-        }
+
+        self.view.addSubview(self.activityView)
+        self.view.bringSubviewToFront(self.activityView)
+        self.activityView.startAnimating()
+
     }
     
     func stopGeocoding() {
-        dispatch_async(dispatch_get_main_queue()) {
-            self.activityView.stopAnimating()
-            self.activityView.hidden = true
-            self.presentSecondUI()
-        }
+
+        self.activityView.stopAnimating()
+        self.activityView.hidden = true
         
     }
     // Helper function to get geocoded address from user inputted search string
@@ -188,10 +188,6 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
                 // set the map zoom distance
                 self.mapView.camera.altitude = 20000.0
                 
-                self.activityView.stopAnimating()
-                self.activityView.hidden = true
-                self.mapView.hidden = false
-                
             
             } else if let error = error {
                 dispatch_async(dispatch_get_main_queue(), {
@@ -202,6 +198,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
                     let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to complete geocoding request"])
                 })
             }
+            
+            self.stopGeocoding()
             
         })
         
