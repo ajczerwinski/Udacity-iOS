@@ -26,11 +26,10 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var submitButtonUI: UIButton!
     @IBOutlet weak var findOnMapButtonUI: UIButton!
     
-    
-    @IBOutlet weak var activityView: UIActivityIndicatorView!
     @IBOutlet weak var mapView: MKMapView!
     
     var studentLocation = StudentLocation()
+    var activityView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +42,9 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
         enterURL.delegate = self
         enterLocation.delegate = self
+        
+        activityView = UIActivityIndicatorView(frame: view.frame)
+        activityView.activityIndicatorViewStyle = .Gray
         
         presentFirstUI()
         
@@ -81,9 +83,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
         
-        activityView.hidden = false
-        mapView.hidden = true
-        activityView.startAnimating()
+        startGeocoding()
         
         let address = enterLocation.text
         if let address = address {
@@ -92,8 +92,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
             print("Didn't get a location")
         }
         
-        activityView.stopAnimating()
-        presentSecondUI()
+        stopGeocoding()
         
     }
     
@@ -154,7 +153,22 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    func startGeocoding() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.view.addSubview(self.activityView)
+            self.view.bringSubviewToFront(self.activityView)
+            self.activityView.startAnimating()
+        }
+    }
     
+    func stopGeocoding() {
+        dispatch_async(dispatch_get_main_queue()) {
+            self.activityView.stopAnimating()
+            self.activityView.hidden = true
+            self.presentSecondUI()
+        }
+        
+    }
     // Helper function to get geocoded address from user inputted search string
     
     func geocodeAddress(address: String) {
@@ -163,14 +177,20 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
             // If we find a match to the user-inputted address, pick the first one and get mapData from it
             if let placemark = placemarks?[0] {
+                
                 self.studentLocation.latitude = Double(placemark.location!.coordinate.latitude)
                 self.studentLocation.longitude = Double(placemark.location!.coordinate.longitude)
                 self.studentLocation.mapString = address
                 // place pin on mapView
                 self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
-                // set the map zoom distance
+                
                 self.mapView.setCenterCoordinate(placemark.location!.coordinate, animated: true)
+                // set the map zoom distance
                 self.mapView.camera.altitude = 20000.0
+                
+                self.activityView.stopAnimating()
+                self.activityView.hidden = true
+                self.mapView.hidden = false
                 
             
             } else if let error = error {
