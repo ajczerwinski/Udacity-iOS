@@ -93,8 +93,6 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
             print("Didn't get a location")
         }
         
-        presentSecondUI()
-        
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -129,7 +127,6 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         findOnMapButtonUI.hidden = false
         activityView.hidden = true
         
-        
     }
     
     // Make the UI elements for the second view visible and hide first
@@ -151,6 +148,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         bottomUIBar.hidden = true
         
         findOnMapButtonUI.hidden = true
+        
+        stopGeocoding()
         
     }
     
@@ -199,7 +198,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
                 })
             }
             
-            self.stopGeocoding()
+            self.presentSecondUI()
             
         })
         

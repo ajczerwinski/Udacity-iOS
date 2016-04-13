@@ -33,7 +33,7 @@ extension OnTheMapClient {
             } else {
                 if let results = JSONResult["account"] as? [String: AnyObject] {
                     OnTheMapClient.sharedInstance().authServiceUsed = OnTheMapClient.AuthService.Udacity
-                    StudentLocation.sharedInstance.uniqueKey = results["key"] as? String
+                    OnTheMapClient.sharedInstance().uniqueKey = results["key"] as? String
                     print("uniqueKey: \(StudentLocation.sharedInstance.uniqueKey)")
                     completionHandler(success: true, error: nil)
                 } else {
@@ -91,11 +91,13 @@ extension OnTheMapClient {
             } else {
                 if let result = result["user"] as! [String: AnyObject]? {
                     // If there is a result, store it in first/last name of sharedInstance object
-                    let studentLocation = StudentLocation.sharedInstance
-                    if let firstName = result["first_name"] {
-                        print(firstName)
-                        studentLocation.firstName = firstName as? String
-                    }
+                    var studentLocation = StudentLocation.sharedInstance
+//                    if let firstName = result["first_name"] {
+//                        print(firstName)
+//                        studentLocation.firstName = firstName as? String
+//                    }
+                    studentLocation.firstName = result["first_name"] as? String
+                    
                     if let lastName = result["last_name"] {
                         print(lastName)
                         studentLocation.lastName = lastName as? String
@@ -136,7 +138,7 @@ extension OnTheMapClient {
             } else {
                 if let results = result["results"] as? [[String: AnyObject]] {
                     
-                    let studentLocations = StudentLocation.sharedInstance
+                    var studentLocations = StudentLocation.sharedInstance
                     studentLocations.studentArray = StudentLocation.arrayFromResults(results)
                     completionHandler(success: true, error: nil)
                 } else {

@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class StudentLocation: NSObject {
+struct StudentLocation {
     
     var firstName: String?
     var lastName: String?
@@ -44,7 +44,7 @@ class StudentLocation: NSObject {
         
     }
     
-    override init() {
+    init() {
         
         objectId = nil
         uniqueKey = nil
@@ -70,4 +70,7 @@ class StudentLocation: NSObject {
         return studentLocations
         
     }
+    
+    
+    
 }
