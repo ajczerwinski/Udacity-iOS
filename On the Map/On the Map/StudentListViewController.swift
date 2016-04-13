@@ -22,9 +22,12 @@ class StudentListViewController: UITableViewController {
     
     // Set the number of rows to the count of the studentArray (100 max)
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return StudentLocation.sharedInstance.studentArray.count
-
+        var studentLoc = [StudentLocation]()
+        if let studentLocations = StudentLocation.sharedInstance.studentArray {
+            studentLoc = studentLocations
+        }
+//        return StudentLocation.sharedInstance.studentArray.count
+        return studentLoc.count
     }
     // Generate the data for each table row
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

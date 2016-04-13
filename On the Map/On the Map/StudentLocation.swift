@@ -24,7 +24,7 @@ struct StudentLocation {
     
     static let sharedInstance = StudentLocation()
     
-    var studentArray = [StudentLocation]()
+    var studentArray: [StudentLocation]!
     
     // MARK: Initializers
     

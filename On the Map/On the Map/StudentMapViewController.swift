@@ -56,21 +56,35 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
     func setMapLocations() {
         
         var annotations = [MKPointAnnotation]()
-        
-        for location in StudentLocation.sharedInstance.studentArray {
-            
-            let latitude = CLLocationDegrees(location.latitude! as Double)
-            let longitude = CLLocationDegrees(location.longitude! as Double)
-            
-            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-            
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "\(location.firstName!) \(location.lastName!)"
-            annotation.subtitle = location.mediaURL! as! String
-            
-            annotations.append(annotation)
+        if let locations = StudentLocation.sharedInstance.studentArray {
+            for location in locations {
+                let latitude = CLLocationDegrees(location.latitude! as Double)
+                let longitude = CLLocationDegrees(location.longitude! as Double)
+                
+                let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(location.firstName!) \(location.lastName!)"
+                annotation.subtitle = location.mediaURL! as! String
+                
+                annotations.append(annotation)
+            }
         }
+//        for location in StudentLocation.sharedInstance.studentArray {
+//            
+//            let latitude = CLLocationDegrees(location.latitude! as Double)
+//            let longitude = CLLocationDegrees(location.longitude! as Double)
+//            
+//            let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+//            
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = coordinate
+//            annotation.title = "\(location.firstName!) \(location.lastName!)"
+//            annotation.subtitle = location.mediaURL! as! String
+//            
+//            annotations.append(annotation)
+//        }
         
         mapView.addAnnotations(annotations)
         
