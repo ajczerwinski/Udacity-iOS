@@ -97,7 +97,7 @@ class OnTheMapClient: NSObject {
             print("passing through POST method in client")
         }
         
-        print(request.allHTTPHeaderFields)
+        print(request.allHTTPHeaderFields!)
         print(NSString(data: request.HTTPBody!, encoding: NSUTF8StringEncoding)!)
         
         // 4. Make the request
