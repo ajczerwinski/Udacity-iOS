@@ -40,8 +40,10 @@ class PlaySoundsViewController: UIViewController {
             audioFile = nil
         }
         
-        setUserInterfaceToPlayMode(false)
+        // Retrieve the slider location
         sliderView.value = NSUserDefaults.standardUserDefaults().floatForKey(SliderValueKey)
+        
+        setUserInterfaceToPlayMode(false)
     }
     
     func setUserInterfaceToPlayMode(isPlayMode: Bool) {
@@ -60,6 +62,9 @@ class PlaySoundsViewController: UIViewController {
         
         // Set the UI
         setUserInterfaceToPlayMode(true)
+        
+        // Save the slider location
+        NSUserDefaults.standardUserDefaults().setFloat(sliderView.value, forKey: SliderValueKey)
     }
     
     @IBAction func stopAudio(sender: UIButton) {
@@ -98,6 +103,6 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func sliderDidMove(sender: UISlider) {
         // Do nothing?
-        print("Slider value: \(sliderView.value)")
+        print("Slider vaue: \(sliderView.value)")
     }
 }
