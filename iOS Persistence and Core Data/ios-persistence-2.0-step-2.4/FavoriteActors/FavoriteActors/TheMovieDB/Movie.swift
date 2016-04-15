@@ -52,6 +52,7 @@ class Movie: NSObject, NSCoding {
     func encodeWithCoder(archiver: NSCoder) {
         
         // archive the information inside the Person, one property at a time
+        archiver.encodeObject(id, forKey: TheMovieDB.Keys.ID)
         archiver.encodeObject(title, forKey: Keys.Title)
         archiver.encodeObject(posterPath, forKey: Keys.PosterPath)
         archiver.encodeObject(releaseDate, forKey: Keys.ReleaseDate)
@@ -61,6 +62,7 @@ class Movie: NSObject, NSCoding {
         super.init()
         
         // Unarchive the data, one property at a time
+        id = unarchiver.decodeIntegerForKey(TheMovieDB.Keys.ID)
         title = unarchiver.decodeObjectForKey(Keys.Title) as! String
         posterPath = unarchiver.decodeObjectForKey(Keys.PosterPath) as? String
         releaseDate = unarchiver.decodeObjectForKey(Keys.ReleaseDate) as? NSDate
