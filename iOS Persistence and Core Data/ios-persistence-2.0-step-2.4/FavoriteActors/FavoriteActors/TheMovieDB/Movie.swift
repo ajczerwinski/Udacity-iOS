@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Movie {
+class Movie: NSObject, NSCoding {
     
     struct Keys {
         static let Title = "title"
@@ -48,6 +48,24 @@ class Movie {
             TheMovieDB.Caches.imageCache.storeImage(newValue, withIdentifier: posterPath!)
         }
     }
+    
+    func encodeWithCoder(archiver: NSCoder) {
+        
+        // archive the information inside the Person, one property at a time
+        archiver.encodeObject(title, forKey: Keys.Title)
+        archiver.encodeObject(posterPath, forKey: Keys.PosterPath)
+        archiver.encodeObject(releaseDate, forKey: Keys.ReleaseDate)
+    }
+    
+    required init(coder unarchiver: NSCoder) {
+        super.init()
+        
+        // Unarchive the data, one property at a time
+        title = unarchiver.decodeObjectForKey(Keys.Title) as! String
+        posterPath = unarchiver.decodeObjectForKey(Keys.PosterPath) as? String
+        releaseDate = unarchiver.decodeObjectForKey(Keys.ReleaseDate) as? NSDate
+    }
+    
 }
 
 
