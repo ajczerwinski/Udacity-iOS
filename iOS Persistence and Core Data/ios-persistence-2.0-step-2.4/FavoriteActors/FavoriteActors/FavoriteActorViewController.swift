@@ -19,6 +19,13 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
 
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addActor")
+        if actors.count > 0 {
+            self.actors = NSKeyedUnarchiver.unarchiveObjectWithFile(actorsFilePath) as! [Person]
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        NSKeyedArchiver.archiveRootObject(self.actors, toFile: actorsFilePath)
     }
     
     // Mark: - Actions
