@@ -55,7 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         OnTheMapClient.sharedInstance().postSession(studentUsername.text!, password: studentPassword.text!) { (success, error) in
             if success == true {
                 print("Yay successfully logged in!")
-                dispatch_async(dispatch_get_main_queue(), {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(0.2 * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), {
                     self.completeLogin(OnTheMapClient.AuthService.Udacity)
                 })
             } else {

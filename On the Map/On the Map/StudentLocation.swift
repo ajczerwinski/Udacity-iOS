@@ -22,7 +22,7 @@ struct StudentLocation {
     var createdAt: String?
     var updatedAt: String?
     
-    static let sharedInstance = StudentLocation()
+    static var sharedInstance = StudentLocation()
     
     var studentArray: [StudentLocation]!
     

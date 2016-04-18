@@ -21,7 +21,9 @@ extension OnTheMapClient {
                 OnTheMapClient.JSONBodyKeys.Username: "\(username)",
                 OnTheMapClient.JSONBodyKeys.Password: "\(password)"
             ]
+            
         ]
+        print(jsonBody)
         
         // 2. Make the request
         taskForPOSTMethod(method, baseURL: OnTheMapClient.Constants.UdacityBaseURL, headers: nil, jsonBody: jsonBody) { JSONResult, error in
@@ -33,7 +35,7 @@ extension OnTheMapClient {
             } else {
                 if let results = JSONResult["account"] as? [String: AnyObject] {
                     OnTheMapClient.sharedInstance().authServiceUsed = OnTheMapClient.AuthService.Udacity
-                    OnTheMapClient.sharedInstance().uniqueKey = results["key"] as? String
+                    StudentLocation.sharedInstance.uniqueKey = results["key"] as! String
                     print("uniqueKey: \(StudentLocation.sharedInstance.uniqueKey)")
                     completionHandler(success: true, error: nil)
                 } else {
@@ -76,6 +78,7 @@ extension OnTheMapClient {
         let method: String
         if let uniqueKey = StudentLocation.sharedInstance.uniqueKey {
             method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
+            print(uniqueKey)
         } else {
             let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Not logged in via Udacity"])
             completionHandler(success: false, error: error)

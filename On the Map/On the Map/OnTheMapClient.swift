@@ -18,7 +18,7 @@ class OnTheMapClient: NSObject {
     var sessionId: String? = nil
     var userID: Int? = nil
     
-    var uniqueKey: String? = nil
+//    var uniqueKey: String? = nil
     
     override init() {
         

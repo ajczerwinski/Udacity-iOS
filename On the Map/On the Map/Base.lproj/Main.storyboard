@@ -433,7 +433,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zar-7S-fiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1547" y="889"/>
+            <point key="canvasLocation" x="-1535" y="881"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="BeK-DE-8dh">
@@ -507,6 +507,6 @@
         <image name="udacity_background" width="316" height="538"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="n57-G4-s4Y"/>
+        <segue reference="LlN-hj-mag"/>
     </inferredMetricsTieBreakers>
 </document>

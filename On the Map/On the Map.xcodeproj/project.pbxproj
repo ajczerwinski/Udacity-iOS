@@ -382,6 +382,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.allen.czerwinski.On-the-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Debug;
 		};
@@ -400,6 +401,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail.allen.czerwinski.On-the-Map";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 			};
 			name = Release;
 		};
