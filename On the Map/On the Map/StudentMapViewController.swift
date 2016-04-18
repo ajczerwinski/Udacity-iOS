@@ -57,6 +57,7 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         
         var annotations = [MKPointAnnotation]()
         if let locations = StudentLocation.sharedInstance.studentArray {
+            print(locations)
             for location in locations {
                 let latitude = CLLocationDegrees(location.latitude! as Double)
                 let longitude = CLLocationDegrees(location.longitude! as Double)

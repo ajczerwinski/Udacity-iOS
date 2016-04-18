@@ -35,8 +35,8 @@ extension OnTheMapClient {
             } else {
                 if let results = JSONResult["account"] as? [String: AnyObject] {
                     OnTheMapClient.sharedInstance().authServiceUsed = OnTheMapClient.AuthService.Udacity
-                    StudentLocation.sharedInstance.uniqueKey = results["key"] as! String
-                    print("uniqueKey: \(StudentLocation.sharedInstance.uniqueKey)")
+                    StudentLocation.sharedInstance.uniqueKey = results["key"] as? String
+                    print("uniqueKey: \(StudentLocation.sharedInstance.uniqueKey!)")
                     completionHandler(success: true, error: nil)
                 } else {
                     completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postSession data"]))
