@@ -21,9 +21,19 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addActor")
         
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let context = appDelegate.managedObjectContext
-        print("context has changes to save: \(context.hasChanges)")
+        func fetchAllActors() -> [Person] {
+            // Create the fetch request
+            let fetchRequest = NSFetchRequest(entityName: "Person")
+            
+            // Execute the Fetch Request
+            do {
+                return try sharedContext.executeFetchRequest(fetchRequest) as! [Person]
+            } catch let error as NSError {
+                print("Error in fetchAllActors(): \(error)")
+                return [Person]()
+            }
+        }
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -31,7 +41,14 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         
         tableView.reloadData()
     }
-
+    
+    // MARK: - Core Data Convenience. This will be useful for fetching. And for adding and saving objects as well. 
+    
+    var sharedContext: NSManagedObjectContext {
+        let delegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        return delegate.managedObjectContext
+    }
+    
     // Mark: - Actions
     
     func addActor() {
@@ -55,7 +72,7 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
                 }
             }
             
-            // ??? What should we do here, with Core Data ???
+            self.actors.append(newActor)
         }
     }
     
@@ -129,7 +146,7 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
     
     var actorArrayURL: NSURL {
         let filename = "favoriteActorsArray"
-        let documentsDirectoryURL: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first! 
+        let documentsDirectoryURL: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
         return documentsDirectoryURL.URLByAppendingPathComponent(filename)
     }
