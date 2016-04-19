@@ -40,7 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var dictionary: [String : AnyObject]
         var person: Person
         
+        let thurman = [
+            "name" : "Uma Thurmannnnnnnn",
+            "id" : 139,
+            "profile_path" : "1syarPILK8IIFvBHhlK8pdBZ2bz.jpg"
+        ]
+        dictionary = {thurman}()
+        person = Person(dictionary: dictionary, context: context)
+        
         if actorCount == 0 {
+            
+            dictionary = ["name" : "Uma Thurman", "id" : 139, "profile_path" : "/1syarPILK8IIFvBHhlK8pdBZ2bz.jpg"]
+            person = Person(dictionary: dictionary, context: context)
             
             dictionary = ["name" : "LL Cool J", "id" : 36424, "profile_path":"/bPZmMROI8KXbZl3ljNRmkU6Tnb3.jpg"]
             person = Person(dictionary: dictionary, context: context)
