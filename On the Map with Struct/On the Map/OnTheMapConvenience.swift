@@ -34,6 +34,11 @@ extension OnTheMapClient {
                 if let results = JSONResult["account"] as? [String: AnyObject] {
                     OnTheMapClient.sharedInstance().authServiceUsed = OnTheMapClient.AuthService.Udacity
 //                    studentLocations.uniqueKey 
+                    let studentData: [String: AnyObject] = [
+                        "username": "user@example.com",
+                        "password": "password"
+                    ]
+                    StudentArray.sharedInstance.studentLocation = StudentLocation(dictionary: studentData)
                     StudentArray.sharedInstance.studentLocation.uniqueKey = results["key"] as! String
 //                    StudentArray.sharedInstance.myArray[0].uniqueKey = (results["key"] as? String)!
 //                    print("uniqueKey: \(StudentArray.sharedInstance.myArray[0].uniqueKey)")

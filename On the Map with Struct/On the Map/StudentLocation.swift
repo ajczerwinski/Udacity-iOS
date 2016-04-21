@@ -74,7 +74,6 @@ struct StudentLocation {
         return studentLocations
         
     }
-    
 //    static func arrayFromResults(results: [String: AnyObject], completion: (dictionaryResult: [StudentLocation]?, errorString: String?) -> Void) {
 //        
 //        var studentLocations = [StudentLocation]()
