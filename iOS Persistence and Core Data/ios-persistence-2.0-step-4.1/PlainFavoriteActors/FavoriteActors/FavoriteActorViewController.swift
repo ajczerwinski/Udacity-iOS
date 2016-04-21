@@ -77,6 +77,13 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
                 }
             }
             
+//            let dictionary: [String: AnyObject] = [
+//                Person.Keys.ID: newActor.id,
+//                Person.Keys.Name: newActor.name,
+//                Person.Keys.ProfilePath: newActor.imagePath ?? ""
+//            ]
+            
+//            let actorToBeAdded = Person(dictionary: dictionary, context: sharedContext)
             // Here we add the actor object that comes from the ActorPickerViewController. Remember
             // that we cannot do this directly once we incoporate Core Data. The ActorPickerViewController
             // uses a "scratch" context. It fills its table with actors that have not been picked. We 
