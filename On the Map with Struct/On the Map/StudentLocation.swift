@@ -11,22 +11,24 @@ import MapKit
 
 struct StudentLocation {
     
-    var firstName = ""
-    var lastName = ""
-    var mapString = ""
-    var mediaURL = ""
-    var objectId = ""
-    var uniqueKey = ""
-    var latitude = 0.0
-    var longitude = 0.0
-    var createdAt = ""
-    var updatedAt = ""
+    static var studentLocations: [StudentLocation]!
+    
+    var firstName: String
+    var lastName: String
+    var mapString: String
+    var mediaURL: String
+    var objectId: String
+    var uniqueKey: String
+    var latitude: Double
+    var longitude: Double
+    var createdAt: String
+    var updatedAt: String
     
 //    static let sharedInstance = StudentLocation()
 //
 //    var studentArray = [StudentLocation]()
     
-    static var studentLocations = [StudentLocation]()
+//    static var studentLocations = [StudentLocation]()
     
     // MARK: Initializers
     
@@ -62,16 +64,16 @@ struct StudentLocation {
 //    }
     
     // Helper function to take array of dictionaries and convert to array of StudentLocation objects
-//    static func arrayFromResults(results: [[String: AnyObject]]) -> [StudentLocation] {
-//        
-//        var studentLocations = [StudentLocation]()
-//        for result in results {
-//            studentLocations.append(StudentLocation(dictionary: result))
-//        }
-//        
-//        return studentLocations
-//        
-//    }
+    static func arrayFromResults(results: [[String: AnyObject]]) -> [StudentLocation] {
+        
+        var studentLocations = [StudentLocation]()
+        for result in results {
+            studentLocations.append(StudentLocation(dictionary: result))
+        }
+        
+        return studentLocations
+        
+    }
     
 //    static func arrayFromResults(results: [String: AnyObject], completion: (dictionaryResult: [StudentLocation]?, errorString: String?) -> Void) {
 //        

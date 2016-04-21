@@ -16,7 +16,30 @@ class StudentArray {
         return Static.instance
     }
     var myArray: [StudentLocation] = [StudentLocation]()
+    
     var studentLocation: StudentLocation!
+    
+    
+    
+    
+//    var studentLocation: StudentLocation {
+//        
+//        var firstName: String
+//        var lastName: String
+//        var mapString: String
+//        var mediaURL: String
+//        var objectId: String
+//        var uniqueKey: String
+//        var latitude: Double
+//        var longitude: Double
+//        var createdAt: String
+//        var updatedAt: String
+//        
+//        return studentLocation
+//    }
+    
+    
+    
     
 //    static func arrayFromResults(results: [String: AnyObject], completion: (dictionaryResult: [StudentLocation]?, errorString: String?) -> Void) {
 //        
