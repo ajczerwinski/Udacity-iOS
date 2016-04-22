@@ -89,6 +89,7 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
             // uses a "scratch" context. It fills its table with actors that have not been picked. We 
             // need to create a new person object that is inserted into the shared context. 
             self.actors.append(newActor)
+            CoreDataStackManager.sharedInstance().saveContext()
         }
     }
     
