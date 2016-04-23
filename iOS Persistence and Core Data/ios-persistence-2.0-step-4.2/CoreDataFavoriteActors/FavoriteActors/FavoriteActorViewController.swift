@@ -3,7 +3,7 @@
 //  FavoriteActors
 //
 //  Created by Jason on 1/31/15.
-//  Copyright (c) 2015 CCSF. All rights reserved.
+//  Copyright (c) 2015 Udacity. All rights reserved.
 //
 
 import UIKit
@@ -20,9 +20,8 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addActor")
-        
+
         actors = fetchAllActors()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -31,24 +30,38 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         tableView.reloadData()
     }
     
-    // Core Data Convenience that helps us fetch, add, and save objects
+    // MARK: - Core Data Convenience. This will be useful for fetching. And for adding and saving objects as well.
+    
     var sharedContext: NSManagedObjectContext {
         return CoreDataStackManager.sharedInstance().managedObjectContext
     }
+
+    /**
+     * This is the convenience method for fetching all persistent actors.
+     * Right now there are three actors pre-loaded into Core Data. Eventually
+     * Core Data will only store the actors that the users chooses.
+     *
+     * The method creates a "Fetch Request" and then executes the request on
+     * the shared context.
+     */
     
-    // Convenience method for fetching persistent actors
     func fetchAllActors() -> [Person] {
         
         // Create the Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Person")
+        
+        // Execute the Fetch Request
         do {
             return try sharedContext.executeFetchRequest(fetchRequest) as! [Person]
+            
         } catch let error as NSError {
+            
             print("Error in fetchAllActors(): \(error)")
             return [Person]()
+            
         }
-        
     }
+
     
     // Mark: - Actions
     
@@ -77,18 +90,25 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
                 }
             }
             
-            let dictionary: [String: AnyObject] = [
-                Person.Keys.ID: newActor.id,
-                Person.Keys.Name: newActor.name,
-                Person.Keys.ProfilePath: newActor.imagePath ?? ""
+            // The actor that was picked is from a different managed object context. 
+            // We need to make a new actor. The easiest way to do that is to make a dictionary.
+            //
+            // (Side Note: Notice how the ?? is used to replace a nil profile path with an empty string.)
+            
+            let dictionary: [String : AnyObject] = [
+                Person.Keys.ID : newActor.id,
+                Person.Keys.Name : newActor.name,
+                Person.Keys.ProfilePath : newActor.imagePath ?? ""
             ]
             
+            // Now we create a new Person, using the shared Context
             let actorToBeAdded = Person(dictionary: dictionary, context: sharedContext)
-            // Here we add the actor object that comes from the ActorPickerViewController. Remember
-            // that we cannot do this directly once we incoporate Core Data. The ActorPickerViewController
-            // uses a "scratch" context. It fills its table with actors that have not been picked. We 
-            // need to create a new person object that is inserted into the shared context. 
-            self.actors.append(newActor)
+
+            // And add append the actor to the array as well
+            self.actors.append(actorToBeAdded)
+            
+            // Finally we save the shared context, using the convenience method in 
+            // The CoreDataStackManager
             CoreDataStackManager.sharedInstance().saveContext()
         }
     }
@@ -119,12 +139,13 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
             
         else {
             
-            // Set the placeholder
-            cell.actorImageView.image = UIImage(named: "personPlaceholder")
-            
+        // Set the placeholder
+        cell.actorImageView.image = UIImage(named: "personPlaceholder")
+        
+
             let size = TheMovieDB.sharedInstance().config.profileSizes[1]
             let task = TheMovieDB.sharedInstance().taskForImageWithSize(size, filePath: actor.imagePath!) { (imageData, error) -> Void in
-                
+            
                 if let data = imageData {
                     dispatch_async(dispatch_get_main_queue()) {
                         let image = UIImage(data: data)
@@ -133,7 +154,7 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
                     }
                 }
             }
-            
+        
             cell.taskToCancelifCellIsReused = task
         }
         
@@ -152,9 +173,17 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         
         switch (editingStyle) {
         case .Delete:
+            let actor = actors[indexPath.row]
+            
+            // Remove the actor from the array
             actors.removeAtIndex(indexPath.row)
+            
+            // Remove the row from the table
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
-        default:
+            
+            // Remove the actor from the context
+            sharedContext.deleteObject(actor)
+            CoreDataStackManager.sharedInstance().saveContext()        default:
             break
         }
     }

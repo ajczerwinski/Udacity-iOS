@@ -3,7 +3,7 @@
 //  FavoriteActors
 //
 //  Created by Jason on 1/31/15.
-//  Copyright (c) 2015 CCSF. All rights reserved.
+//  Copyright (c) 2015 Udacity. All rights reserved.
 //
 
 import UIKit
@@ -19,9 +19,6 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var searchBar : UISearchBar!
     
-    lazy var sharedContext = {
-        CoreDataStackManager.sharedInstance().managedObjectContext
-    }()
     
     // The data for the table
     var actors = [Person]()
@@ -34,10 +31,25 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     // be canceled every time the search text changes
     var searchTask: NSURLSessionDataTask?
     
+    // Temporary Context?
+    //
+    // This view controller may temporarily download quite a few actors while the user
+    // is typing in text.
+    //
+    // If the user types "ll" for example, that would find "LL Cool J", "Bill Murray", and
+    // many others. We don't want to add all of those actors to the main context. So we will
+    // put them in this temporary context instead.
+    var temporaryContext: NSManagedObjectContext!
     
     // MARK: - life Cycle
     override func viewDidLoad() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancel")
+        
+        let sharedContext = CoreDataStackManager.sharedInstance().managedObjectContext
+        
+        // Set the temporary context
+        temporaryContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+        temporaryContext.persistentStoreCoordinator = sharedContext.persistentStoreCoordinator
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -46,12 +58,6 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         self.searchBar.becomeFirstResponder()
     }
     
-    lazy var scratchContext: NSManagedObjectContext = {
-        var context = NSManagedObjectContext()
-        context.persistentStoreCoordinator = CoreDataStackManager.sharedInstance().persistentStoreCoordinator
-        return context
-    }()
-    
     
     // MARK: - Actions
     
@@ -59,6 +65,7 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         self.delegate?.actorPicker(self, didPickActor: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     // MARK: - Search Bar Delegate
     
@@ -95,20 +102,14 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
                 self.searchTask = nil
                 
                 // Create an array of Person instances from the JSON dictionaries
-                // If we change this so that it inserts into a context, which context should it be? 
                 self.actors = actorDictionaries.map() {
-                    Person(dictionary: $0, context: self.sharedContext)
+                    Person(dictionary: $0, context: self.temporaryContext)
                 }
                 
                 // Reload the table on the main thread
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView!.reloadData()
                 }
-                
-                /*********************************************** NOTE ***********************************************
-                In order for this new change to execute safely on the main thread, you'll need to surroud the above two statements (starting before "self.actors = ") with a performBlock function. performBlock is a function of NSManagedObjectContext, you can see how it's used here: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/CoreDataFramework/Classes/NSManagedObjectContext_Class/index.html#//apple_ref/occ/instm/NSManagedObjectContext/performBlock:
-                    (Use the same context that you used in the init Person call above.)
-                */
             }
         }
     }

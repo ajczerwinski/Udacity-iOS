@@ -3,7 +3,7 @@
 //  FavoriteActors
 //
 //  Created by Jason on 1/31/15.
-//  Copyright (c) 2015 CCSF. All rights reserved.
+//  Copyright (c) 2015 Udacity. All rights reserved.
 //
 
 import UIKit
@@ -19,9 +19,6 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var tableView : UITableView!
     @IBOutlet weak var searchBar : UISearchBar!
     
-    lazy var sharedContext = {
-        CoreDataStackManager.sharedInstance().managedObjectContext
-    }()
     
     // The data for the table
     var actors = [Person]()
@@ -34,6 +31,7 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
     // be canceled every time the search text changes
     var searchTask: NSURLSessionDataTask?
     
+    lazy var sharedContext = {CoreDataStackManager.sharedInstance().managedObjectContext}()
     
     // MARK: - life Cycle
     override func viewDidLoad() {
@@ -46,12 +44,6 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         self.searchBar.becomeFirstResponder()
     }
     
-    lazy var scratchContext: NSManagedObjectContext = {
-        var context = NSManagedObjectContext()
-        context.persistentStoreCoordinator = CoreDataStackManager.sharedInstance().persistentStoreCoordinator
-        return context
-    }()
-    
     
     // MARK: - Actions
     
@@ -59,6 +51,7 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         self.delegate?.actorPicker(self, didPickActor: nil)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
+    
     
     // MARK: - Search Bar Delegate
     
@@ -104,11 +97,6 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView!.reloadData()
                 }
-                
-                /*********************************************** NOTE ***********************************************
-                In order for this new change to execute safely on the main thread, you'll need to surroud the above two statements (starting before "self.actors = ") with a performBlock function. performBlock is a function of NSManagedObjectContext, you can see how it's used here: https://developer.apple.com/library/prerelease/ios/documentation/Cocoa/Reference/CoreDataFramework/Classes/NSManagedObjectContext_Class/index.html#//apple_ref/occ/instm/NSManagedObjectContext/performBlock:
-                    (Use the same context that you used in the init Person call above.)
-                */
             }
         }
     }
@@ -123,7 +111,7 @@ class ActorPickerViewController: UIViewController, UITableViewDelegate, UITableV
         let CellReuseId = "ActorSearchCell"
         let actor = actors[indexPath.row]
         
-        let cell = tableView.dequeueReusableCellWithIdentifier(CellReuseId)!
+        let cell = tableView.dequeueReusableCellWithIdentifier(CellReuseId)! 
         
         cell.textLabel!.text = actor.name
         

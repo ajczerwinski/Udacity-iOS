@@ -3,7 +3,7 @@
 //  FavoriteActors
 //
 //  Created by Jason on 1/31/15.
-//  Copyright (c) 2015 CCSF. All rights reserved.
+//  Copyright (c) 2015 Udacity. All rights reserved.
 //
 
 import UIKit
@@ -22,7 +22,6 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addActor")
         
         actors = fetchAllActors()
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -31,24 +30,25 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
         tableView.reloadData()
     }
     
-    // Core Data Convenience that helps us fetch, add, and save objects
-    var sharedContext: NSManagedObjectContext {
-        return CoreDataStackManager.sharedInstance().managedObjectContext
-    }
+    // Mark: - Core Data Support
     
-    // Convenience method for fetching persistent actors
+    lazy var sharedContext: NSManagedObjectContext = {
+        return CoreDataStackManager.sharedInstance().managedObjectContext
+    }()
+    
     func fetchAllActors() -> [Person] {
         
         // Create the Fetch Request
         let fetchRequest = NSFetchRequest(entityName: "Person")
+        
+        // Execute the Fetch Request
         do {
             return try sharedContext.executeFetchRequest(fetchRequest) as! [Person]
-        } catch let error as NSError {
-            print("Error in fetchAllActors(): \(error)")
+        } catch _ {
             return [Person]()
         }
-        
     }
+
     
     // Mark: - Actions
     
@@ -76,20 +76,30 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
                     return
                 }
             }
+
+            var dictionary = [String : AnyObject]()
+            dictionary[Person.Keys.ID] = newActor.id
+            dictionary[Person.Keys.Name] = newActor.name
             
-            let dictionary: [String: AnyObject] = [
-                Person.Keys.ID: newActor.id,
-                Person.Keys.Name: newActor.name,
-                Person.Keys.ProfilePath: newActor.imagePath ?? ""
-            ]
+            if let imagePath = newActor.imagePath {
+                dictionary[Person.Keys.ProfilePath] = imagePath
+            }
             
-            let actorToBeAdded = Person(dictionary: dictionary, context: sharedContext)
-            // Here we add the actor object that comes from the ActorPickerViewController. Remember
-            // that we cannot do this directly once we incoporate Core Data. The ActorPickerViewController
-            // uses a "scratch" context. It fills its table with actors that have not been picked. We 
-            // need to create a new person object that is inserted into the shared context. 
-            self.actors.append(newActor)
-            CoreDataStackManager.sharedInstance().saveContext()
+            // Insert the actor on the main thread
+            
+            dispatch_async(dispatch_get_main_queue()) {
+                
+                // Init the Person, using the shared Context
+                let actorToBeAdded = Person(dictionary: dictionary, context: self.sharedContext)
+                
+                // Append the actor to the array
+                self.actors.append(actorToBeAdded)
+                
+                // Save the context
+                CoreDataStackManager.sharedInstance().saveContext()
+                
+                self.tableView.reloadData()
+            }
         }
     }
     
