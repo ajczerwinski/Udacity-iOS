@@ -92,7 +92,6 @@ class FavoriteActorViewController : UITableViewController, ActorPickerViewContro
             CoreDataStackManager.sharedInstance().saveContext()
         }
     }
-    
     // MARK: - Table View
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

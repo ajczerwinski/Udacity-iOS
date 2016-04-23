@@ -42,4 +42,6 @@ class Person: NSManagedObject {
         get { return TheMovieDB.Caches.imageCache.imageWithIdentifier(imagePath) }
         set { TheMovieDB.Caches.imageCache.storeImage(image, withIdentifier: imagePath!) }
     }
+    
+    
 }

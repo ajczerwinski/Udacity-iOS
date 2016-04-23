@@ -50,6 +50,13 @@ class MovieListViewController : UITableViewController {
                             // In core data we use the relationship. We set the movie's actor property
 //                            self.actor.movies.append(movie)
                             movie.actor = self.actor
+                            // Parse the array of movies dictionaries
+                            var movies = moviesDictionaries.map() { (dictionary: [String:AnyObject]) -> Movie in
+                                let movie = Movie(dictionary: dictionary, context: self.sharedContext)
+                                
+                                movie.actor = self.actor
+                                return movie
+                            }
                             
                             return movie
                         }
@@ -62,8 +69,11 @@ class MovieListViewController : UITableViewController {
                         let error = NSError(domain: "Movie for Person Parsing. Cant find cast in \(JSONResult)", code: 0, userInfo: nil)
                         self.alertViewForError(error)
                     }
+                    
                 }
+                
             }
+            
         }
     }
     
