@@ -42,7 +42,7 @@ class StudentListViewController: UITableViewController {
 
         let target = StudentArray.sharedInstance.myArray[indexPath.row]
         let targetToLoad = target.mediaURL
-        if targetToLoad.rangeOfString("http") != nil {
+        if targetToLoad!.rangeOfString("http") != nil {
             UIApplication.sharedApplication().openURL(NSURL(string: "\(targetToLoad)")!)
             
         } else {

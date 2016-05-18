@@ -59,15 +59,15 @@ class StudentMapViewController: UIViewController, MKMapViewDelegate {
         
         for location in StudentArray.sharedInstance.myArray {
             
-            let latitude = CLLocationDegrees(location.latitude as Double)
-            let longitude = CLLocationDegrees(location.longitude as Double)
+            let latitude = CLLocationDegrees(location.latitude! as Double)
+            let longitude = CLLocationDegrees(location.longitude! as Double)
             
             let coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
             
             let annotation = MKPointAnnotation()
             annotation.coordinate = coordinate
             annotation.title = "\(location.firstName) \(location.lastName)"
-            annotation.subtitle = location.mediaURL as! String
+            annotation.subtitle = location.mediaURL! as String
             
             annotations.append(annotation)
         }

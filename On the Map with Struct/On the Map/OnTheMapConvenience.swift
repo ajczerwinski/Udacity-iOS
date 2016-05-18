@@ -83,7 +83,7 @@ extension OnTheMapClient {
         let method: String
         
         let uniqueKey = StudentArray.sharedInstance.studentLocation.uniqueKey
-        method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
+        method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey!)!
 //        if let uniqueKey = StudentLocation.sharedInstance.uniqueKey {
 //            method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
 //        } else {
@@ -172,8 +172,8 @@ extension OnTheMapClient {
             OnTheMapClient.JSONResponseKeys.lastName: "\(studentLocation.lastName)",
             OnTheMapClient.JSONResponseKeys.mapString: "\(studentLocation.mapString)",
             OnTheMapClient.JSONResponseKeys.mediaURL: "\(studentLocation.mediaURL)",
-            OnTheMapClient.JSONResponseKeys.latitude: (studentLocation.latitude),
-            OnTheMapClient.JSONResponseKeys.longitude: (studentLocation.longitude)
+            OnTheMapClient.JSONResponseKeys.latitude: (studentLocation.latitude)!,
+            OnTheMapClient.JSONResponseKeys.longitude: (studentLocation.longitude)!
         ]
         
         // 2. Make the request
