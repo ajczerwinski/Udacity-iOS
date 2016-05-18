@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jlf-8E-IiB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jlf-8E-IiB">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -150,6 +150,13 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Czp-Mh-6Gt">
                                 <rect key="frame" x="0.0" y="159" width="600" height="441"/>
                             </mapView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="k1Z-xJ-KNd">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="7OV-4T-GzF"/>
+                                    <constraint firstAttribute="height" constant="40" id="qsK-7t-ONr"/>
+                                </constraints>
+                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YGR-kl-esF">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="160"/>
                                 <subviews>
@@ -279,8 +286,10 @@
                             <constraint firstItem="Czp-Mh-6Gt" firstAttribute="top" secondItem="ZOk-hI-Bf4" secondAttribute="bottom" constant="59" id="aEz-Am-CWK"/>
                             <constraint firstItem="sbN-2P-3J5" firstAttribute="top" secondItem="YGR-kl-esF" secondAttribute="bottom" constant="20" id="dhV-qJ-gzl"/>
                             <constraint firstItem="YGR-kl-esF" firstAttribute="top" secondItem="JDt-e9-d3J" secondAttribute="topMargin" id="f8P-U6-XLW"/>
+                            <constraint firstItem="k1Z-xJ-KNd" firstAttribute="centerY" secondItem="JDt-e9-d3J" secondAttribute="centerY" id="fm8-gV-UTP"/>
                             <constraint firstItem="ZOk-hI-Bf4" firstAttribute="top" secondItem="Mhp-xn-bH7" secondAttribute="bottom" constant="60" id="h1I-kW-b24"/>
                             <constraint firstAttribute="trailing" secondItem="sbN-2P-3J5" secondAttribute="trailing" constant="80" id="kym-oR-Lbn"/>
+                            <constraint firstItem="k1Z-xJ-KNd" firstAttribute="centerX" secondItem="JDt-e9-d3J" secondAttribute="centerX" id="r6C-B5-r4Q"/>
                             <constraint firstItem="xRI-Gz-gow" firstAttribute="top" secondItem="qRz-Pw-3qN" secondAttribute="bottom" id="tL4-GP-GtF"/>
                             <constraint firstItem="qRz-Pw-3qN" firstAttribute="leading" secondItem="JDt-e9-d3J" secondAttribute="leadingMargin" constant="-20" id="wbt-29-F41"/>
                             <constraint firstItem="ZOk-hI-Bf4" firstAttribute="centerX" secondItem="JDt-e9-d3J" secondAttribute="centerX" id="wg9-Tb-7nf"/>
@@ -288,6 +297,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityViewIndicator" destination="k1Z-xJ-KNd" id="FrX-iI-put"/>
                         <outlet property="bottomUIBar" destination="qRz-Pw-3qN" id="ye2-fT-3kc"/>
                         <outlet property="cancelButtonUI" destination="s8R-Lz-A7G" id="EvQ-7E-1HZ"/>
                         <outlet property="enterLocation" destination="sbN-2P-3J5" id="vck-OM-caO"/>

@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "On the Map/StudentDetailsViewController.swift"
-            timestampString = "485236713.330363"
+            timestampString = "485286845.373645"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "postUserInfoToParse()"
             landmarkType = "5">
             <Locations>

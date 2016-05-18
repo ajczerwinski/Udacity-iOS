@@ -26,6 +26,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var submitButtonUI: UIButton!
     @IBOutlet weak var findOnMapButtonUI: UIButton!
     
+    @IBOutlet weak var activityViewIndicator: UIActivityIndicatorView!
+
     
     @IBOutlet weak var mapView: MKMapView!
     
@@ -42,6 +44,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
         enterURL.delegate = self
         enterLocation.delegate = self
+        
+        activityViewIndicator.color = UIColor.grayColor()
         
         presentFirstUI()
         
@@ -79,7 +83,6 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
-        
        
         let address = enterLocation.text
         if let address = address {
@@ -123,6 +126,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         
         findOnMapButtonUI.hidden = false
         
+        activityViewIndicator.hidden = true
+        
         
     }
     
@@ -154,8 +159,11 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     func geocodeAddress(address: String) {
         
         let geocoder = CLGeocoder()
+        activityViewIndicator.hidden = false
+        activityViewIndicator.startAnimating()
         geocoder.geocodeAddressString(address, completionHandler: {(placemarks, error) -> Void in
             // If we find a match to the user-inputted address, pick the first one and get mapData from it
+            
             if let placemark = placemarks?[0] {
                 self.studentLocation.latitude = Double(placemark.location!.coordinate.latitude)
                 self.studentLocation.longitude = Double(placemark.location!.coordinate.longitude)
@@ -165,14 +173,20 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
                 // set the map zoom distance
                 self.mapView.setCenterCoordinate(placemark.location!.coordinate, animated: true)
                 self.mapView.camera.altitude = 20000.0
+                self.activityViewIndicator.stopAnimating()
+                self.activityViewIndicator.hidden = true
                 
             
             } else if let error = error {
                 dispatch_async(dispatch_get_main_queue(), {
+                    self.activityViewIndicator.stopAnimating()
+                    self.activityViewIndicator.hidden = true
                     AlertConvenience.showAlert(self, error: error)
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
+                    self.activityViewIndicator.stopAnimating()
+                    self.activityViewIndicator.hidden = true
                     let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Failed to complete geocoding request"])
                 })
             }
