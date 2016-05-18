@@ -40,8 +40,6 @@ extension OnTheMapClient {
                     ]
                     StudentArray.sharedInstance.studentLocation = StudentLocation(dictionary: studentData)
                     StudentArray.sharedInstance.studentLocation.uniqueKey = results["key"] as! String
-//                    StudentArray.sharedInstance.myArray[0].uniqueKey = (results["key"] as? String)!
-//                    print("uniqueKey: \(StudentArray.sharedInstance.myArray[0].uniqueKey)")
                     completionHandler(success: true, error: nil)
                 } else {
                     completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not parse postSession data"]))
@@ -77,6 +75,8 @@ extension OnTheMapClient {
     }
     
     // MARK: GET Udacity Student Name
+    // Pass firstName, lastName, and mediaURL as arguments in the completionHandler so they can
+    // be updated in the struct object and accessible to the app
     func getStudentName(completionHandler: (success: Bool, error: NSError?, firstName: String?, lastName: String?, mediaURL: String?) -> Void) -> (Void) {
         
         // 1. Specify parameters, method, and HTTP Body
@@ -84,13 +84,6 @@ extension OnTheMapClient {
         
         let uniqueKey = StudentArray.sharedInstance.studentLocation.uniqueKey
         method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
-//        if let uniqueKey = StudentLocation.sharedInstance.uniqueKey {
-//            method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
-//        } else {
-//            let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Not logged in via Udacity"])
-//            completionHandler(success: false, error: error)
-//            return
-//        }
         
         // Make the request
         taskForGETMethod(method, baseURL: OnTheMapClient.Constants.UdacityBaseURL, parameters: nil, headers: nil) { (result, error) in
@@ -112,11 +105,8 @@ extension OnTheMapClient {
                     }
                     completionHandler(success: true, error: nil, firstName: nil, lastName: nil, mediaURL: nil)
                     if (studentLocation.firstName != "") && (studentLocation.lastName != "") {
-                        
-//                        StudentArray.sharedInstance.studentLocation = studentLocation
-//                        let firstName = StudentArray.sharedInstance.studentLocation.firstName
-//                        let lastName = StudentArray.sharedInstance.studentLocation.lastName
-//                        let mediaURL = StudentArray.sharedInstance.studentLocation.mediaURL
+                        // Pass studentLocation firstName, lastName, and mediaURL through if
+                        // completionHandler is successful
                         completionHandler(success: true, error: nil, firstName: studentLocation.firstName, lastName: studentLocation.lastName, mediaURL: studentLocation.mediaURL)
                         print("Result from queryStudentName is: \(studentLocation.firstName) \(studentLocation.lastName)")
                     } else {
@@ -127,8 +117,6 @@ extension OnTheMapClient {
                 }
             }
         }
-        
-//        return (firstName, lastName, mediaURL)
     }
     
     // GET student locations from Parse
@@ -152,9 +140,9 @@ extension OnTheMapClient {
             if let error = error {
                 completionHandler(success: false, error: error)
             } else {
+                // update the studentLocations array if there is valid user info
                 if let results = result["results"] as? [[String: AnyObject]] {
                     let studentLocations = StudentArray.sharedInstance
-//                    let studentLocations = StudentLocation.sharedInstance
                     studentLocations.myArray = StudentArray.arrayFromResults(results)
                     completionHandler(success: true, error: nil)
                 } else {
@@ -191,7 +179,7 @@ extension OnTheMapClient {
                 print("Unsuccessful POST")
                 completionHandler(success: false, error: error)
             } else {
-                if let result = result {
+                if result != nil {
                     completionHandler(success: true, error: nil)
                 } else {
                     completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not get student location data"]))

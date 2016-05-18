@@ -50,11 +50,7 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
         presentFirstUI()
         
     }
-    
-    
-    
-    
-    
+
     func textFieldDidBeginEditing(textField: UITextField) {
         
         textField.text = ""

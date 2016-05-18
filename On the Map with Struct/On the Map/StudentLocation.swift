@@ -11,8 +11,6 @@ import MapKit
 
 struct StudentLocation {
     
-//    static var studentLocations: [StudentLocation]!
-    
     var firstName: String = ""
     var lastName: String = ""
     var mapString: String = ""
@@ -23,12 +21,6 @@ struct StudentLocation {
     var longitude: Double = 0.0
     var createdAt: String = ""
     var updatedAt: String = ""
-    
-//    static let sharedInstance = StudentLocation()
-//
-//    var studentArray = [StudentLocation]()
-    
-//    static var studentLocations = [StudentLocation]()
     
     // MARK: Initializers
     
@@ -75,31 +67,6 @@ struct StudentLocation {
             self.updatedAt = updatedAt
         }
     }
-//        objectId = dictionary[OnTheMapClient.JSONResponseKeys.objectId] as! String
-//        uniqueKey = dictionary[OnTheMapClient.JSONResponseKeys.uniqueKey] as! String
-//        firstName = dictionary[OnTheMapClient.JSONResponseKeys.firstName] as! String
-//        lastName = dictionary[OnTheMapClient.JSONResponseKeys.lastName] as! String
-//        mapString = dictionary[OnTheMapClient.JSONResponseKeys.mapString] as! String
-//        mediaURL = dictionary[OnTheMapClient.JSONResponseKeys.mediaURL] as! String
-//        latitude = dictionary[OnTheMapClient.JSONResponseKeys.latitude] as! Double
-//        longitude = dictionary[OnTheMapClient.JSONResponseKeys.longitude] as! Double
-//        createdAt = dictionary[OnTheMapClient.JSONResponseKeys.createdAt] as! String
-//        updatedAt = dictionary[OnTheMapClient.JSONResponseKeys.updatedAt] as! String
-    
-//    init() {
-//        
-//        objectId = nil
-//        uniqueKey = nil
-//        firstName = nil
-//        lastName = nil
-//        mapString = nil
-//        mediaURL = nil
-//        latitude = nil
-//        longitude = nil
-//        createdAt = nil
-//        updatedAt = nil
-//        
-//    }
     
     // Helper function to take array of dictionaries and convert to array of StudentLocation objects
     static func arrayFromResults(results: [[String: AnyObject]]) -> [StudentLocation] {
@@ -112,19 +79,4 @@ struct StudentLocation {
         return studentLocations
         
     }
-//    static func arrayFromResults(results: [String: AnyObject], completion: (dictionaryResult: [StudentLocation]?, errorString: String?) -> Void) {
-//        
-//        var studentLocations = [StudentLocation]()
-//        if let locations = results["results"] as? [[String: AnyObject]] {
-//            for location in locations {
-//                studentLocations.append(StudentLocation(dictionary: location))
-//            }
-//            
-//            completion(dictionaryResult: studentLocations, errorString: nil)
-//            
-//        } else {
-//            completion(dictionaryResult: nil, errorString: "Could not parse location data")
-//        }
-//        
-//    }
 }

@@ -19,44 +19,6 @@ class StudentArray {
     
     var studentLocation: StudentLocation!
     
-    
-    
-    
-//    var studentLocation: StudentLocation {
-//        
-//        var firstName: String
-//        var lastName: String
-//        var mapString: String
-//        var mediaURL: String
-//        var objectId: String
-//        var uniqueKey: String
-//        var latitude: Double
-//        var longitude: Double
-//        var createdAt: String
-//        var updatedAt: String
-//        
-//        return studentLocation
-//    }
-    
-    
-    
-    
-//    static func arrayFromResults(results: [String: AnyObject], completion: (dictionaryResult: [StudentLocation]?, errorString: String?) -> Void) {
-//        
-//        var studentLocations = [StudentLocation]()
-//        if let locations = results["results"] as? [[String: AnyObject]] {
-//            for location in locations {
-//                studentLocations.append(StudentLocation(dictionary: location))
-//            }
-//            
-//            completion(dictionaryResult: studentLocations, errorString: nil)
-//            
-//        } else {
-//            completion(dictionaryResult: nil, errorString: "Could not parse location data")
-//        }
-//        
-//    }
-    
     static func arrayFromResults(results: [[String: AnyObject]]) -> [StudentLocation] {
         
         var studentLocations = [StudentLocation]()
