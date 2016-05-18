@@ -183,8 +183,8 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
     
     // Helper function to get Student's name
     func getStudentName() {
-        OnTheMapClient.sharedInstance().getStudentName { (success, error) in
-            
+        
+        let results = OnTheMapClient.sharedInstance().getStudentName { (success, error, firstName, lastName, mediaURL) in
             if error != nil {
                 dispatch_async(dispatch_get_main_queue(), {
                     AlertConvenience.showAlert(self, error: error!)
@@ -192,6 +192,12 @@ class StudentDetailsViewController: UIViewController, UITextFieldDelegate {
                 })
             } else if success {
                 print("Got student's name, no further action")
+                if let firstName = firstName, lastName = lastName, mediaURL = mediaURL {
+                    self.studentLocation.firstName = firstName
+                    self.studentLocation.lastName = lastName
+                    self.studentLocation.mediaURL = mediaURL
+                }
+                
             } else {
                 dispatch_async(dispatch_get_main_queue(), {
                     let error = NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Couldn't get student's name from server"])

@@ -13,16 +13,16 @@ struct StudentLocation {
     
 //    static var studentLocations: [StudentLocation]!
     
-    var firstName: String? = ""
-    var lastName: String? = ""
-    var mapString: String? = nil
-    var mediaURL: String? = nil
-    var objectId: String? = nil
-    var uniqueKey: String? = nil
-    var latitude: Double? = nil
-    var longitude: Double? = nil
-    var createdAt: String? = nil
-    var updatedAt: String? = nil
+    var firstName: String = ""
+    var lastName: String = ""
+    var mapString: String = ""
+    var mediaURL: String = ""
+    var objectId: String = ""
+    var uniqueKey: String = ""
+    var latitude: Double = 0.0
+    var longitude: Double = 0.0
+    var createdAt: String = ""
+    var updatedAt: String = ""
     
 //    static let sharedInstance = StudentLocation()
 //

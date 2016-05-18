@@ -77,13 +77,13 @@ extension OnTheMapClient {
     }
     
     // MARK: GET Udacity Student Name
-    func getStudentName(completionHandler: (success: Bool, error: NSError?) -> Void) -> Void {
+    func getStudentName(completionHandler: (success: Bool, error: NSError?, firstName: String?, lastName: String?, mediaURL: String?) -> Void) -> (Void) {
         
         // 1. Specify parameters, method, and HTTP Body
         let method: String
         
         let uniqueKey = StudentArray.sharedInstance.studentLocation.uniqueKey
-        method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey!)!
+        method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
 //        if let uniqueKey = StudentLocation.sharedInstance.uniqueKey {
 //            method = OnTheMapClient.substituteKeyInMethod(Methods.UdacityUserData, key: URLKeys.UserId, value: uniqueKey)!
 //        } else {
@@ -97,7 +97,7 @@ extension OnTheMapClient {
             
             // 3. Send the value to the completion handler
             if let error = error {
-                completionHandler(success: false, error: error)
+                completionHandler(success: false, error: error, firstName: nil, lastName: nil, mediaURL: nil)
             } else {
                 if let result = result["user"] as! [String: AnyObject]? {
                     // If there is a result, store it in first/last name of sharedInstance object
@@ -110,18 +110,25 @@ extension OnTheMapClient {
                         print(lastName)
                         studentLocation.lastName = (lastName as? String)!
                     }
-                    completionHandler(success: true, error: nil)
+                    completionHandler(success: true, error: nil, firstName: nil, lastName: nil, mediaURL: nil)
                     if (studentLocation.firstName != "") && (studentLocation.lastName != "") {
-                        completionHandler(success: true, error: nil)
+                        
+//                        StudentArray.sharedInstance.studentLocation = studentLocation
+//                        let firstName = StudentArray.sharedInstance.studentLocation.firstName
+//                        let lastName = StudentArray.sharedInstance.studentLocation.lastName
+//                        let mediaURL = StudentArray.sharedInstance.studentLocation.mediaURL
+                        completionHandler(success: true, error: nil, firstName: studentLocation.firstName, lastName: studentLocation.lastName, mediaURL: studentLocation.mediaURL)
                         print("Result from queryStudentName is: \(studentLocation.firstName) \(studentLocation.lastName)")
                     } else {
-                        completionHandler(success: false, error: NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not get the user's name from the server"]))
+                        completionHandler(success: false, error: NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Could not get the user's name from the server"]), firstName: nil, lastName: nil, mediaURL: nil)
                     }
                 } else {
-                    completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unable to parse data in queryStudentName"]))
+                    completionHandler(success: false, error: NSError(domain: "Client Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unable to parse data in queryStudentName"]), firstName: nil, lastName: nil, mediaURL: nil)
                 }
             }
         }
+        
+//        return (firstName, lastName, mediaURL)
     }
     
     // GET student locations from Parse
@@ -172,8 +179,8 @@ extension OnTheMapClient {
             OnTheMapClient.JSONResponseKeys.lastName: "\(studentLocation.lastName)",
             OnTheMapClient.JSONResponseKeys.mapString: "\(studentLocation.mapString)",
             OnTheMapClient.JSONResponseKeys.mediaURL: "\(studentLocation.mediaURL)",
-            OnTheMapClient.JSONResponseKeys.latitude: (studentLocation.latitude)!,
-            OnTheMapClient.JSONResponseKeys.longitude: (studentLocation.longitude)!
+            OnTheMapClient.JSONResponseKeys.latitude: (studentLocation.latitude),
+            OnTheMapClient.JSONResponseKeys.longitude: (studentLocation.longitude)
         ]
         
         // 2. Make the request
